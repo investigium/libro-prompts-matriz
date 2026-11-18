@@ -8,15 +8,15 @@
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231b44cc'/%3E%3Cpath d='M8 23V9h7a5 5 0 0 1 0 10h-7' fill='none' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='23' cy='23' r='3' fill='%235cb83c'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: columna de lectura con índice lateral fijo en pantallas anchas; cada ficha es un bloque con el prompt copiable */
 :root{
-  --bg:#ffffff; --surface:#ffffff; --ink:#141821; --muted:#5d6572; --line:#d9dee4;
-  --accent:#1b44cc; --accent-soft:#eef2fe; --warn:#7a5410; --warn-soft:#f6e3b8; --ok:#1f5b35; --ok-soft:#cfe6d6;
+  --bg:#ffffff; --surface:#ffffff; --ink:#0e1f33; --muted:#56637a; --line:#dde3ea;
+  --accent:#1f5fa6; --accent-soft:#eaf1fa; --warn:#7a5410; --warn-soft:#f6e3b8; --ok:#1f5b35; --ok-soft:#cfe6d6;
   --code:#f2f4f6;
-  --f-display:"Inter Tight", Inter, "Helvetica Neue", Arial, sans-serif;
-  --f-body:Inter, "Helvetica Neue", Arial, sans-serif;
+  --f-display:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-body:"Source Sans 3", "Helvetica Neue", Arial, sans-serif;
   --f-mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
   color-scheme:light;
 }
@@ -61,7 +61,7 @@ h3{font-size:1rem;margin:8px 0 0;font-weight:600}
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
 .steps .card b{display:block;font-family:var(--f-mono);font-size:.78rem;color:var(--accent);margin-bottom:4px}
 .steps .card p{margin:0;font-size:.92rem}
-.prompt{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;overflow:hidden}
+.prompt{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
 .prompt .bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 12px;border-bottom:1px solid var(--line);font-size:.82rem;color:var(--muted);flex-wrap:wrap}
 .prompt .bar strong{color:var(--ink);font-weight:600}
 .prompt pre{margin:0;padding:14px 16px;white-space:pre-wrap;word-wrap:break-word;font-family:var(--f-mono);font-size:.84rem;line-height:1.55;background:var(--code);color:var(--ink);max-height:none}
@@ -147,7 +147,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--accent);outline:none;bo
 .cc{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:14px;padding:14px 16px;border:1px solid var(--line);border-radius:12px}.cc p{margin:0;flex:1 1 320px;font-size:.88rem}.cc-badge{display:block}
 .idioma{display:inline-flex;align-items:center;gap:2px;padding:3px;border:1px solid var(--line);border-radius:99px;background:var(--bg)}
 .idioma svg{width:16px;height:16px;margin:0 4px 0 6px;color:var(--muted)}
-.idioma button{font:inherit;font-family:var(--f-mono);font-size:.75rem;font-weight:600;letter-spacing:.06em;padding:5px 9px;border-radius:99px;border:0;background:transparent;color:var(--text);cursor:pointer}
+.idioma button{font:inherit;font-family:var(--f-body);font-size:.75rem;font-weight:600;letter-spacing:.06em;padding:5px 9px;border-radius:99px;border:0;background:transparent;color:var(--text);cursor:pointer}
 .idioma button[aria-pressed="true"]{background:var(--blue,var(--accent));color:#fff}
 .idioma-nota{font-size:.78rem;color:var(--muted);margin:6px 0 0}
 iframe.skiptranslate,.goog-te-banner-frame,#goog-gt-tt,.goog-te-balloon-frame{display:none!important}body{top:0!important}.goog-text-highlight{background:none!important;box-shadow:none!important}
@@ -161,7 +161,11 @@ h2{font-weight:700}
 .author{font-family:var(--f-body);font-weight:600;font-size:1rem}
 h2 .n{font-size:.74rem;letter-spacing:.17em;text-transform:uppercase}
 .pill{justify-self:start;display:inline-block;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.35em .8em;border-radius:99px;background:var(--accent-soft);color:var(--accent)}
-header.top{border-left:4px solid var(--accent);padding-left:22px;grid-template-columns:minmax(0,1fr) auto;column-gap:36px}
+header.top{background:linear-gradient(135deg,#0e2a4d 0%,#16406f 100%);color:#e6edf7;border:0;border-radius:14px;padding:32px 34px;grid-template-columns:minmax(0,1fr) auto;column-gap:36px}
+header.top h1{color:#fff}header.top .subtitle{color:#f0c35a}header.top .sub{color:#d4deec}header.top .author{color:#fff}header.top .author span{color:#c8d5e7}header.top .contacto a{color:#e6edf7}header.top .pill{background:rgba(255,255,255,.12);color:#fff}header.top .volver{background:#fff;color:#0e2a4d;border-color:#fff}header.top .marca-lado figcaption{color:#c8d5e7}header.top .ejemplo{background:#fff;color:var(--ink);border:0}header.top .idioma{background:#fff}
+h2 .n,.pill,.marca-lado figcaption{font-family:var(--f-body);text-transform:none;letter-spacing:.01em;font-weight:600}h2 .n{font-size:.9rem}h2 .n::after{content:"";display:block;width:40px;height:3px;background:#e3a21a;border-radius:2px;margin-top:6px}
+h1,h2,h3{letter-spacing:-.01em}body{font-size:17px}
+nav.toc a{color:var(--ink)}nav.toc .n{font-family:var(--f-body);font-weight:700;color:var(--accent)}
 header.top>*{grid-column:1}
 header.top>.marca-lado{grid-column:2;grid-row:1/span 9;align-self:center}
 .marca-lado{margin:0;display:grid;justify-items:center;gap:8px}
@@ -175,6 +179,7 @@ header.top>.marca-lado{grid-column:2;grid-row:1/span 9;align-self:center}
 .copy{border-radius:8px}
 .author span{display:block;font-weight:400;color:var(--muted);font-size:.95rem}
 .firma img{width:88px;height:88px;border-color:var(--accent-soft)}
+.ex .card h3,.ex .card h4{font-family:var(--f-body);font-weight:700;color:var(--accent);font-size:.92rem}th{font-family:var(--f-body);text-transform:none;letter-spacing:0}header.top .idioma button{color:var(--ink)}header.top .idioma button[aria-pressed="true"]{color:#fff}header.top .marca-lado figcaption{font-family:var(--f-body);text-transform:none;letter-spacing:.02em;font-size:.82rem;color:#c8d5e7}
 </style>
 </head>
 <body>
@@ -188,33 +193,33 @@ header.top>.marca-lado{grid-column:2;grid-row:1/span 9;align-self:center}
   <p class="subtitle">Matriz de coherencia</p>
   <div class="firma"><img src="data:image/jpeg;base64,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" alt="Elver Chaparro Cardozo" width="72" height="72"><div><p class="author">Elver Chaparro Cardozo<span>Ph. D. (c) en Educación y Sociedad, Universidad de La Salle, Colombia</span></p><div class="contacto"><a href="mailto:elvervisual@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>elvervisual@gmail.com</a><a href="mailto:elver.chaparro@uptc.edu.co"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>elver.chaparro@uptc.edu.co</a><a href="mailto:elver.chaparro@unad.edu.co"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>elver.chaparro@unad.edu.co</a><a href="https://scholar.google.com/citations?hl=es&amp;user=ZXOKubwAAAAJ" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/><path d="M22 9v6"/></svg>Google Académico</a></div><details class="mentoria"><summary>Mentorías y consultorías</summary><div class="ment-ops"><a href="https://wa.me/573115376326?text=Hola%20Elver%2C%20me%20interesa%20una%20mentor%C3%ADa%20o%20consultor%C3%ADa%20de%20investigaci%C3%B3n." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-5A8 8 0 1 1 21 12z"/><path d="M8.5 10.5h7M8.5 13.5h4.5"/></svg>WhatsApp 311 537 6326</a><a href="mailto:elvervisual@gmail.com?subject=Mentor%C3%ADa%20o%20consultor%C3%ADa%20de%20investigaci%C3%B3n"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>elvervisual@gmail.com</a></div></details></div></div>
   <p class="sub">Un prompt para cada parte de su matriz de coherencia interna: objeto, pregunta, objetivos, técnicas e instrumentos, población, modelo y análisis. Escriba su matriz en los recuadros verdes y, al final, reciba un informe que la evalúa.</p>
-  <div class="ejemplo"><p><b>¿Quiere ver el libro funcionando?</b> Cargue la matriz de un ejemplo resuelto: «Procesos de comprensión en cultura visual en educación superior». El escenario es de práctica. Reemplaza lo que tenga escrito en este navegador.</p><div class="actions"><button class="btn primary" type="button" id="cargarEjemplo">Cargar ejemplo resuelto</button><a class="btn" href="https://elvervisual.github.io/ruta-investigacion-ia/#rsl">Ver la revisión del ejemplo en la Ruta</a></div><p class="status" id="ejEstado" role="status"></p></div>
+  <div class="ejemplo"><p><b>¿Quiere ver el libro funcionando?</b> Cargue la matriz de un ejemplo resuelto: «Uso de la inteligencia artificial en la escritura académica y sus efectos en los procesos creativos». El escenario es de práctica. Reemplaza lo que tenga escrito en este navegador.</p><div class="actions"><button class="btn primary" type="button" id="cargarEjemplo">Cargar ejemplo resuelto</button><a class="btn" href="https://elvervisual.github.io/ruta-investigacion-ia/#rsl">Ver la revisión del ejemplo en la Ruta</a></div><p class="status" id="ejEstado" role="status"></p></div>
 </header>
 
 <nav class="toc" aria-label="Contenido">
   <ol>
-    <li><a href="#kit"><span class="n">00</span>Kit de arranque</a></li>
-    <li><a href="#ficha0"><span class="n">F0</span>Instrucciones permanentes</a></li>
-    <li><a href="#volcado"><span class="n">01</span>Volcado de la inquietud</a></li>
-    <li><a href="#cuaderno"><span class="n">02</span>Cuaderno del proyecto</a></li>
+    <li><a href="#kit"><span class="n">·</span>Antes de empezar</a></li>
+    <li><a href="#ficha0"><span class="n">F0</span>Instrucciones fijas</a></li>
+    <li><a href="#volcado"><span class="n">P1</span>La idea inicial</a></li>
+    <li><a href="#cuaderno"><span class="n">P2</span>Documento del proyecto</a></li>
     <li><a href="#ficha1"><span class="n">F1</span>Objeto y pregunta</a></li>
     <li><a href="#ficha2"><span class="n">F2</span>Objetivos</a></li>
     <li><a href="#ficha3"><span class="n">F3</span>Técnicas e instrumentos</a></li>
     <li><a href="#ficha4"><span class="n">F4</span>Población y selección</a></li>
     <li><a href="#ficha5"><span class="n">F5</span>Ruta metodológica</a></li>
-    <li><a href="#ficha6"><span class="n">F6</span>Evaluador exigente</a></li>
+    <li><a href="#ficha6"><span class="n">F6</span>Jurado crítico</a></li>
     <li><a href="#ficha7"><span class="n">F7</span>Matriz final</a></li>
-    <li><a href="#informe"><span class="n">IN</span>Generar informe</a></li>
-    <li><a href="#patrones"><span class="n">04</span>Patrones para afinar</a></li>
-    <li><a href="#errores"><span class="n">05</span>Errores frecuentes</a></li>
-    <li><a href="#glosario"><span class="n">06</span>Glosario</a></li>
+    <li><a href="#informe"><span class="n">IN</span>Informe de coherencia</a></li>
+    <li><a href="#patrones"><span class="n">R</span>Mejorar un prompt</a></li>
+    <li><a href="#errores"><span class="n">R</span>Errores comunes</a></li>
+    <li><a href="#glosario"><span class="n">R</span>Glosario</a></li>
   </ol>
 </nav>
 
 <main>
 
 <section id="kit">
-  <h2><span class="n">00</span>Kit de arranque</h2>
+  <h2><span class="n">Antes de empezar</span>Tres preparativos para trabajar con la IA</h2>
   <p>Antes de la primera ficha, prepare tres cosas. Las usará durante todo el proyecto.</p>
   <div class="steps">
     <div class="card"><b>1 · Una sola IA</b><p>Elija una IA de chat (Claude, ChatGPT, Gemini, Copilot u otra) y úsela durante todo el proyecto. Cambiar de herramienta a mitad de camino borra el contexto.</p></div>
@@ -231,7 +236,7 @@ header.top>.marca-lado{grid-column:2;grid-row:1/span 9;align-self:center}
 </section>
 
 <section id="ficha0">
-  <h2><span class="n">Ficha 0</span>Instrucciones permanentes</h2>
+  <h2><span class="n">Ficha 0</span>Instrucciones fijas para su IA</h2>
   <p>Fija el comportamiento del asistente. Sin estas reglas, la IA tiende a elogiar, a completar con referencias que no existen y a escribir la tesis por usted.</p>
   <div class="prompt"><div class="bar"><strong>Ficha 0 · instrucciones del proyecto</strong><button class="copy" type="button">Copiar</button></div>
 <pre>Vas a acompañarme en el diseño metodológico de mi trabajo de grado o tesis de posgrado ([programa, institución y país]). Mi enfoque es [cualitativo, cuantitativo o mixto] y organizo el proyecto en una matriz de coherencia interna: objeto de estudio, categorías o variables, pregunta, objetivo general, objetivos específicos, paradigma, enfoque, tipo de estudio, método, diseño, técnicas, instrumentos, población y método de análisis.
@@ -248,9 +253,9 @@ Mi proyecto en una frase: [tema, población y lugar]</pre></div>
 </section>
 
 <section id="volcado">
-  <h2><span class="n">01</span>Volcado de la inquietud</h2>
+  <h2><span class="n">Paso 1</span>Poner por escrito la idea inicial</h2>
   <p>Grabe o escriba sin editar lo que le inquieta de su práctica docente, como si se lo contara a un colega. Luego pida a la IA que lo ordene.</p>
-  <div class="prompt"><div class="bar"><strong>Volcado en voz alta</strong><button class="copy" type="button">Copiar</button></div>
+  <div class="prompt"><div class="bar"><strong>Contar la idea en voz alta</strong><button class="copy" type="button">Copiar</button></div>
 <pre>Te pego una transcripción sin editar de lo que me inquieta de mi práctica docente. No la mejores ni la resumas. Ordénala en cinco listas:
 
 A. Hechos que observé (con quién, dónde, cuándo).
@@ -278,7 +283,7 @@ No agregues autores que no estén en los adjuntos.</pre></div>
 </section>
 
 <section id="cuaderno">
-  <h2><span class="n">02</span>Cuaderno del proyecto</h2>
+  <h2><span class="n">Paso 2</span>Un documento único para todo el proyecto</h2>
   <p>La IA lo entrevista durante unos 20 minutos y redacta un cuaderno que usted guarda en la carpeta mi_proyecto y adjunta en cada sesión.</p>
   <div class="prompt"><div class="bar"><strong>Entrevista para el cuaderno</strong><button class="copy" type="button">Copiar</button></div>
 <pre>Entrevístame para construir el cuaderno de mi proyecto de investigación. Hazme una sola pregunta a la vez y espera mi respuesta. Cubre, en este orden:
@@ -301,7 +306,7 @@ Cuando termines, redacta el cuaderno en no más de una página, con un subtítul
 </section>
 
 <section id="ficha1">
-  <h2><span class="n">Ficha 1</span>Objeto de estudio y pregunta</h2>
+  <h2><span class="n">Ficha 1</span>Definir el objeto de estudio y la pregunta</h2>
   <p>El objeto y la pregunta deben nombrar el mismo fenómeno, con el mismo alcance, población y lugar. Para preguntas cualitativas sirve el esquema SPIDER: muestra (S), fenómeno de interés (PI), diseño (D), evaluación o experiencia (E) y tipo de investigación (R).</p>
   <div class="prompt"><div class="bar"><strong>Formular con SPIDER</strong><button class="copy" type="button">Copiar</button></div>
 <pre>Con mi cuaderno del proyecto (adjunto), propón tres versiones de la pregunta de investigación, cada una desglosada con SPIDER:
@@ -329,7 +334,7 @@ Inquietud de partida: [su pregunta de la lista C]</pre></div>
 </section>
 
 <section id="ficha2">
-  <h2><span class="n">Ficha 2</span>Objetivo general y específicos</h2>
+  <h2><span class="n">Ficha 2</span>Redactar el objetivo general y los específicos</h2>
   <p>El objetivo general responde la pregunta con un verbo de conocimiento. Los específicos, sumados, alcanzan el general sin desbordarlo. La falla más común: la pregunta dice «¿cómo…?» y el objetivo dice «implementar».</p>
   <div class="prompt"><div class="bar"><strong>Revisar objetivos</strong><button class="copy" type="button">Copiar</button></div>
 <pre>Esta es mi pregunta y mis objetivos:
@@ -356,7 +361,7 @@ Al final, califica la relación pregunta-objetivo general y la relación general
 </section>
 
 <section id="ficha3">
-  <h2><span class="n">Ficha 3</span>Técnicas e instrumentos por objetivo</h2>
+  <h2><span class="n">Ficha 3</span>Elegir técnicas e instrumentos para cada objetivo</h2>
   <p>Cada objetivo necesita al menos una técnica y un instrumento propios. Una secuencia didáctica, una estrategia o un formato de planeación son productos del estudio, no instrumentos de captura.</p>
   <div class="prompt"><div class="bar"><strong>Alinear objetivos y técnicas</strong><button class="copy" type="button">Copiar</button></div>
 <pre>Arma una tabla con una fila por objetivo específico y estas columnas: objetivo | tipo de dato que necesita | técnica | instrumento | quién responde.
@@ -374,7 +379,7 @@ Reglas:
 </section>
 
 <section id="ficha4">
-  <h2><span class="n">Ficha 4</span>Población y selección</h2>
+  <h2><span class="n">Ficha 4</span>Definir la población y cómo seleccionarla</h2>
   <p>La matriz pregunta cuatro cosas: quiénes, dónde, cuántos y por qué ellos y no otros. El criterio de selección debe ser coherente con el enfoque.</p>
   <div class="prompt"><div class="bar"><strong>Completar la población</strong><button class="copy" type="button">Copiar</button></div>
 <pre>Revisa la descripción de mi población:
@@ -394,7 +399,7 @@ Luego:
 </section>
 
 <section id="ficha5">
-  <h2><span class="n">Ficha 5</span>Ruta metodológica y análisis</h2>
+  <h2><span class="n">Ficha 5</span>Ubicar el proyecto en su ruta metodológica</h2>
   <p>Ubique su proyecto en siete niveles, de lo general a lo concreto. Cada nivel debe ser coherente con el anterior y con su pregunta. La columna de análisis no puede quedar vacía: nombre un procedimiento y diga cómo se aplica.</p>
   <div class="scroll"><table>
     <thead><tr><th>Nivel</th><th>Qué decide</th><th>Opciones frecuentes</th><th>Referentes</th></tr></thead>
@@ -445,7 +450,7 @@ No mezcles más de dos métodos. Si sugieres autores de referencia, márcalos [P
 </section>
 
 <section id="ficha6">
-  <h2><span class="n">Ficha 6</span>Evaluador exigente</h2>
+  <h2><span class="n">Ficha 6</span>Someter la matriz a un jurado crítico</h2>
   <p>Un jurado que solo objeta. Úselo cuando la matriz esté completa, con la rúbrica de ocho criterios de este libro.</p>
   <div class="prompt"><div class="bar"><strong>Jurado con la rúbrica de coherencia</strong><button class="copy" type="button">Copiar</button></div>
 <pre>Actúa como jurado exigente de trabajos de grado. Solo presentas objeciones; no elogias ni resumes.
@@ -467,7 +472,7 @@ Matriz: [pegue o adjunte]</pre></div>
 </section>
 
 <section id="ficha7">
-  <h2><span class="n">Ficha 7</span>Matriz final con formato fijo</h2>
+  <h2><span class="n">Ficha 7</span>Entregar la matriz en un formato fijo</h2>
   <p>Control de formato: la IA ordena lo que usted ya decidió en la estructura del formato oficial, sin agregar contenido.</p>
   <div class="prompt"><div class="bar"><strong>Consolidar la matriz</strong><button class="copy" type="button">Copiar</button></div>
 <pre>Ordena mis decisiones en la matriz de coherencia interna con exactamente estos campos y en este orden. No agregues contenido que yo no haya escrito; si un campo falta, escribe [PENDIENTE].
@@ -486,7 +491,7 @@ Mis decisiones: [pegue el material de las fichas 1 a 6]</pre></div>
 </section>
 
 <section id="informe">
-  <h2><span class="n">Informe</span>Generar el informe de su matriz</h2>
+  <h2><span class="n">Informe</span>Obtener el informe de coherencia</h2>
   <p>La IA lee lo que escribió en las fichas, lo evalúa con la rúbrica de ocho criterios (ausente, débil, parcial o coherente) y redacta observaciones. Si abrió el libro en claude.ai, Claude lo hace aquí mismo; si trabaja con otra IA (ChatGPT, Gemini, Copilot u otra), copie el prompt de evaluación, péguelo en la IA que escogió y traiga la respuesta al recuadro. El informe se descarga en Word.</p>
   <div class="work"><h3>Lo que lleva escrito</h3><div class="progress" id="progress"></div></div>
   <div class="actions">
@@ -503,7 +508,7 @@ Mis decisiones: [pegue el material de las fichas 1 a 6]</pre></div>
 </section>
 
 <section id="patrones">
-  <h2><span class="n">04</span>Patrones para afinar el pedido</h2>
+  <h2><span class="n">Recursos</span>Cómo mejorar un prompt</h2>
   <div class="prompt"><div class="bar"><strong>Entrevista invertida</strong><button class="copy" type="button">Copiar</button></div>
 <pre>Quiero [lo que necesita, por ejemplo: definir los criterios de selección de mis participantes]. Antes de responder, hazme las preguntas que necesites, una a la vez, hasta tener contexto suficiente. Avísame cuando estés listo para responder.</pre></div>
   <div class="prompt"><div class="bar"><strong>Metaprompt</strong><button class="copy" type="button">Copiar</button></div>
@@ -513,7 +518,7 @@ Mis decisiones: [pegue el material de las fichas 1 a 6]</pre></div>
 </section>
 
 <section id="errores">
-  <h2><span class="n">05</span>Errores frecuentes</h2>
+  <h2><span class="n">Recursos</span>Errores comunes y cómo evitarlos</h2>
   <p>Salen de la revisión de las matrices de este semestre. Revise si alguno aparece en la suya antes de usar la ficha 6.</p>
   <div class="scroll"><table>
     <thead><tr><th>Criterio</th><th>Error</th><th>Cómo se corrige</th></tr></thead>
@@ -532,7 +537,7 @@ Mis decisiones: [pegue el material de las fichas 1 a 6]</pre></div>
 </section>
 
 <section id="glosario">
-  <h2><span class="n">06</span>Glosario de técnicas de prompt</h2>
+  <h2><span class="n">Recursos</span>Glosario de técnicas de prompt</h2>
   <div class="scroll"><table>
     <thead><tr><th>Técnica</th><th>Qué es</th><th>Dónde aparece</th></tr></thead>
     <tbody>
@@ -769,7 +774,7 @@ if(window.claude&&claude.use){
 })();
 </script>
 <script>
-(function(){const EJ_LIBRO={"nombre":"Estudiante de ejemplo","titulo":"Leer el mundo en imágenes: procesos de comprensión de la cultura visual en estudiantes de una licenciatura en artes visuales","objeto":"Los procesos mediante los cuales los estudiantes de una licenciatura en artes visuales de una universidad pública colombiana comprenden e interpretan las imágenes de la cultura visual que circulan en su vida académica y cotidiana.","categorias":"1) Lectura de la imagen: percibir, describir, interpretar. 2) Mediaciones: cultura, redes sociales, formación disciplinar. 3) Producción y resignificación: crear imágenes como forma de comprender.","pregunta":"¿Cómo comprenden e interpretan los estudiantes de una licenciatura en artes visuales de una universidad pública colombiana las imágenes de la cultura visual que circulan en su vida académica y cotidiana?","og":"Comprender los procesos mediante los cuales los estudiantes de una licenciatura en artes visuales comprenden e interpretan las imágenes de la cultura visual de su vida académica y cotidiana.","oes":[{"t":"Describir las estrategias de lectura que emplean ante imágenes de la cultura visual: publicidad, memes, fotografía de prensa y obras de arte.","tec":"Entrevista semiestructurada con elicitación visual","ins":"Guion de entrevista y set de 8 imágenes","an":"Análisis temático reflexivo (Braun y Clarke, 2006)"},{"t":"Analizar las mediaciones culturales, tecnológicas y disciplinares que intervienen en esa comprensión.","tec":"Grupo focal","ins":"Guía de grupo focal con tres casos de imágenes virales","an":"Análisis temático con comparación constante"},{"t":"Interpretar cómo la producción de imágenes propias, en un diario visual reflexivo, transforma su comprensión.","tec":"Diario visual reflexivo durante un semestre","ins":"Rejilla de análisis visual en tres niveles: descripción, análisis e interpretación","an":"Análisis visual interpretativo e integración con las entrevistas"}],"poblacion":"Entre 12 y 15 estudiantes de segundo a octavo semestre, por muestreo intencional: distintos semestres, uso activo de redes sociales y participación voluntaria. El número se justifica por el poder de la información (Malterud et al., 2016).","paradigma":"Interpretativo: la comprensión de una imagen se construye en contexto y con otros.","enfoque":"Cualitativo","tipoest":"Comprensivo","metodo":"Estudio de caso instrumental (Stake)","diseno":"Caso único con tres fuentes, emergente durante un semestre","analisis":"Análisis temático reflexivo de entrevistas y grupo focal, con comparación constante; análisis visual interpretativo de los diarios; integración de las tres fuentes por categoría.","refs":"Braun y Clarke (2006); Malterud et al. (2016); Stake (1999); Thomas y Harden (2008); Kędra (2018).","etica":"Consentimiento informado; permiso aparte para mostrar las imágenes de los diarios; rostros y nombres anonimizados."};
+(function(){const EJ_LIBRO={"nombre":"Estudiante de ejemplo","titulo":"Escribir con la máquina: usos de la inteligencia artificial generativa en la escritura académica y sus efectos en los procesos creativos de estudiantes de maestría","objeto":"Las formas en que los estudiantes de una maestría en educación de una universidad pública colombiana usan la IA generativa al escribir sus textos académicos y los efectos que perciben en sus procesos creativos.","categorias":"1) Usos de la IA en el proceso de escritura: planear, redactar, revisar. 2) Procesos creativos: generación de ideas, originalidad, elaboración. 3) Voz y autoría: apropiación, decisiones y responsabilidad.","pregunta":"¿Cómo usan la inteligencia artificial generativa los estudiantes de una maestría en educación de una universidad pública colombiana al escribir sus textos académicos, y qué efectos perciben en sus procesos creativos?","og":"Comprender cómo usan la inteligencia artificial generativa los estudiantes de una maestría en educación al escribir sus textos académicos y qué efectos perciben en sus procesos creativos.","oes":[{"t":"Describir los usos de la IA generativa en las fases de planeación, redacción y revisión de sus textos académicos.","tec":"Entrevista semiestructurada","ins":"Guion de entrevista por fases de la escritura","an":"Análisis temático reflexivo (Braun y Clarke, 2006)"},{"t":"Analizar los efectos que perciben en la generación de ideas, la originalidad y la elaboración de sus textos.","tec":"Bitácora de escritura y comparación de versiones","ins":"Bitácora con registro de prompts y rejilla de comparación de borradores","an":"Análisis de contenido cualitativo de las versiones"},{"t":"Interpretar cómo negocian la voz y la autoría cuando escriben con IA.","tec":"Grupo focal","ins":"Guía de grupo focal con tres casos de textos coescritos","an":"Análisis temático con comparación constante"}],"poblacion":"Entre 12 y 15 estudiantes de maestría que escriben su trabajo de grado, por muestreo intencional: distintos énfasis, que hayan usado IA en al menos un texto académico y que participen de forma voluntaria. El número se justifica por el poder de la información (Malterud et al., 2016).","paradigma":"Interpretativo: el efecto de la IA en la creatividad se comprende desde la experiencia de quien escribe.","enfoque":"Cualitativo","tipoest":"Comprensivo","metodo":"Fenomenología hermenéutica (Van Manen)","diseno":"Emergente, en tres momentos de un semestre","analisis":"Análisis temático reflexivo de entrevistas y grupo focal, con comparación constante; análisis de contenido cualitativo de bitácoras y versiones; integración de las fuentes por categoría.","refs":"Braun y Clarke (2006); Malterud et al. (2016); Van Manen (2003); Thomas y Harden (2008); Wang (2024).","etica":"Consentimiento informado; textos y bitácoras anonimizados; el uso de IA que declaren no se reporta a la institución."};
 const b=document.getElementById("cargarEjemplo"),e=document.getElementById("ejEstado");if(!b)return;
 b.addEventListener("click",()=>{let hay=false;try{const v=JSON.parse(localStorage.getItem("libro-prompts-matriz-v1")||"null");hay=!!(v&&(v.pregunta||"").trim()&&v.pregunta!==EJ_LIBRO.pregunta)}catch(_){}
   if(hay&&!b.dataset.armed){b.dataset.armed="1";b.textContent="Confirmar: reemplazar mi matriz";e.textContent="Ya tiene una matriz escrita en este navegador. Si la quiere conservar, descargue antes el informe en Word.";setTimeout(()=>{delete b.dataset.armed;b.textContent="Cargar ejemplo resuelto"},8000);return}
