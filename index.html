@@ -142,7 +142,7 @@ input[type=text]:focus,textarea:focus{border-color:var(--accent);outline:none;bo
     <li><a href="#ficha2"><span class="n">F2</span>Objetivos</a></li>
     <li><a href="#ficha3"><span class="n">F3</span>Técnicas e instrumentos</a></li>
     <li><a href="#ficha4"><span class="n">F4</span>Población y selección</a></li>
-    <li><a href="#ficha5"><span class="n">F5</span>Modelo y análisis</a></li>
+    <li><a href="#ficha5"><span class="n">F5</span>Ruta metodológica</a></li>
     <li><a href="#ficha6"><span class="n">F6</span>Evaluador exigente</a></li>
     <li><a href="#ficha7"><span class="n">F7</span>Matriz final</a></li>
     <li><a href="#informe"><span class="n">IN</span>Generar informe</a></li>
@@ -156,9 +156,9 @@ input[type=text]:focus,textarea:focus{border-color:var(--accent);outline:none;bo
 
 <section id="kit">
   <h2><span class="n">00</span>Kit de arranque</h2>
-  <p>Antes de la primera ficha, prepare tres cosas. Las usará durante todo el seminario.</p>
+  <p>Antes de la primera ficha, prepare tres cosas. Las usará durante todo el proyecto.</p>
   <div class="steps">
-    <div class="card"><b>1 · Una sola IA</b><p>Elija una IA de chat (Claude, ChatGPT, Gemini) y úsela todo el semestre. Cambiar de herramienta a mitad de camino borra el contexto.</p></div>
+    <div class="card"><b>1 · Una sola IA</b><p>Elija una IA de chat (Claude, ChatGPT, Gemini, Copilot u otra) y úsela durante todo el proyecto. Cambiar de herramienta a mitad de camino borra el contexto.</p></div>
     <div class="card"><b>2 · Carpeta mi_proyecto</b><p>Cree una carpeta con su matriz de coherencia vigente, el cuaderno del proyecto (paso 02) y las referencias que ya leyó, en PDF.</p></div>
     <div class="card"><b>3 · Ficha 0</b><p>Pegue la ficha 0 como instrucciones del proyecto o al inicio de cada conversación nueva.</p></div>
   </div>
@@ -175,14 +175,14 @@ input[type=text]:focus,textarea:focus{border-color:var(--accent);outline:none;bo
   <h2><span class="n">Ficha 0</span>Instrucciones permanentes</h2>
   <p>Fija el comportamiento del asistente. Sin estas reglas, la IA tiende a elogiar, a completar con referencias que no existen y a escribir la tesis por usted.</p>
   <div class="prompt"><div class="bar"><strong>Ficha 0 · instrucciones del proyecto</strong><button class="copy" type="button">Copiar</button></div>
-<pre>Vas a acompañarme en el diseño metodológico de mi trabajo de grado de la Maestría en Educación (UPTC). Mi proyecto es cualitativo o mixto y lo organizo en una matriz de coherencia interna: objeto de estudio, categorías, pregunta, objetivo general, objetivos específicos, técnicas, instrumentos, población y método de análisis.
+<pre>Vas a acompañarme en el diseño metodológico de mi trabajo de grado o tesis de posgrado ([programa, institución y país]). Mi enfoque es [cualitativo, cuantitativo o mixto] y organizo el proyecto en una matriz de coherencia interna: objeto de estudio, categorías o variables, pregunta, objetivo general, objetivos específicos, paradigma, enfoque, tipo de estudio, método, diseño, técnicas, instrumentos, población y método de análisis.
 
 Reglas para toda la conversación:
 1. No elogies mi trabajo. Si algo está bien, dilo en una línea y pasa a lo que falta.
 2. No inventes referencias. Cita solo autores y obras que yo te haya dado o que estén en los documentos adjuntos. Si sugieres un autor, márcalo como [POR VERIFICAR].
 3. Separa siempre lo que es evidencia (lo que dice mi matriz o mis fuentes) de lo que es tu opinión o inferencia.
 4. No redactes mi tesis. Hazme preguntas, señala rupturas y propón alternativas; la redacción final es mía.
-5. Usa la terminología de la investigación educativa en español y verbos de conocimiento (comprender, analizar, describir, interpretar, valorar).
+5. Usa la terminología metodológica de mi disciplina, en español, y verbos de conocimiento acordes con mi enfoque (comprender, analizar, describir, interpretar, explicar, valorar).
 6. Al final de cada respuesta, escribe una lista "Para verificar" con todo lo que yo debo comprobar en las fuentes.
 
 Mi proyecto en una frase: [tema, población y lugar]</pre></div>
@@ -335,40 +335,59 @@ Luego:
 </section>
 
 <section id="ficha5">
-  <h2><span class="n">Ficha 5</span>Modelo metodológico y análisis</h2>
-  <p>Declare un enfoque y un diseño, y verifique que lo que hace la matriz sigue la lógica de ese modelo. La columna de análisis no puede quedar vacía: nombre un procedimiento y diga cómo se aplica.</p>
-  <div class="prompt"><div class="bar"><strong>Elegir modelo y análisis</strong><button class="copy" type="button">Copiar</button></div>
+  <h2><span class="n">Ficha 5</span>Ruta metodológica y análisis</h2>
+  <p>Ubique su proyecto en siete niveles, de lo general a lo concreto. Cada nivel debe ser coherente con el anterior y con su pregunta. La columna de análisis no puede quedar vacía: nombre un procedimiento y diga cómo se aplica.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Nivel</th><th>Qué decide</th><th>Opciones frecuentes</th><th>Referentes</th></tr></thead>
+    <tbody>
+      <tr><td><b>1. Paradigma</b></td><td>Desde qué supuestos sobre la realidad y el conocimiento investiga.</td><td>Positivista y pospositivista; interpretativo o hermenéutico; sociocrítico; constructivista; pragmático (frecuente en diseños mixtos).</td><td>Guba y Lincoln, en Denzin y Lincoln; Bisquerra (2019); Chafe (2024)</td></tr>
+      <tr><td><b>2. Enfoque</b></td><td>Qué tipo de conocimiento produce y con qué clase de datos.</td><td>Cuantitativo; cualitativo; mixto o de integración de métodos.</td><td>Bonilla-Castro y Rodríguez (2005); Bisquerra (2019)</td></tr>
+      <tr><td><b>3. Tipo de estudio</b></td><td>Hasta dónde llega la respuesta (alcance).</td><td>Exploratorio; descriptivo; comprensivo o interpretativo; correlacional; explicativo; evaluativo; propositivo o transformador.</td><td>Bisquerra (2019); Bonilla-Castro y Rodríguez (2005)</td></tr>
+      <tr><td><b>4. Método o metodología</b></td><td>Qué tradición organiza la indagación.</td><td>Etnografía; estudio de caso; fenomenología hermenéutica; teoría fundamentada; investigación narrativa y biográfica; etnometodología y análisis del discurso; investigación-acción; sistematización de experiencias; investigación evaluativa; investigación basada en las artes o en diseño; experimental, cuasiexperimental, ex post facto y por encuesta.</td><td>Packer (2013); Stake (1999); Van Manen (2003); Elliott (2000); Kemmis y McTaggart (1988); Jara (2018); Eisner (1998); Bisquerra (2019)</td></tr>
+      <tr><td><b>5. Diseño</b></td><td>Cómo se organiza el estudio en el tiempo y en el campo.</td><td>Emergente o flexible; caso único o múltiple; ciclos de planificación, acción, observación y reflexión; transversal o longitudinal; pretest y postest; secuencial o convergente (mixtos).</td><td>Bonilla-Castro y Rodríguez (2005); Bisquerra (2019)</td></tr>
+      <tr><td><b>6. Técnicas de captura de información</b></td><td>Cómo obtiene los datos y con qué instrumento.</td><td>Entrevista semiestructurada o en profundidad; grupo focal o de discusión; observación participante o no participante; diario de campo; historias de vida; análisis documental; producciones de los participantes; cuestionario, escala o prueba.</td><td>Kvale (2011); Bonilla-Castro y Rodríguez (2005); Bisquerra (2019)</td></tr>
+      <tr><td><b>7. Métodos de análisis</b></td><td>Cómo convierte los datos en hallazgos.</td><td>Análisis temático; análisis de contenido; categorización inductiva y codificación; comparación constante; análisis narrativo; análisis del discurso; análisis interpretativo de la entrevista; triangulación; análisis estadístico descriptivo o inferencial.</td><td>Braun y Clarke; Gibbs (2012); Bonilla-Castro y Rodríguez (2005); Packer (2013)</td></tr>
+    </tbody>
+  </table></div>
+  <div class="steps">
+    <div class="card"><b>Packer · La ciencia de la investigación cualitativa</b><p>Cada método supone una idea de qué es lo humano y de cómo se conoce. Antes de codificar, pregúntese si su análisis respeta la manera en que los participantes construyen sentido o si la reduce a categorías abstractas.</p></div>
+    <div class="card"><b>Bonilla-Castro y Rodríguez · Más allá del dilema de los métodos</b><p>El problema define la estrategia, no la preferencia por lo cuantitativo o lo cualitativo. El investigador es el principal instrumento: explora, diseña, recoge, organiza, analiza, interpreta y conceptualiza de forma inductiva.</p></div>
+  </div>
+  <div class="prompt"><div class="bar"><strong>Ubicar la ruta metodológica</strong><button class="copy" type="button">Copiar</button></div>
 <pre>Esta es mi matriz completa: [pegue la matriz o adjúntela]
 
-Compárala con estos modelos del seminario y dime cuáles encajan, en orden de ajuste:
-- Investigación-acción (Elliott, 2000) y espiral de Kemmis y McTaggart (1988)
-- Sistematización de experiencias (Jara Holliday, 2018)
-- Práctica reflexiva (Schön, 1998)
-- Estudio de casos (Stake, 1999)
-- Etnografía educativa (de Tezanos, 1998)
-- Fenomenología hermenéutica (van Manen, 2003)
-- Investigación biográfico-narrativa
-- Investigación basada en las artes e investigación-creación
-- Investigación basada en diseño
-- Diseño mixto con pretest y postest
+Ubica mi proyecto en estos siete niveles, de lo general a lo concreto:
+1. Paradigma (positivista o pospositivista, interpretativo, sociocrítico, constructivista, pragmático).
+2. Enfoque (cuantitativo, cualitativo o mixto).
+3. Tipo de estudio según su alcance (exploratorio, descriptivo, comprensivo, correlacional, explicativo, evaluativo, propositivo).
+4. Método o metodología (por ejemplo: etnografía, estudio de caso, fenomenología, teoría fundamentada, investigación narrativa, investigación-acción, sistematización de experiencias, investigación evaluativa, diseño experimental o cuasiexperimental).
+5. Diseño.
+6. Técnicas de captura de información e instrumentos, por objetivo.
+7. Métodos de análisis.
 
-Para cada modelo que propongas:
-1. Qué elementos de mi matriz ya siguen su lógica (cita la fila).
-2. Qué tendría que cambiar o agregar para seguirlo bien.
-3. Qué procedimiento de análisis le corresponde (por ejemplo, análisis temático de Braun y Clarke, análisis de contenido inductivo, análisis narrativo) y en qué pasos se aplicaría a mis datos.
+Para cada nivel:
+- Qué declara mi matriz (cita la fila) o [FALTA] si no lo declara.
+- Si es coherente con el nivel anterior y con mi pregunta, y por qué.
+- Qué tendría que cambiar si no lo es, con una o dos alternativas viables.
 
-No mezcles más de dos modelos. Si mi matriz ya mezcla, nómbralo y explica cómo conviven.</pre></div>
-  <div class="work"><h3>Su enfoque y su análisis</h3>
-    <div class="field"><label for="f-enfoque">Enfoque, paradigma y diseño (con autor)</label><textarea id="f-enfoque" data-k="enfoque" rows="3"></textarea></div>
-    <div class="field"><label for="f-analisis">Método de análisis general y cómo se aplica</label><textarea id="f-analisis" data-k="analisis" rows="3"></textarea><span class="hint">El análisis de cada objetivo va en la ficha 3.</span></div>
+Después escribe la ruta más coherente en una línea (paradigma → enfoque → tipo de estudio → método → diseño → técnicas → análisis) y explica en pasos cómo se aplicaría el método de análisis a mis datos.
+
+No mezcles más de dos métodos. Si sugieres autores de referencia, márcalos [POR VERIFICAR].</pre></div>
+  <div class="work"><h3>Su ruta metodológica</h3>
+    <div class="row2"><div class="field"><label for="f-paradigma">Paradigma</label><input type="text" id="f-paradigma" data-k="paradigma"></div>
+    <div class="field"><label for="f-enfoque">Enfoque</label><input type="text" id="f-enfoque" data-k="enfoque"></div></div>
+    <div class="row2"><div class="field"><label for="f-tipoest">Tipo de estudio</label><input type="text" id="f-tipoest" data-k="tipoest"></div>
+    <div class="field"><label for="f-metodo">Método o metodología (con autor)</label><input type="text" id="f-metodo" data-k="metodo"></div></div>
+    <div class="field"><label for="f-diseno">Diseño</label><textarea id="f-diseno" data-k="diseno" rows="2"></textarea></div>
+    <div class="field"><label for="f-analisis">Método de análisis general y cómo se aplica</label><textarea id="f-analisis" data-k="analisis" rows="3"></textarea><span class="hint">Las técnicas y el análisis de cada objetivo van en la ficha 3.</span></div>
     <div class="field"><label for="f-refs">Referencias metodológicas que cita</label><textarea id="f-refs" data-k="refs" rows="3"></textarea></div>
   </div>
 </section>
 
 <section id="ficha6">
   <h2><span class="n">Ficha 6</span>Evaluador exigente</h2>
-  <p>Un jurado que solo objeta. Úselo cuando la matriz esté completa, con la misma rúbrica de ocho criterios que usa el seminario.</p>
-  <div class="prompt"><div class="bar"><strong>Jurado con la rúbrica del seminario</strong><button class="copy" type="button">Copiar</button></div>
+  <p>Un jurado que solo objeta. Úselo cuando la matriz esté completa, con la rúbrica de ocho criterios de este libro.</p>
+  <div class="prompt"><div class="bar"><strong>Jurado con la rúbrica de coherencia</strong><button class="copy" type="button">Copiar</button></div>
 <pre>Actúa como jurado exigente de trabajos de grado. Solo presentas objeciones; no elogias ni resumes.
 
 Evalúa mi matriz con estos ocho criterios, de 0 a 3 (0 ausente, 1 débil, 2 parcial, 3 coherente):
@@ -378,13 +397,13 @@ Evalúa mi matriz con estos ocho criterios, de 0 a 3 (0 ausente, 1 débil, 2 par
 4. Objetivos ↔ técnicas e instrumentos: cada objetivo tiene los suyos.
 5. Población y selección: quiénes, dónde, cuántos, por qué; muestreo coherente.
 6. Método de análisis: nombrado, descrito y adecuado a los datos.
-7. Enfoque y modelo: declarados y seguidos en la matriz.
+7. Ruta metodológica: paradigma, enfoque, tipo de estudio, método y diseño declarados, coherentes entre sí y seguidos en la matriz.
 8. Categorías ↔ instrumentos y análisis: las categorías orientan instrumentos y análisis.
 
 Para cada criterio: primero la evidencia (cita textual de mi matriz), después la objeción, después el puntaje. Termina con las tres objeciones que un jurado real haría primero.
 
 Matriz: [pegue o adjunte]</pre></div>
-  <p class="note">Compare el puntaje de la IA con el de la retroalimentación del seminario. Donde no coincidan, vuelva a la evidencia citada: la IA puede citar una frase que su matriz no contiene.</p>
+  <p class="note">Compare el puntaje de la IA con la retroalimentación de su director o jurado. Donde no coincidan, vuelva a la evidencia citada: la IA puede citar una frase que su matriz no contiene.</p>
 </section>
 
 <section id="ficha7">
@@ -395,7 +414,7 @@ Matriz: [pegue o adjunte]</pre></div>
 
 1. Objeto de estudio:
 2. Categorías (con autor de referencia):
-3. Enfoque, paradigma y diseño:
+3. Ruta metodológica (paradigma, enfoque, tipo de estudio, método y diseño):
 4. Pregunta de investigación:
 5. Objetivo general:
 6. Tabla por objetivo específico: objetivo | técnica | instrumento | población | método de análisis
@@ -408,17 +427,19 @@ Mis decisiones: [pegue el material de las fichas 1 a 6]</pre></div>
 
 <section id="informe">
   <h2><span class="n">Informe</span>Generar el informe de su matriz</h2>
-  <p>Claude lee lo que escribió en las fichas, lo evalúa con la rúbrica de ocho criterios del seminario (0 a 3) y redacta observaciones. El informe se descarga en Word para entregarlo o seguir trabajándolo.</p>
+  <p>La IA lee lo que escribió en las fichas, lo evalúa con la rúbrica de ocho criterios (0 a 3) y redacta observaciones. Si abrió el libro en claude.ai, Claude lo hace aquí mismo; si trabaja con otra IA (ChatGPT, Gemini, Copilot u otra), copie el prompt de evaluación, péguelo en la IA que escogió y traiga la respuesta al recuadro. El informe se descarga en Word.</p>
   <div class="work"><h3>Lo que lleva escrito</h3><div class="progress" id="progress"></div></div>
   <div class="actions">
     <button class="btn primary" type="button" id="genBtn">Evaluar y generar informe</button>
     <button class="btn" type="button" id="stopBtn" hidden>Detener</button>
+    <button class="btn" type="button" id="copyEval">Copiar prompt para su IA</button>
     <button class="btn" type="button" id="dlBtn">Descargar informe en Word</button>
     <span class="status" id="genStatus" role="status"></span>
   </div>
-  <p class="note" id="noSample" hidden>La evaluación con Claude solo funciona cuando la página se abre en claude.ai. Puede descargar su matriz en Word sin evaluación.</p>
+  <p class="note" id="noSample" hidden>La evaluación automática solo funciona cuando el libro se abre en claude.ai. Use «Copiar prompt para su IA», péguelo en la IA que escogió y pegue aquí su respuesta para incluirla en el Word.</p>
+  <div class="work"><h3>Evaluación de su IA</h3><div class="field"><label for="f-evalext">Pegue aquí la respuesta de la IA que escogió (indique cuál)</label><textarea id="f-evalext" data-k="evalext" rows="6"></textarea></div></div>
   <div id="reportBox"></div>
-  <p class="note">La evaluación de Claude es una lectura preliminar. Contrástela con la retroalimentación del seminario y verifique cada observación en su matriz.</p>
+  <p class="note">La evaluación de la IA es una lectura preliminar. Contrástela con la retroalimentación de su director o jurado y verifique cada observación en su matriz.</p>
 </section>
 
 <section id="patrones">
@@ -495,11 +516,11 @@ const CRIT=[
  ["Objetivo general ↔ específicos","Los objetivos específicos, sumados, alcanzan el general; siguen una secuencia lógica y no lo desbordan."],
  ["Objetivos ↔ técnicas e instrumentos","Cada objetivo específico tiene al menos una técnica y un instrumento propios, adecuados al tipo de dato que necesita."],
  ["Población y selección","Se dice quiénes, dónde, cuántos y por qué ellos; el criterio de selección es coherente con el enfoque."],
- ["Método de análisis","Hay un procedimiento de análisis nombrado y descrito, adecuado a los datos y al modelo metodológico."],
- ["Enfoque y modelo","Se declara un enfoque y un diseño, y lo que se hace en la matriz corresponde a la lógica de ese modelo."],
+ ["Método de análisis","Hay un procedimiento de análisis nombrado y descrito, adecuado a los datos y al método."],
+ ["Ruta metodológica","Paradigma, enfoque, tipo de estudio, método y diseño están declarados, son coherentes entre sí y lo que hace la matriz sigue esa lógica."],
  ["Categorías ↔ instrumentos y análisis","Las categorías aparecen en los objetivos, orientan los instrumentos y organizan el análisis."]
 ];
-const FIELDS=[["nombre","Nombre"],["titulo","Título"],["objeto","Objeto"],["categorias","Categorías"],["pregunta","Pregunta"],["og","Objetivo general"],["oes","Objetivos específicos"],["tec","Técnicas e instrumentos"],["poblacion","Población"],["enfoque","Enfoque"],["analisis","Análisis"]];
+const FIELDS=[["nombre","Nombre"],["titulo","Título"],["objeto","Objeto"],["categorias","Categorías"],["pregunta","Pregunta"],["og","Objetivo general"],["oes","Objetivos específicos"],["tec","Técnicas e instrumentos"],["poblacion","Población"],["paradigma","Paradigma"],["enfoque","Enfoque"],["metodo","Método"],["diseno","Diseño"],["analisis","Análisis"]];
 let st={oes:[{t:"",tec:"",ins:"",an:""},{t:"",tec:"",ins:"",an:""},{t:"",tec:"",ins:"",an:""}]};
 let evalRes=null;
 try{const raw=localStorage.getItem(KEY);if(raw){const o=JSON.parse(raw);if(o&&typeof o==="object")st=Object.assign(st,o);if(!Array.isArray(st.oes)||!st.oes.length)st.oes=[{t:"",tec:"",ins:"",an:""}]}}catch(e){}
@@ -536,7 +557,11 @@ function matrixText(){
    "Título: "+(st.titulo||"[sin dato]"),
    "Objeto de estudio: "+(st.objeto||"[vacío]"),
    "Categorías: "+(st.categorias||"[vacío]"),
-   "Enfoque, paradigma y diseño: "+(st.enfoque||"[vacío]"),
+   "Paradigma: "+(st.paradigma||"[vacío]"),
+   "Enfoque: "+(st.enfoque||"[vacío]"),
+   "Tipo de estudio: "+(st.tipoest||"[vacío]"),
+   "Método o metodología: "+(st.metodo||"[vacío]"),
+   "Diseño: "+(st.diseno||"[vacío]"),
    "Pregunta de investigación: "+(st.pregunta||"[vacío]"),
    "Objetivo general: "+(st.og||"[vacío]"),
    "Objetivos específicos:",
@@ -547,8 +572,8 @@ function matrixText(){
    "Referencias metodológicas: "+(st.refs||"[vacío]")
   ].join("\n");
 }
-function buildPrompt(){
-  return `Eres jurado de trabajos de grado de la Maestría en Educación de la Universidad Pedagógica y Tecnológica de Colombia (UPTC). Evalúa la matriz de coherencia interna de un estudiante. Escribe en español, en tono académico, directo y respetuoso.
+function buildPrompt(ext){
+  return `Eres jurado de trabajos de grado y tesis de posgrado. Evalúa la matriz de coherencia interna de un estudiante. Escribe en español, en tono académico, directo y respetuoso.
 
 Rúbrica: ocho criterios, cada uno de 0 a 3 (0 ausente: el elemento no existe o está vacío; 1 débil: existe con rupturas que impiden la coherencia; 2 parcial: coherente en lo central, con ajustes pendientes; 3 coherente: articulado y justificado).
 ${CRIT.map((c,i)=>`${i+1}. ${c[0]}: ${c[1]}`).join("\n")}
@@ -559,12 +584,17 @@ Reglas:
 - No inventes referencias ni datos que la matriz no contiene. Si sugieres un autor, agrega "(por verificar)".
 - Un campo marcado [vacío] cuenta como ausente para los criterios que dependen de él.
 
-Responde solo con un objeto JSON con esta forma exacta:
+${ext?`Responde con estas secciones, en este orden:
+1. Tabla de los ocho criterios: criterio, puntaje (0 a 3), evidencia (frase textual breve de la matriz) y observación.
+2. Síntesis del estado general de la matriz en dos o tres frases.
+3. Las tres objeciones que un jurado haría primero.
+4. Entre tres y cinco recomendaciones concretas, en orden de prioridad.
+5. Lo que el estudiante debe verificar (afirmaciones o referencias).`:`Responde solo con un objeto JSON con esta forma exacta:
 {"criterios":[{"n":1,"puntaje":0,"evidencia":"...","observacion":"..."}, ... 8 elementos en orden],
  "sintesis":"dos o tres frases sobre el estado general de la matriz",
  "objeciones":["las tres objeciones que un jurado haría primero"],
  "recomendaciones":["entre tres y cinco acciones concretas, en orden de prioridad"],
- "para_verificar":["afirmaciones o referencias que el estudiante debe comprobar"]}
+ "para_verificar":["afirmaciones o referencias que el estudiante debe comprobar"]}`}
 
 Matriz del estudiante:
 """
@@ -610,6 +640,7 @@ $("#genBtn").addEventListener("click",async()=>{
   }finally{$("#genBtn").disabled=false;$("#stopBtn").hidden=true}
 });
 $("#stopBtn").addEventListener("click",()=>ctl&&ctl.abort());
+$("#copyEval").addEventListener("click",async()=>{const b=$("#copyEval");try{await navigator.clipboard.writeText(buildPrompt(true));$("#genStatus").textContent="Prompt copiado. Péguelo en la IA que escogió y traiga la respuesta al recuadro «Evaluación de su IA»."}catch(e){$("#genStatus").textContent="No se pudo copiar. Intente de nuevo."}});
 
 async function makeDocx(){
   const d=window.docx;if(!d)return null;
@@ -638,7 +669,7 @@ async function makeDocx(){
     if((evalRes.para_verificar||[]).length){ch.push(H("4. Para verificar",HeadingLevel.HEADING_1));ch.push(...bullets(evalRes.para_verificar))}
   }
   ch.push(H((evalRes?"5. ":"")+"Matriz de coherencia interna",HeadingLevel.HEADING_1));
-  const kv=[["Objeto de estudio",st.objeto],["Categorías",st.categorias],["Enfoque, paradigma y diseño",st.enfoque],["Pregunta de investigación",st.pregunta],["Objetivo general",st.og],["Población",st.poblacion],["Método de análisis general",st.analisis],["Consideraciones éticas",st.etica],["Referencias metodológicas",st.refs]];
+  const kv=[["Objeto de estudio",st.objeto],["Categorías",st.categorias],["Paradigma",st.paradigma],["Enfoque",st.enfoque],["Tipo de estudio",st.tipoest],["Método o metodología",st.metodo],["Diseño",st.diseno],["Pregunta de investigación",st.pregunta],["Objetivo general",st.og],["Población",st.poblacion],["Método de análisis general",st.analisis],["Consideraciones éticas",st.etica],["Referencias metodológicas",st.refs]];
   ch.push(new Table({width:{size:100,type:WidthType.PERCENTAGE},rows:kv.map(([k,v])=>new TableRow({children:[cell(k,{bold:true,w:28,fill:"F0F2F0"}),cell(v||"[pendiente]",{w:72})]}))}));
   ch.push(H("Objetivos específicos",HeadingLevel.HEADING_2));
   const oes=st.oes.filter(o=>o.t.trim()||o.tec.trim()||o.ins.trim());
@@ -646,7 +677,8 @@ async function makeDocx(){
     new TableRow({tableHeader:true,children:["Objetivo específico","Técnica","Instrumento","Análisis"].map((t,i)=>cell(t,{bold:true,fill:"E2EDF1",w:[37,20,21,22][i]}))}),
     ...(oes.length?oes:[{t:"[pendiente]",tec:"",ins:"",an:""}]).map((o,i)=>new TableRow({children:[cell(`${i+1}. ${o.t||"[pendiente]"}`),cell(o.tec||"[pendiente]"),cell(o.ins||"[pendiente]"),cell(o.an||"[pendiente]")]}))
   ]}));
-  if(evalRes)ch.push(new Paragraph({children:[new TextRun({text:"La evaluación es una lectura preliminar generada con Claude a partir de la rúbrica del seminario. Contrástela con la retroalimentación del docente.",italics:true,size:18,color:"5C6662"})],spacing:{before:240}}));
+  if(!evalRes&&(st.evalext||"").trim()){ch.push(H("Evaluación de la IA",HeadingLevel.HEADING_1));String(st.evalext).split(/\n+/).forEach(l=>{if(l.trim())ch.push(P(l.trim()))})}
+  if(evalRes||(st.evalext||"").trim())ch.push(new Paragraph({children:[new TextRun({text:"La evaluación es una lectura preliminar generada con IA a partir de la rúbrica de coherencia. Contrástela con la retroalimentación de su director o jurado.",italics:true,size:18,color:"5C6662"})],spacing:{before:240}}));
   const doc=new Document({styles:{default:{document:{run:{font:"Calibri",size:22}}}},sections:[{properties:{page:{margin:{top:1134,bottom:1134,left:1134,right:1134}}},children:ch}]});
   return await Packer.toBlob(doc);
 }
