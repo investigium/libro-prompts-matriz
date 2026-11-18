@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com https://cdnjs.cloudflare.com https://translate.google.com https://translate.googleapis.com https://translate-pa.googleapis.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https://www.gstatic.com https://www.google.com https://translate.google.com https://translate.googleapis.com https://fonts.gstatic.com; connect-src 'self' data: blob: https://api.crossref.org https://formsubmit.co https://abacus.jasoncameron.dev https://translate.googleapis.com https://translate-pa.googleapis.com https://cdn.jsdelivr.net https://unpkg.com https://cdnjs.cloudflare.com; frame-src https://translate.google.com https://translate.googleapis.com; object-src 'none'; base-uri 'self'; form-action https://formsubmit.co">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Libro de prompts. Procesos de Investigación</title>
 <meta name="description" content="Prompts para construir y evaluar la matriz de coherencia de un proyecto de investigación de posgrado con la IA que usted escoja.">
 <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
@@ -308,6 +310,10 @@ input[type=month]:focus,input[type=number]:focus,.field select:focus{border-colo
 main>section{min-width:0}
 @media (max-width:760px){.mapa-barra{padding:10px}.mapa-leyenda{font-size:.72rem;gap:8px}.mapa-barra .actions .btn{font-size:.8rem;padding:7px 10px}}
 .sig-ruta{margin:22px 0 0;padding:14px 16px;border-radius:12px;background:var(--accent-soft);font-weight:600}.sig-ruta a{color:var(--accent)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+[tabindex="-1"]:focus{outline:none}
+.respaldo-libro{margin-top:16px}.respaldo-libro label.btn{display:inline-flex;align-items:center}
+.md-lista{margin-top:8px}.md-lista ul{font-size:.88rem}
 </style>
 </head>
 <body>
@@ -382,6 +388,7 @@ main>section{min-width:0}
       <div class="field"><label for="f-titulo">Título provisional del proyecto</label><input type="text" id="f-titulo" data-k="titulo"></div>
     </div>
   </div>
+<div class="work respaldo-libro"><h3>Respaldo de su trabajo</h3><p class="empty" style="font-style:normal">Su matriz y su cronograma se guardan solo en este navegador. Descargue un respaldo para llevarlos a otro equipo o para no perderlos si borra los datos del navegador.</p><div class="actions"><button class="btn" type="button" data-respaldo="bajar">Descargar respaldo (.json)</button><label class="btn">Cargar respaldo<input type="file" accept=".json,application/json" data-respaldo="cargar" hidden></label><span class="status" role="status" data-respaldo="estado"></span></div></div>
 </section>
 
 <section id="ficha0">
@@ -653,6 +660,7 @@ Mis decisiones: [pegue el material de las fichas 1 a 6]</pre></div>
   <p class="note" id="noSample" hidden>La evaluación automática solo funciona cuando el libro se abre dentro de claude.ai. Aquí, use «Copiar prompt para su IA», péguelo en la IA que escogió y pegue aquí su respuesta para incluirla en el Word.</p>
   <div class="work"><h3>Evaluación de su IA</h3><div class="field"><label for="f-evalext">Pegue aquí la respuesta de la IA que escogió (indique cuál)</label><textarea id="f-evalext" data-k="evalext" rows="6"></textarea></div></div>
   <div id="reportBox"></div>
+  <div class="work respaldo-libro"><h3>Respaldo de su trabajo</h3><p class="empty" style="font-style:normal">Su matriz y su cronograma se guardan solo en este navegador. Descargue un respaldo para llevarlos a otro equipo o para no perderlos si borra los datos del navegador.</p><div class="actions"><button class="btn" type="button" data-respaldo="bajar">Descargar respaldo (.json)</button><label class="btn">Cargar respaldo<input type="file" accept=".json,application/json" data-respaldo="cargar" hidden></label><span class="status" role="status" data-respaldo="estado"></span></div></div>
   <p class="note">La evaluación de la IA es una lectura preliminar. Contrástela con la retroalimentación de su director o jurado y verifique cada observación en su matriz.</p>
 
   <p class="sig-ruta">Paso 2 de su recorrido terminado. <a href="https://investigium.github.io/ruta-investigacion-ia/#rsl">Siguiente paso: revisar la literatura en la Ruta →</a></p>
@@ -674,7 +682,7 @@ Mis decisiones: [pegue el material de las fichas 1 a 6]</pre></div>
       </div>
     </div>
     <div class="mapa-cuerpo">
-      <div class="mapa-lienzo" id="mapaLienzo" role="img" aria-label="Mapa interactivo de la matriz de coherencia"></div>
+      <div class="mapa-lienzo" id="mapaLienzo" role="group" aria-label="Mapa interactivo de la matriz de coherencia. Use Tab para recorrer los puntos y Enter para ver su contenido."></div>
       <aside class="mapa-panel" id="mapaPanel" aria-live="polite">
         <p class="mp-vacio">Toque un punto para ver su contenido y con qué se conecta. Arrastre los puntos para ordenar el mapa; arrastre el fondo para moverlo y use la rueda o los dedos para acercar.</p>
       </aside>
@@ -700,7 +708,7 @@ Mis decisiones: [pegue el material de las fichas 1 a 6]</pre></div>
       <span class="status" id="crEstado" role="status"></span>
     </div>
   </div>
-  <div class="gantt-wrap" id="gantt"></div>
+  <div class="gantt-wrap" id="gantt" tabindex="0" role="region" aria-label="Diagrama de Gantt del cronograma"></div>
   <p class="note">Toque una casilla del mes para mover el inicio o el final de la barra. Abra cada actividad para escribir el producto, el indicador y el medio de verificación, como en el marco lógico de MinCiencias. Revise siempre los términos de referencia de la convocatoria o del reglamento de su programa: los plazos y campos cambian entre convocatorias.</p>
 
   <p class="sig-ruta">Paso 5 de su recorrido terminado. <a href="https://investigium.github.io/ruta-investigacion-ia/#engranaje">Siguiente paso: armar el resumen del proyecto en la Ruta →</a></p>
@@ -911,7 +919,7 @@ $("#stopBtn").addEventListener("click",()=>ctl&&ctl.abort());
 $("#copyEval").addEventListener("click",async()=>{const b=$("#copyEval");try{await navigator.clipboard.writeText(buildPrompt(true));$("#genStatus").textContent="Prompt copiado. Péguelo en la IA que escogió y traiga la respuesta al recuadro «Evaluación de su IA»."}catch(e){$("#genStatus").textContent="No se pudo copiar. Intente de nuevo."}});
 
 let docxP=null;
-function libDocx(){if(window.docx)return Promise.resolve(window.docx);if(docxP)return docxP;docxP=(async()=>{for(const u of ["https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js","https://unpkg.com/docx@8.5.0/build/index.umd.js"]){try{await new Promise((ok,ko)=>{const sc=document.createElement("script");sc.src=u;sc.onload=ok;sc.onerror=ko;document.head.appendChild(sc)});if(window.docx)return window.docx}catch(e){}}docxP=null;return null})();return docxP}
+function libDocx(){if(window.docx)return Promise.resolve(window.docx);if(docxP)return docxP;docxP=(async()=>{for(const u of ["https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js","https://unpkg.com/docx@8.5.0/build/index.umd.js"]){try{await new Promise((ok,ko)=>{const sc=document.createElement("script");sc.src=u;sc.integrity="sha384-4xaIisuLEy2lo2HkB2C4rEf7v8jbTb2kuogX6TkuEt9feTWKBSFSOzsqNNbV+sKh";sc.crossOrigin="anonymous";sc.onload=ok;sc.onerror=ko;document.head.appendChild(sc)});if(window.docx)return window.docx}catch(e){}}docxP=null;return null})();return docxP}
 async function makeDocx(){
   const d=await libDocx();if(!d)return null;
   const {Document,Packer,Paragraph,TextRun,HeadingLevel,Table,TableRow,TableCell,WidthType,AlignmentType,ShadingType,Footer}=d;
@@ -1051,7 +1059,8 @@ function diagnostico(g){
   g.cats.forEach((c,j)=>{const n=g.N.find(x=>x.id==="cat"+j);if(n&&n.deg<2)f.push(`La categoría «${corto(c,40)}» no aparece en ningún objetivo específico.`)});
   ["objeto","pregunta","og","poblacion","enfoque","diseno","analisis"].forEach(k=>{const n=g.N.find(x=>x.id===k);if(n&&n.vacio)f.push(`Falta: ${n.etq.toLowerCase()}.`)});
   const vac=g.N.filter(n=>n.vacio).length,tot=g.N.length;
-  $("#mapaDiag").innerHTML=`<p class="md-res"><b>${tot-vac} de ${tot}</b> componentes escritos · <b>${g.E.length}</b> relaciones</p>`+(f.length?`<details open><summary>Lo que el mapa muestra como pendiente (${f.length})</summary><ul>${f.slice(0,12).map(x=>`<li>${esc(x)}</li>`).join("")}</ul></details>`:`<p class="md-ok">Todos los componentes están escritos y conectados. Revise ahora si cada relación se sostiene en el contenido.</p>`);
+  const lista=g.N.map(n=>{const v=g.E.filter(e=>e.a===n||e.b===n).map(e=>e.a===n?e.b:e.a);return `<li><b>${esc(n.etq)}</b>${n.vacio?" (vacío)":""}: ${n.vacio?"":esc(corto(n.texto,160))+". "}Se conecta con ${v.map(x=>esc(x.etq)).join(", ")||"nada"}.</li>`}).join("");
+  $("#mapaDiag").innerHTML=`<p class="md-res"><b>${tot-vac} de ${tot}</b> componentes escritos · <b>${g.E.length}</b> relaciones</p>`+(f.length?`<details open><summary>Lo que el mapa muestra como pendiente (${f.length})</summary><ul>${f.slice(0,12).map(x=>`<li>${esc(x)}</li>`).join("")}</ul></details>`:`<p class="md-ok">Todos los componentes están escritos y conectados. Revise ahora si cada relación se sostiene en el contenido.</p>`)+`<details class="md-lista"><summary>Ver el mapa como lista</summary><ul>${lista}</ul></details>`;
 }
 function layout(g,W,H,fresh){
   let pos={};try{pos=fresh?{}:JSON.parse(localStorage.getItem(KP)||"{}")}catch(_){}
@@ -1178,14 +1187,14 @@ function cRender(){
       if(m<a.ini){a.dur=fin-m+1;a.ini=m}else if(m>fin){a.dur=m-a.ini+1}else if(m===a.ini&&a.dur>1){a.ini++;a.dur--}else{a.dur=m-a.ini+1}
       cGuardar();cRender()}));
     const q=s=>r.querySelector(s);
-    q("[data-del]").addEventListener("click",()=>{C.acts.splice(i,1);cGuardar();cRender()});
+    q("[data-del]").addEventListener("click",()=>{const quitada=C.acts.splice(i,1)[0];cGuardar();cRender();const e=$("#crEstado");e.innerHTML=`Se eliminó «${esc(corto(quitada.nombre,50))}». <button type="button" class="btn" id="crDeshacer">Deshacer</button>`;const b=$("#crDeshacer");b.addEventListener("click",()=>{C.acts.splice(i,0,quitada);cGuardar();cRender();e.textContent="Actividad restaurada."});b.focus();setTimeout(()=>{if($("#crDeshacer")===b)e.textContent=""},10000)});
     q("[data-dup]").addEventListener("click",()=>{C.acts.splice(i+1,0,Object.assign({},a,{nombre:a.nombre+" (copia)"}));cGuardar();cRender()});
     q("[data-sub]").addEventListener("click",()=>{a.ini=Math.max(1,a.ini-1);cGuardar();cRender()});
   });
 }
 function filasExport(){const obs=objetivos();return C.acts.map(a=>({oe:a.oe<0?"General":"OE"+(a.oe+1)+": "+((obs.find(o=>o.i===a.oe)||{}).t||""),a}))}
 function csv(){
-  const M=+C.meses||12,q=v=>'"'+String(v??"").replace(/"/g,'""')+'"';
+  const M=+C.meses||12,q=v=>{let t=String(v??"");if(/^[=+\-@\t\r]/.test(t))t="'"+t;return '"'+t.replace(/"/g,'""')+'"'};
   const cab=["Objetivo específico","Actividad","Responsable","Mes de inicio","Duración (meses)","Mes de finalización","Resultado o producto esperado","Indicador","Medio de verificación",...Array.from({length:M},(_,i)=>"M"+(i+1)+" ("+etMes(i)+")")];
   const L=[cab.map(q).join(";")];
   filasExport().forEach(({oe,a})=>{const fin=a.ini+a.dur-1;L.push([oe,a.nombre,a.resp,a.ini,a.dur,fin,a.prod,a.ind,a.ver,...Array.from({length:M},(_,k)=>k+1>=a.ini&&k+1<=fin?"X":"")].map(q).join(";"))});
@@ -1193,7 +1202,7 @@ function csv(){
   bajar(new Blob(["﻿"+L.join("\r\n")],{type:"text/csv;charset=utf-8"}),"Cronograma_proyecto.csv");
 }
 let dP=null;
-function libDocx2(){if(window.docx)return Promise.resolve(window.docx);if(dP)return dP;dP=(async()=>{for(const u of ["https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js","https://unpkg.com/docx@8.5.0/build/index.umd.js"]){try{await new Promise((ok,ko)=>{const sc=document.createElement("script");sc.src=u;sc.onload=ok;sc.onerror=ko;document.head.appendChild(sc)});if(window.docx)return window.docx}catch(e){}}dP=null;return null})();return dP}
+function libDocx2(){if(window.docx)return Promise.resolve(window.docx);if(dP)return dP;dP=(async()=>{for(const u of ["https://cdn.jsdelivr.net/npm/docx@8.5.0/build/index.umd.js","https://unpkg.com/docx@8.5.0/build/index.umd.js"]){try{await new Promise((ok,ko)=>{const sc=document.createElement("script");sc.src=u;sc.integrity="sha384-4xaIisuLEy2lo2HkB2C4rEf7v8jbTb2kuogX6TkuEt9feTWKBSFSOzsqNNbV+sKh";sc.crossOrigin="anonymous";sc.onload=ok;sc.onerror=ko;document.head.appendChild(sc)});if(window.docx)return window.docx}catch(e){}}dP=null;return null})();return dP}
 async function docxCrono(){
   const e=$("#crEstado");e.textContent="Preparando el Word…";
   const d=await libDocx2();if(!d){e.textContent="No se pudo cargar el generador de Word. Revise su conexión e intente de nuevo.";return}
@@ -1242,6 +1251,7 @@ function modoApp(){
   secs.forEach(s=>{if(!orden.includes(s.id))orden.push(s.id)});
   const nombre=id=>{const a=enlaces.find(x=>x.getAttribute("href")==="#"+id);if(!a)return id;const sp=a.querySelector(".n");return a.textContent.slice(sp?sp.textContent.length:0).trim()};
   document.body.classList.add("app");
+  const h1=document.createElement("h1");h1.className="sr";h1.hidden=true;main.prepend(h1);
   const barra=document.createElement("div");barra.className="app-progreso";barra.innerHTML='<div class="ap-txt"><span id="apPaso"></span><span id="apNombre"></span></div><div class="ap-barra"><i id="apFill"></i></div>';main.prepend(barra);
   secs.forEach(s=>{const i=orden.indexOf(s.id);const ant=orden[i-1],sig=orden[i+1];const n=document.createElement("nav");n.className="pasos-nav";n.setAttribute("aria-label","Ficha anterior y siguiente");
     n.innerHTML=(ant?`<a class="pn ant" href="#${ant}"><small>Anterior</small>${esc(nombre(ant))}</a>`:"<span></span>")+(sig?`<a class="pn sig" href="#${sig}"><small>Siguiente</small>${esc(nombre(sig))}</a>`:'<a class="pn sig" href="https://investigium.github.io/ruta-investigacion-ia/"><small>Terminar</small>Volver a la Ruta</a>');s.appendChild(n)});
@@ -1266,6 +1276,8 @@ function modoApp(){
     if(orden[i+1]){s.href="#"+orden[i+1];s.removeAttribute("aria-disabled")}else{s.removeAttribute("href");s.setAttribute("aria-disabled","true")}
     enlaces.forEach(x=>{if(x.getAttribute("href")==="#"+sec.id)x.setAttribute("aria-current","step");else x.removeAttribute("aria-current")});
     cerrar();
+    h1.hidden=i===0;h1.textContent=i===0?"":nombre(sec.id)+" · Libro de prompts";
+    if(actual!==null){const fo=sec.querySelector("h2");if(fo){fo.setAttribute("tabindex","-1");fo.focus({preventScroll:true})}}
     if(t!==sec)setTimeout(()=>t.scrollIntoView({block:"start"}),30);else if(actual!==null)window.scrollTo(0,i===0?0:Math.max(0,main.getBoundingClientRect().top+scrollY-12));
     actual=sec.id;
     if(sec.id==="mapa")setTimeout(()=>abrirMapa(false),40);
@@ -1288,6 +1300,38 @@ function iniciar(){
   if(!document.body.classList.contains("app")&&b("mapa"))abrirMapa(false);
 }
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",iniciar);else iniciar();
+})();
+</script>
+<script>
+/* ---------- Respaldo del Libro ---------- */
+(function(){
+  const KEY="libro-prompts-matriz-v1",KC="libro-cronograma-v1",KP="libro-mapa-pos-v1";
+  const get=k=>{try{return JSON.parse(localStorage.getItem(k)||"null")}catch(_){return null}};
+  const txt=(v,n)=>typeof v==="string"?v.slice(0,n||20000):"";
+  const ent=(v,a,b,d)=>{v=parseInt(v,10);return Number.isFinite(v)&&v>=a&&v<=b?v:d};
+  const CAMPOS=["nombre","titulo","objeto","categorias","pregunta","og","paradigma","enfoque","tipoest","metodo","diseno","poblacion","analisis","etica","refs","evalext"];
+  function limpiar(o){
+    if(!o||typeof o!=="object"||Array.isArray(o)||o._tipo!=="libro-prompts-respaldo")throw 0;
+    const m=o.matriz&&typeof o.matriz==="object"?o.matriz:{},M={};
+    CAMPOS.forEach(k=>{if(typeof m[k]==="string")M[k]=txt(m[k])});
+    M.oes=(Array.isArray(m.oes)?m.oes:[]).slice(0,20).filter(x=>x&&typeof x==="object").map(x=>({t:txt(x.t),tec:txt(x.tec,2000),ins:txt(x.ins,2000),an:txt(x.an,2000)}));
+    if(!M.oes.length)M.oes=[{t:"",tec:"",ins:"",an:""}];
+    let C=null;const c=o.cronograma;
+    if(c&&typeof c==="object"&&Array.isArray(c.acts)){const meses=[6,12,18,24,36,48].includes(+c.meses)?+c.meses:12;
+      C={inicio:/^\d{4}-\d{2}$/.test(c.inicio||"")?c.inicio:"",meses,resp:txt(c.resp,200),acts:c.acts.slice(0,200).filter(a=>a&&typeof a==="object").map(a=>{const ini=ent(a.ini,1,meses,1);return {oe:ent(a.oe,-1,19,-1),nombre:txt(a.nombre,300),resp:txt(a.resp,200),ini,dur:ent(a.dur,1,meses-ini+1,1),prod:txt(a.prod,500),ind:txt(a.ind,500),ver:txt(a.ver,500)}})}}
+    let P=null;if(o.mapa&&typeof o.mapa==="object"&&!Array.isArray(o.mapa)){P={};Object.keys(o.mapa).slice(0,200).forEach(k=>{const v=o.mapa[k];if(/^[a-z]+\d*$/.test(k)&&Array.isArray(v)&&v.length===2&&v.every(Number.isFinite))P[k]=[Math.round(v[0]),Math.round(v[1])]})}
+    return {M,C,P};
+  }
+  document.querySelectorAll('[data-respaldo="bajar"]').forEach(b=>b.addEventListener("click",()=>{
+    const o={_tipo:"libro-prompts-respaldo",_version:1,_fecha:new Date().toISOString().slice(0,10),_licencia:"Libro de prompts. Procesos de Investigación · © 2026 Elver Chaparro Cardozo · CC BY-NC-SA 4.0",matriz:get(KEY)||{},cronograma:get(KC),mapa:get(KP)};
+    const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(o,null,1)],{type:"application/json"}));a.download="respaldo_libro_"+o._fecha+".json";document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500);
+    const e=b.closest(".actions").querySelector('[data-respaldo="estado"]');if(e)e.textContent="Respaldo descargado."}));
+  document.querySelectorAll('[data-respaldo="cargar"]').forEach(inp=>inp.addEventListener("change",async()=>{
+    const f=inp.files[0];inp.value="";const e=inp.closest(".actions").querySelector('[data-respaldo="estado"]');if(!f)return;
+    if(f.size>5e6){e.textContent="El archivo es demasiado grande para ser un respaldo del Libro.";return}
+    try{const r=limpiar(JSON.parse(await f.text()));localStorage.setItem(KEY,JSON.stringify(r.M));if(r.C)localStorage.setItem(KC,JSON.stringify(r.C));if(r.P)localStorage.setItem(KP,JSON.stringify(r.P));
+      e.textContent="Respaldo cargado. Recargando…";try{sessionStorage.setItem("libro-ir",(document.querySelector("main>section.activa")||{}).id||"kit")}catch(_){}setTimeout(()=>location.reload(),400)}
+    catch(_){e.textContent="El archivo no es un respaldo válido del Libro de prompts."}}));
 })();
 </script>
 </body>
