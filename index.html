@@ -180,6 +180,20 @@ header.top>.marca-lado{grid-column:2;grid-row:1/span 9;align-self:center}
 .author span{display:block;font-weight:400;color:var(--muted);font-size:.95rem}
 .firma img{width:88px;height:88px;border-color:var(--accent-soft)}
 .ex .card h3,.ex .card h4{font-family:var(--f-body);font-weight:700;color:var(--accent);font-size:.92rem}th{font-family:var(--f-body);text-transform:none;letter-spacing:0}header.top .idioma button{color:var(--ink)}header.top .idioma button[aria-pressed="true"]{color:#fff}header.top .marca-lado figcaption{font-family:var(--f-body);text-transform:none;letter-spacing:.02em;font-size:.82rem;color:#c8d5e7}
+/* ===== Ajuste editorial: encabezado claro y sobrio ===== */
+:root{--accent:#2f4b66;--accent-soft:#eef1f4;--ink:#1c1f24}
+header.top{background:#f6f4ef;color:var(--ink);border:1px solid #e4dfd3}
+header.top h1{color:var(--ink);font-weight:600}header.top .subtitle{color:#8a6a1f;font-weight:600}header.top .sub{color:#454d59}header.top .author{color:var(--ink)}header.top .author span{color:var(--muted)}header.top .contacto a{color:#454d59}header.top .pill{background:transparent;border:1px solid #cfc9bc;color:#5b5446}header.top .volver{background:transparent;color:var(--ink);border-color:#cfc9bc}header.top .marca-lado figcaption{color:var(--muted)!important}header.top .ejemplo{border:1px solid #e4dfd3}header.top .marca-lado img{width:190px;box-shadow:none;border-radius:10px}
+.mentoria summary{background:var(--ink)!important;color:#fff}
+h2 .n::after{background:#c9a24a}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--accent:#9db4cc;--accent-soft:#1e2630;--ink:#eef1f6}header.top{background:#171a1f;border-color:#2b313b}.mentoria summary{background:#eef1f6!important;color:#1c1f24}}
+/* ===== Opción B: blanco y verde azulado ===== */
+:root{--accent:#0f5f5c;--accent-soft:#eaf3f2;--ink:#111418}
+header.top{background:#fff;border:1px solid #e6e8eb}
+header.top .pill{border-color:#cfd6d6;color:#0f5f5c}header.top .subtitle{color:#0f5f5c}header.top .volver{border-color:#cfd6d6}
+.mentoria summary{background:#0f5f5c!important;color:#fff}
+h2 .n::after{background:#0f5f5c}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--accent:#7fc4be;--accent-soft:#14302e;--ink:#eef1f6}header.top{background:#12161a;border-color:#2b313b}.mentoria summary{background:#7fc4be!important;color:#0b1515}}
 </style>
 </head>
 <body>
