@@ -785,7 +785,7 @@ Mis decisiones: [pegue el material de las fichas 1 a 6]</pre></div>
 
 <section id="informe">
   <h2><span class="n">Matriz</span>Obtener su matriz de coherencia</h2>
-  <p>La IA lee lo que escribió en las fichas, lo evalúa con la rúbrica de ocho criterios (ausente, débil, parcial o coherente) y redacta observaciones sobre su matriz. Si abrió el libro en claude.ai, Claude lo hace aquí mismo; si trabaja con otra IA (ChatGPT, Gemini, Copilot u otra), copie el prompt de evaluación, péguelo en la IA que escogió y traiga la respuesta al recuadro. Su matriz de coherencia, con la evaluación, se descarga en Word.</p>
+  <p>La IA lee lo que escribió en las fichas, lo evalúa con la rúbrica de ocho criterios (ausente, débil, parcial o coherente) y redacta observaciones sobre su matriz. Si abrió el libro dentro de su IA, la evaluación se hace aquí mismo; si no, o si trabaja con otra IA (ChatGPT, Gemini, Copilot u otra), copie el prompt de evaluación, péguelo en la IA que escogió y traiga la respuesta al recuadro. Su matriz de coherencia, con la evaluación, se descarga en Word.</p>
   <div class="work"><h3>Lo que lleva escrito</h3><div class="progress" id="progress"></div></div>
   <div class="actions">
     <button class="btn primary" type="button" id="genBtn">Evaluar mi matriz</button>
@@ -794,7 +794,7 @@ Mis decisiones: [pegue el material de las fichas 1 a 6]</pre></div>
     <button class="btn" type="button" id="dlBtn">Descargar mi matriz de coherencia (Word)</button>
     <span class="status" id="genStatus" role="status"></span>
   </div>
-  <p class="note" id="noSample" hidden>La evaluación automática solo funciona cuando el libro se abre dentro de claude.ai. Aquí, use «Copiar prompt para su IA», péguelo en la IA que escogió y pegue aquí su respuesta para incluirla en el Word.</p>
+  <p class="note" id="noSample" hidden>La evaluación automática solo funciona cuando el libro se abre dentro de su IA. Aquí, use «Copiar prompt para su IA», péguelo en la IA que escogió y pegue aquí su respuesta para incluirla en el Word.</p>
   <div class="work"><h3>Evaluación de su IA</h3><div class="field"><label for="f-evalext">Pegue aquí la respuesta de la IA que escogió (indique cuál)</label><textarea id="f-evalext" data-k="evalext" rows="6"></textarea></div></div>
   <div id="reportBox"></div>
   <div class="work respaldo-libro"><h3>Respaldo de su trabajo</h3><p class="empty" style="font-style:normal">Su matriz y su cronograma se guardan solo en este navegador. Descargue un respaldo para llevarlos a otro equipo o para no perderlos si borra los datos del navegador.</p><div class="actions"><button class="btn" type="button" data-respaldo="bajar">Descargar respaldo (.json)</button><label class="btn">Cargar respaldo<input type="file" accept=".json,application/json" data-respaldo="cargar" hidden></label><span class="status" role="status" data-respaldo="estado"></span></div></div>
