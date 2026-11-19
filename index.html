@@ -543,6 +543,35 @@ html body nav.top nav.indice a.activo{background:var(--pv-ink);border-color:var(
 html body nav.top nav.indice a.activo b{color:#C9D4E0}
 @media (max-width:760px){html body nav.top .pv-sub{padding:0 14px 8px}}
 </style>
+<style>/* ===== Fase 2: fichas de la Matriz con prompt vivo ===== */
+nav.toc .n{display:inline-block;min-width:2.6em;font-family:var(--f-body)!important;font-weight:700;color:var(--pv-muted)}
+nav.toc a[aria-current] .n{color:var(--p2)}
+nav.toc li.pv-tgrp{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--pv-muted);margin:12px 8px 2px}
+nav.toc li.pv-tgrp:first-child{margin-top:0}
+section>h2>span.n{color:var(--p2)!important}
+.pv-ciclo{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.pv-ciclo li{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--pv-line);border-radius:999px;padding:5px 14px 5px 6px;font-size:.9rem;color:var(--pv-text);background:#fff}
+.pv-ciclo li i{font-style:normal;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:.78rem;font-weight:700;background:var(--pv-panel);color:var(--pv-ink)}
+.pv-ciclo li.on{border:2px solid var(--pv-brand);padding:4px 13px 4px 5px;color:var(--pv-brand);font-weight:600;background:var(--pv-brand-soft)}
+.pv-ciclo li.on i{background:var(--pv-brand);color:#fff}
+.pv-ciclo li.ok i{background:var(--pv-ok);color:#fff}
+.pv-ficha{display:grid;grid-template-columns:minmax(260px,400px) minmax(0,1fr);gap:24px;align-items:start;border:1px solid var(--pv-line);border-radius:16px;background:var(--pv-panel);padding:18px}
+.pv-ficha>.work{margin:0;background:#fff;border:1px solid var(--pv-line);border-radius:12px}
+.pv-ficha>.pv-der{position:sticky;top:130px;display:grid;gap:14px;min-width:0}
+.pv-ficha .prompt{box-shadow:0 8px 24px rgb(20 32 43 / .08)}
+.prompt{border-radius:16px!important}
+.prompt .bar{background:#FBFCFD;gap:10px!important}
+.prompt .bar .pv-dots{margin-right:2px}
+.prompt .bar strong{margin-right:auto}
+.prompt .bar small.pv-viva{font-size:.75rem;color:var(--pv-muted);font-weight:500}
+.prompt pre mark.pv-fill{background:color-mix(in srgb,var(--p2) 14%,#fff);color:inherit;border-radius:4px;padding:0 3px}
+.prompt pre .pv-ph{background:#FBF1DC;color:#7A5410;border-radius:4px;padding:0 3px}
+.prompt .pega .pv-ai{display:inline-block;font-size:.78rem;font-weight:600;color:var(--pv-ink);background:#fff;border:1px solid var(--pv-line);border-radius:999px;padding:0 8px;margin:0 2px}
+.copy.done{background:var(--pv-ok)!important;color:#fff!important;border-color:var(--pv-ok)!important}
+@media (max-width:900px){.pv-ficha{grid-template-columns:1fr;padding:12px}.pv-ficha>.pv-der{position:static}}
+@media (max-width:760px){.pv-ciclo{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}.pv-ciclo li{flex:none;font-size:.85rem}}
+@media (max-width:760px){html body nav.top .idioma svg{display:none}html body nav.top .idioma{padding:2px!important;gap:0!important}html body nav.top .idioma button{padding:3px 7px!important;font-size:.72rem!important;min-height:0!important}html body nav.top .brand{max-width:calc(100vw - 205px)}html body nav.top .brand>span{min-width:0;overflow:hidden}html body nav.top .brand b{overflow:hidden;text-overflow:ellipsis}html body nav.top>.wrap,html body nav.top>.nav-in{flex-wrap:wrap;row-gap:4px}html body nav.top .pv-save{padding:4px 6px}}
+</style>
 </head>
 <body>
 <nav class="top" aria-label="Secciones"><div class="nav-in">
@@ -572,31 +601,31 @@ html body nav.top nav.indice a.activo b{color:#C9D4E0}
 
 <nav class="toc" aria-label="Contenido">
   <ol>
-    <li><a href="#que-es"><span class="n">·</span>Qué es la matriz</a></li>
-    <li><a href="#kit"><span class="n">·</span>Antes de empezar</a></li>
-    <li><a href="#ficha0"><span class="n">F0</span>Instrucciones fijas</a></li>
-    <li><a href="#volcado"><span class="n">P1</span>La idea inicial</a></li>
-    <li><a href="#cuaderno"><span class="n">P2</span>Documento del proyecto</a></li>
-    <li><a href="#ficha1"><span class="n">F1</span>Objeto y pregunta</a></li>
-    <li><a href="#ficha2"><span class="n">F2</span>Objetivos</a></li>
-    <li><a href="#ficha3"><span class="n">F3</span>Técnicas e instrumentos</a></li>
-    <li><a href="#ficha4"><span class="n">F4</span>Población y selección</a></li>
-    <li><a href="#ficha5"><span class="n">F5</span>Ruta metodológica</a></li>
-    <li><a href="#ficha6"><span class="n">F6</span>Jurado crítico</a></li>
-    <li><a href="#ficha7"><span class="n">F7</span>Matriz final</a></li>
-    <li><a href="#informe"><span class="n">MC</span>Matriz de coherencia</a></li>
-    <li><a href="#mapa"><span class="n">M</span>Mapa del proyecto</a></li>
-    <li><a href="#cronograma"><span class="n">C</span>Cronograma</a></li>
-    <li><a href="#patrones"><span class="n">R</span>Mejorar un prompt</a></li>
-    <li><a href="#errores"><span class="n">R</span>Errores comunes</a></li>
-    <li><a href="#glosario"><span class="n">R</span>Glosario</a></li>
+    <li><a href="#que-es"><span class="n">2</span>Qué es la matriz</a></li>
+    <li><a href="#kit"><span class="n">2.0</span>Antes de empezar</a></li>
+    <li><a href="#ficha0"><span class="n">2.0 a</span>Instrucciones fijas</a></li>
+    <li><a href="#volcado"><span class="n">2.0 b</span>La idea inicial</a></li>
+    <li><a href="#cuaderno"><span class="n">2.0 c</span>Documento del proyecto</a></li>
+    <li><a href="#ficha1"><span class="n">2.1</span>Objeto y pregunta</a></li>
+    <li><a href="#ficha2"><span class="n">2.2</span>Objetivos</a></li>
+    <li><a href="#ficha3"><span class="n">2.3</span>Técnicas e instrumentos</a></li>
+    <li><a href="#ficha4"><span class="n">2.4</span>Población y selección</a></li>
+    <li><a href="#ficha5"><span class="n">2.5</span>Ruta metodológica</a></li>
+    <li><a href="#ficha6"><span class="n">2.6</span>Jurado crítico</a></li>
+    <li><a href="#ficha7"><span class="n">2.7</span>Matriz final</a></li>
+    <li><a href="#informe"><span class="n">2.8</span>Matriz de coherencia</a></li>
+    <li><a href="#mapa"><span class="n">4</span>Mapa del proyecto</a></li>
+    <li><a href="#cronograma"><span class="n">5</span>Cronograma</a></li>
+    <li><a href="#patrones"><span class="n">·</span>Mejorar un prompt</a></li>
+    <li><a href="#errores"><span class="n">·</span>Errores comunes</a></li>
+    <li><a href="#glosario"><span class="n">·</span>Glosario</a></li>
   </ol>
 </nav>
 
 <main>
 
 <section id="que-es">
-  <h2><span class="n">Empiece aquí</span>Qué es la matriz de coherencia y cuándo se hace</h2>
+  <h2><span class="n">Paso 2 · Empiece aquí</span>Qué es la matriz de coherencia y cuándo se hace</h2>
   <p class="mi-lead">La matriz de coherencia es un instrumento de diseño metodológico que articula en una sola estructura los componentes de la investigación: el objeto de estudio, las categorías o variables, la pregunta, el objetivo general y los específicos, el enfoque y el diseño, las técnicas e instrumentos, la población y el método de análisis. Su lectura de conjunto permite examinar la coherencia interna del proyecto, es decir, la correspondencia lógica entre lo que se pregunta, lo que se propone alcanzar y el modo en que se indaga.</p>
   <div class="steps">
     <div class="card"><b>Qué es</b><p>Una herramienta de planeación, no un capítulo de la tesis. Resume en una vista lo que el proyecto quiere saber, cómo lo va a averiguar y con quién. Si una fila no se puede llenar, a esa parte del proyecto aún le falta decisión.</p></div>
@@ -616,7 +645,7 @@ html body nav.top nav.indice a.activo b{color:#C9D4E0}
 </section>
 
 <section id="kit">
-  <h2><span class="n">Antes de empezar</span>Tres preparativos para trabajar con la IA</h2>
+  <h2><span class="n">Paso 2.0 · Antes de empezar</span>Tres preparativos para trabajar con la IA</h2>
   <p>Antes de la primera ficha, prepare tres cosas. Las usará durante todo el proyecto.</p>
   <div class="steps">
     <div class="card"><b>1 · Una sola IA</b><p>Elija una IA de chat (Claude, ChatGPT, Gemini, Copilot u otra) y úsela durante todo el proyecto. Cambiar de herramienta a mitad de camino borra el contexto.</p></div>
@@ -636,7 +665,7 @@ html body nav.top nav.indice a.activo b{color:#C9D4E0}
 </section>
 
 <section id="ficha0">
-  <h2><span class="n">Ficha 0</span>Instrucciones fijas para su IA</h2>
+  <h2><span class="n">Paso 2.0 a</span>Instrucciones fijas para su IA</h2>
   <p>Fija el comportamiento del asistente. Sin estas reglas, la IA tiende a elogiar, a completar con referencias que no existen y a escribir la tesis por usted.</p>
   <p class="note"><strong>Cuide a sus participantes.</strong> Antes de pegar entrevistas, notas de campo o cualquier dato en una IA, quite nombres, instituciones identificables, teléfonos y otros datos personales, y use seudónimos. Así protege la confidencialidad que prometió en el consentimiento informado y cumple la Ley 1581 de 2012 de protección de datos.</p>
   <div class="prompt"><div class="bar"><strong>Ficha 0 · instrucciones del proyecto</strong><button class="copy" type="button">Copiar para su IA</button></div>
@@ -655,7 +684,7 @@ Mi proyecto en una frase: [tema, población y lugar]</pre><p class="pega"><span 
 </section>
 
 <section id="volcado">
-  <h2><span class="n">Paso 1</span>Poner por escrito la idea inicial</h2>
+  <h2><span class="n">Paso 2.0 b</span>Poner por escrito la idea inicial</h2>
   <p>Grabe o escriba sin editar lo que le inquieta de su práctica docente, como si se lo contara a un colega. Luego pida a la IA que lo ordene.</p>
   <div class="prompt"><div class="bar"><strong>Contar la idea en voz alta</strong><button class="copy" type="button">Copiar para su IA</button></div>
 <pre>Te pego una transcripción sin editar de lo que me inquieta de mi práctica docente. No la mejores ni la resumas. Ordénala en cinco listas:
@@ -685,7 +714,7 @@ No agregues autores que no estén en los adjuntos.</pre><p class="pega"><span ar
 </section>
 
 <section id="cuaderno">
-  <h2><span class="n">Paso 2</span>Un documento único para todo el proyecto</h2>
+  <h2><span class="n">Paso 2.0 c</span>Un documento único para todo el proyecto</h2>
   <p>Su IA lo entrevista durante unos 20 minutos y, con sus respuestas, redacta un cuaderno: una página que resume su proyecto. Usted lo guarda en la carpeta mi_proyecto y lo adjunta al comienzo de cada conversación, para que la IA no empiece de cero.</p>
   <div class="prompt"><div class="bar"><strong>Entrevista para el cuaderno</strong><button class="copy" type="button">Copiar para su IA</button></div>
 <pre>Entrevístame para construir el cuaderno de mi proyecto de investigación. Hazme una sola pregunta a la vez y espera mi respuesta. Cubre, en este orden:
@@ -717,7 +746,7 @@ Cuando termines, redacta el cuaderno en no más de una página, con un subtítul
 </section>
 
 <section id="ficha1">
-  <h2><span class="n">Ficha 1</span>Definir el objeto de estudio y la pregunta</h2>
+  <h2><span class="n">Paso 2.1</span>Definir el objeto de estudio y la pregunta</h2>
   <p>El objeto y la pregunta deben nombrar el mismo fenómeno, con el mismo alcance, población y lugar. Para preguntas cualitativas sirve el esquema SPIDER: muestra (S), fenómeno de interés (PI), diseño (D), evaluación o experiencia (E) y tipo de investigación (R).</p>
   <div class="prompt"><div class="bar"><strong>Formular con SPIDER</strong><button class="copy" type="button">Copiar para su IA</button></div>
 <pre>Con mi cuaderno del proyecto (adjunto), propón tres versiones de la pregunta de investigación, cada una desglosada con SPIDER:
@@ -745,7 +774,7 @@ Inquietud de partida: [su pregunta de la lista C]</pre><p class="pega"><span ari
 </section>
 
 <section id="ficha2">
-  <h2><span class="n">Ficha 2</span>Redactar el objetivo general y los específicos</h2>
+  <h2><span class="n">Paso 2.2</span>Redactar el objetivo general y los específicos</h2>
   <p>El objetivo general responde la pregunta con un verbo de conocimiento. Los específicos, sumados, alcanzan el general sin desbordarlo. La falla más común: la pregunta dice «¿cómo…?» y el objetivo dice «implementar».</p>
   <div class="prompt"><div class="bar"><strong>Revisar objetivos</strong><button class="copy" type="button">Copiar para su IA</button></div>
 <pre>Esta es mi pregunta y mis objetivos:
@@ -772,7 +801,7 @@ Al final, califica la relación pregunta-objetivo general y la relación general
 </section>
 
 <section id="ficha3">
-  <h2><span class="n">Ficha 3</span>Elegir técnicas e instrumentos para cada objetivo</h2>
+  <h2><span class="n">Paso 2.3</span>Elegir técnicas e instrumentos para cada objetivo</h2>
   <p>Cada objetivo necesita al menos una técnica y un instrumento propios. Una secuencia didáctica, una estrategia o un formato de planeación son productos del estudio, no instrumentos de captura.</p>
   <div class="prompt"><div class="bar"><strong>Alinear objetivos y técnicas</strong><button class="copy" type="button">Copiar para su IA</button></div>
 <pre>Arma una tabla con una fila por objetivo específico y estas columnas: objetivo | tipo de dato que necesita | técnica | instrumento | quién responde.
@@ -790,7 +819,7 @@ Reglas:
 </section>
 
 <section id="ficha4">
-  <h2><span class="n">Ficha 4</span>Definir la población y cómo seleccionarla</h2>
+  <h2><span class="n">Paso 2.4</span>Definir la población y cómo seleccionarla</h2>
   <p>La matriz pregunta cuatro cosas: quiénes, dónde, cuántos y por qué ellos y no otros. El criterio de selección debe ser coherente con el enfoque.</p>
   <div class="prompt"><div class="bar"><strong>Completar la población</strong><button class="copy" type="button">Copiar para su IA</button></div>
 <pre>Revisa la descripción de mi población:
@@ -810,7 +839,7 @@ Luego:
 </section>
 
 <section id="ficha5">
-  <h2><span class="n">Ficha 5</span>Ubicar el proyecto en su ruta metodológica</h2>
+  <h2><span class="n">Paso 2.5</span>Ubicar el proyecto en su ruta metodológica</h2>
   <p>Ubique su proyecto en siete niveles, de lo general a lo concreto. Cada nivel debe ser coherente con el anterior y con su pregunta. La columna de análisis no puede quedar vacía: nombre un procedimiento y diga cómo se aplica.</p>
   <div class="scroll"><table>
     <thead><tr><th>Nivel</th><th>Qué decide</th><th>Opciones frecuentes</th><th>Referentes</th></tr></thead>
@@ -861,7 +890,7 @@ No mezcles más de dos métodos. Si sugieres autores de referencia, márcalos [P
 </section>
 
 <section id="ficha6">
-  <h2><span class="n">Ficha 6</span>Someter la matriz a un jurado crítico</h2>
+  <h2><span class="n">Paso 2.6</span>Someter la matriz a un jurado crítico</h2>
   <p>Un jurado que solo objeta. Úselo cuando la matriz esté completa, con la rúbrica de ocho criterios de este libro.</p>
   <div class="prompt"><div class="bar"><strong>Jurado con la rúbrica de coherencia</strong><button class="copy" type="button">Copiar para su IA</button></div>
 <pre>Actúa como jurado exigente de trabajos de grado. Solo presentas objeciones; no elogias ni resumes.
@@ -883,7 +912,7 @@ Matriz: [pegue o adjunte]</pre><p class="pega"><span aria-hidden="true">↪</spa
 </section>
 
 <section id="ficha7">
-  <h2><span class="n">Ficha 7</span>Entregar la matriz en un formato fijo</h2>
+  <h2><span class="n">Paso 2.7</span>Entregar la matriz en un formato fijo</h2>
   <p>Control de formato: la IA ordena lo que usted ya decidió en la estructura del formato oficial, sin agregar contenido.</p>
   <div class="prompt"><div class="bar"><strong>Consolidar la matriz</strong><button class="copy" type="button">Copiar para su IA</button></div>
 <pre>Ordena mis decisiones en la matriz de coherencia interna con exactamente estos campos y en este orden. No agregues contenido que yo no haya escrito; si un campo falta, escribe [PENDIENTE].
@@ -903,7 +932,7 @@ Mis decisiones: [pegue el material de las fichas 1 a 6]</pre><p class="pega"><sp
 </section>
 
 <section id="informe">
-  <h2><span class="n">Matriz</span>Obtener su matriz de coherencia</h2>
+  <h2><span class="n">Paso 2.8</span>Obtener su matriz de coherencia</h2>
   <p>La IA lee lo que escribió en las fichas, lo evalúa con la rúbrica de ocho criterios (ausente, débil, parcial o coherente) y redacta observaciones sobre su matriz. Si abrió el libro dentro de su IA, la evaluación se hace aquí mismo; si no, o si trabaja con otra IA (ChatGPT, Gemini, Copilot u otra), copie el prompt de evaluación, péguelo en la IA que escogió y traiga la respuesta al recuadro. Su matriz de coherencia, con la evaluación, se descarga en Word.</p>
   <div class="work"><h3>Lo que lleva escrito</h3><div class="progress" id="progress"></div></div>
   <div class="actions">
@@ -923,7 +952,7 @@ Mis decisiones: [pegue el material de las fichas 1 a 6]</pre><p class="pega"><sp
 </section>
 
 <section id="mapa">
-  <h2><span class="n">Mapa</span>El mapa de su proyecto</h2>
+  <h2><span class="n">Paso 4 · Mapa</span>El mapa de su proyecto</h2>
   <p>La matriz que escribió, vista como un flujograma por fases: problema, objetivos, ruta metodológica, campo y análisis. Cada caja es un componente: tóquela para leer su texto completo y ver con qué se relaciona. Las cajas punteadas en rojo están vacías y las naranjas están escritas pero sin conexión: revíselas con su asesor, fase por fase.</p>
   <div class="mapa-app">
     <div class="mapa-barra">
@@ -949,7 +978,7 @@ Mis decisiones: [pegue el material de las fichas 1 a 6]</pre><p class="pega"><sp
 </section>
 
 <section id="cronograma">
-  <h2><span class="n">Cronograma</span>Cronograma de trabajo</h2>
+  <h2><span class="n">Paso 5 · Cronograma</span>Cronograma de trabajo</h2>
   <p>Un diagrama de Gantt con la estructura que piden las convocatorias de MinCiencias: cada actividad se asocia a un objetivo específico, tiene un responsable, un mes de inicio, una duración en meses y un producto que se puede verificar. Use la propuesta automática como punto de partida y ajústela con su director.</p>
   <div class="work crono-conf">
     <div class="row3">
@@ -1691,5 +1720,73 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 })();
 </script>
 <script>document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-descargar-matriz]");if(!b)return;const d=document.getElementById("dlBtn");if(!d)return;d.click();const st=b.parentElement.querySelector("[data-dm-estado]");if(st){st.textContent="Preparando el documento…";setTimeout(()=>{const g=document.getElementById("genStatus");st.textContent=g&&/No se pudo|cancelada/.test(g.textContent)?g.textContent:"Matriz descargada en Word."},2500)}});</script>
+<script>(function(){
+  var KEY='libro-prompts-matriz-v1';
+  var COD={'que-es':'2','kit':'2.0','ficha0':'2.0 a','volcado':'2.0 b','cuaderno':'2.0 c','ficha1':'2.1','ficha2':'2.2','ficha3':'2.3','ficha4':'2.4','ficha5':'2.5','ficha6':'2.6','ficha7':'2.7','informe':'2.8','mapa':'4','cronograma':'5'};
+  var esc=function(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+  function st(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(_){return{}}}
+  function oes(s){return (s.oes||[]).filter(function(o){return o&&((o.t||'').trim()||(o.tec||'').trim()||(o.ins||'').trim())})}
+  function hay(s){return ['objeto','pregunta','og','poblacion','metodo','enfoque'].some(function(k){return (s[k]||'').trim()})||oes(s).length}
+  function matriz(s){if(!hay(s))return '';var v=function(k){return (s[k]||'').trim()||'[vacío]'};var o=oes(s);
+    return ['Objeto de estudio: '+v('objeto'),'Categorías: '+v('categorias'),'Paradigma: '+v('paradigma'),'Enfoque: '+v('enfoque'),'Tipo de estudio: '+v('tipoest'),'Método o metodología: '+v('metodo'),'Diseño: '+v('diseno'),'Pregunta de investigación: '+v('pregunta'),'Objetivo general: '+v('og'),'Objetivos específicos:'].concat(o.length?o.map(function(x,i){return '  '+(i+1)+'. '+(x.t||'[vacío]')+'\n     Técnica: '+(x.tec||'[vacío]')+' | Instrumento: '+(x.ins||'[vacío]')}):['  [vacío]'],['Población: '+v('poblacion'),'Método de análisis general: '+v('analisis'),'Consideraciones éticas: '+v('etica'),'Referencias metodológicas: '+v('refs')]).join('\n')}
+  // reglas de llenado por ficha: [marcador, función que devuelve valor]
+  var R={
+    ficha0:[['[cualitativo, cuantitativo o mixto]',function(s){return s.enfoque}],['[tema, población y lugar]',function(s){return s.titulo}]],
+    ficha2:[['[pregunta]',function(s){return s.pregunta}],['[objetivo general]',function(s){return s.og}],['[ ]',function(s,i){var o=(s.oes||[])[i];return o&&o.t}],['[ ]',function(s,i){var o=(s.oes||[])[i];return o&&o.t}],['[ ]',function(s,i){var o=(s.oes||[])[i];return o&&o.t}]],
+    ficha3:[['[lista]',function(s){var o=oes(s).filter(function(x){return (x.t||'').trim()});return o.length?'\n'+o.map(function(x,i){return (i+1)+'. '+x.t}).join('\n'):''}],['[lista]',function(s){var o=oes(s).filter(function(x){return (x.tec||'').trim()||(x.ins||'').trim()});return o.length?'\n'+o.map(function(x){return '- '+(x.tec||'?')+' / '+(x.ins||'?')}).join('\n'):''}]],
+    ficha4:[['[pegue su texto]',function(s){return s.poblacion}]],
+    ficha5:[['[pegue la matriz o adjúntela]',function(s){var m=matriz(s);return m?'\n'+m:''}]],
+    ficha6:[['[pegue o adjunte]',function(s){var m=matriz(s);return m?'\n'+m:''}]],
+    ficha7:[['[pegue el material de las fichas 1 a 6]',function(s){var m=matriz(s);return m?'\n'+m:''}]]
+  };
+  var pres=[];
+  document.querySelectorAll('main section[id] .prompt').forEach(function(box){
+    var pre=box.querySelector('pre'),bar=box.querySelector('.bar');if(!pre||!bar)return;
+    var sid=box.closest('section').id;
+    if(!bar.querySelector('.pv-dots')){var d=document.createElement('span');d.className='pv-dots';d.setAttribute('aria-hidden','true');d.innerHTML='<i></i><i></i><i></i>';bar.insertBefore(d,bar.firstChild)}
+    var tpl=pre.textContent;pre.setAttribute('data-tpl','1');
+    if(R[sid]){var sm=document.createElement('small');sm.className='pv-viva';sm.textContent='Se completa con lo que usted escribe';bar.insertBefore(sm,bar.querySelector('.copy'))}
+    pres.push({pre:pre,tpl:tpl,sid:sid});
+    var pg=box.querySelector('.pega');if(pg&&/Pegue este prompt en su IA de preferencia/.test(pg.textContent)){pg.innerHTML='<span aria-hidden="true">↪</span> Péguelo en su IA: <span class="pv-ai">ChatGPT</span><span class="pv-ai">Gemini</span><span class="pv-ai">Claude</span><span class="pv-ai">Copilot</span> u otra. Lea la respuesta con criterio y traiga aquí solo lo que decida conservar.'}
+  });
+  function pintar(){var s=st();
+    pres.forEach(function(p){var reglas=(R[p.sid]||[]).slice(),out='',t=p.tpl,cont={};
+      // recorre marcadores en orden de aparición
+      var re=/\[[^\]\n]{0,80}\]/g,m,last=0;
+      while((m=re.exec(t))){out+=esc(t.slice(last,m.index));last=m.index+m[0].length;var tok=m[0];
+        var k=-1;for(var i=0;i<reglas.length;i++){if(reglas[i]&&reglas[i][0]===tok){k=i;break}}
+        var val='';if(k>=0){cont[tok]=(cont[tok]||0);val=reglas[k][1](s,cont[tok])||'';cont[tok]++;reglas[k]=null}
+        if(val&&String(val).trim())out+='<mark class="pv-fill">'+esc(val)+'</mark>';
+        else if(/^\[[a-záéíóúñ ]/.test(tok)&&tok!=='[ ]'||tok==='[ ]')out+='<span class="pv-ph">'+esc(tok)+'</span>';
+        else out+=esc(tok)}
+      out+=esc(t.slice(last));p.pre.innerHTML=out});
+  }
+  // ciclo de cuatro pasos y diseño de dos columnas
+  ['volcado','cuaderno','ficha1','ficha2','ficha3','ficha4','ficha5','ficha6','ficha7'].forEach(function(sid){
+    var sec=document.getElementById(sid);if(!sec)return;var pr=sec.querySelector(':scope>.prompt');if(!pr)return;
+    var work=sec.querySelector(':scope>.work');
+    var ol=document.createElement('ol');ol.className='pv-ciclo';ol.setAttribute('aria-label','Cómo trabajar esta ficha');
+    var pasos=work?['Escriba sus datos','Copie el prompt','Péguelo en su IA','Traiga lo que conserve']:['Copie el prompt','Péguelo en su IA','Traiga lo que conserve'];
+    ol.innerHTML=pasos.map(function(t,i){return '<li'+(i===0?' class="on"':'')+'><i>'+(i+1)+'</i>'+t+'</li>'}).join('');
+    sec.insertBefore(ol,pr);
+    if(work&&['ficha1','ficha2','ficha4','ficha5'].indexOf(sid)>=0){var g=document.createElement('div');g.className='pv-ficha';var der=document.createElement('div');der.className='pv-der';sec.insertBefore(g,pr);g.appendChild(work);g.appendChild(der);sec.querySelectorAll(':scope>.prompt').forEach(function(x){der.appendChild(x)})}
+    sec.addEventListener('click',function(e){if(!e.target.closest('.copy'))return;var li=ol.querySelectorAll('li'),c=work?1:0;li.forEach(function(x,i){x.classList.toggle('ok',i<=c);x.classList.toggle('on',i===c+1)})});
+    sec.addEventListener('input',function(){var li=ol.querySelectorAll('li');if(work&&!li[0].classList.contains('ok')){li[0].classList.add('ok');li[0].classList.remove('on');li[1].classList.add('on')}});
+  });
+  // grupos en el índice
+  var toc=document.querySelector('nav.toc ol');
+  if(toc){[['kit','Antes de empezar'],['ficha1','Fichas de la matriz'],['informe','Resultados'],['patrones','Recursos']].forEach(function(g){var a=toc.querySelector('a[href="#'+g[0]+'"]');if(a){var li=document.createElement('li');li.className='pv-tgrp';li.setAttribute('aria-hidden','true');li.textContent=g[1];toc.insertBefore(li,a.parentNode)}})}
+  function rotulo(){var h=decodeURIComponent(location.hash.slice(1));var t=h?document.getElementById(h):null;var sec=t?t.closest('main>section[id]'):null;var id=sec?sec.id:'que-es';var c=COD[id];
+    var a=document.getElementById('apPaso'),b=document.getElementById('bmPaso');
+    if(c){if(a&&a.textContent!=='Paso '+c)a.textContent='Paso '+c;if(b&&b.textContent!==c)b.textContent=c}}
+  addEventListener('hashchange',function(){setTimeout(rotulo,0)});
+  var obs=new MutationObserver(function(){rotulo()});
+  function vigilar(){['apPaso','bmPaso'].forEach(function(i){var e=document.getElementById(i);if(e&&!e.dataset.pvObs){e.dataset.pvObs='1';obs.observe(e,{childList:true,characterData:true,subtree:true})}});rotulo()}
+  vigilar();setTimeout(vigilar,500);setTimeout(vigilar,2000);
+  var tmr;function luego(){clearTimeout(tmr);tmr=setTimeout(pintar,60)}
+  document.addEventListener('input',luego);document.addEventListener('click',function(e){if(e.target.closest('[data-del],#oeAdd,button'))luego()});addEventListener('storage',luego);
+  pintar();
+})();
+</script>
 </body>
 </html>
