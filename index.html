@@ -439,6 +439,31 @@ section[id]{scroll-margin-top:110px}
 .dm-acc{display:flex;flex-direction:column;align-items:center;gap:6px}
 @media (max-width:760px){.descarga-matriz{grid-template-columns:1fr}.dm-acc{align-items:stretch}}
 .guia{display:block;background:var(--accent-soft);border-radius:10px;padding:12px 16px;margin:18px 0 0;text-decoration:none;color:var(--ink);max-width:72ch}.guia b{color:var(--accent)}.guia span{display:block;font-size:.92rem;color:inherit;opacity:.85}
+
+/* ===== Mapa v2: bandas por fase, letra legible ===== */
+#mapaLienzo{height:auto;min-height:200px;background:none;cursor:default;touch-action:auto}
+#mapaLienzo:active{cursor:default}
+#mapaLienzo svg{height:auto}
+#mapaLienzo .fl-carril{fill:#f4f6f9}
+#mapaLienzo .fl-fase{font:600 13px var(--f-body,Arial);letter-spacing:0;fill:#2b6693;stroke:none}
+#mapaLienzo .fl-fase-t{font:700 19px var(--f-display,Georgia);fill:#14202b;stroke:none}
+#mapaLienzo .fl-badge-t{font:700 13px var(--f-body,Arial);stroke:none}
+#mapaLienzo .m-nodo text{stroke:none;paint-order:normal}
+#mapaLienzo .fl-etq{font:700 15px var(--f-body,Arial);fill:#14202b}
+#mapaLienzo .fl-sub{font:400 13.5px var(--f-body,Arial);fill:#4a5562}
+#mapaLienzo .fl-caja{stroke:#d5dde6}
+#mapaLienzo .m-nodo:hover .fl-caja{stroke:#2b6693;stroke-width:1.6}
+#mapaLienzo .fl-alerta-t{font:700 13px var(--f-body,Arial)}
+#mapaLienzo .fl-paso{stroke:#9aa7b6;stroke-width:2;fill:none}
+#mapaLienzo path.m-arista.activa{stroke:#2b6693;stroke-width:2.4;fill:none}
+#mapaLienzo path.m-arista.activa.falta{stroke:#c0392b;stroke-dasharray:6 4}
+#mapaLienzo .tenue{opacity:.28}
+#mapaCentrar{display:none!important}
+.mapa-leyenda{font-size:.9rem!important;gap:10px 16px!important}
+.mapa-panel{transition:top .15s}
+.mp-cerrar{float:right;font:inherit;font-size:1.4rem;line-height:1;background:none;border:0;color:var(--muted);cursor:pointer;padding:0 0 0 8px}
+.mapa-panel .mp-texto{font-size:.95rem;line-height:1.5}
+@media (max-width:760px){.mapa-panel{position:fixed!important;left:10px!important;right:10px!important;bottom:10px;top:auto!important;width:auto!important;max-height:55vh!important;z-index:60}}
 </style>
 </head>
 <body>
@@ -819,11 +844,11 @@ Mis decisiones: [pegue el material de las fichas 1 a 6]</pre><p class="pega"><sp
 
 <section id="mapa">
   <h2><span class="n">Mapa</span>El mapa de su proyecto</h2>
-  <p>La matriz que escribió, vista como un flujograma por fases: problema, objetivos, ruta metodológica, campo y análisis. Cada caja es un componente y cada flecha una relación que debe sostenerse. Las cajas punteadas en rojo están vacías: revíselas con su asesor, fase por fase.</p>
+  <p>La matriz que escribió, vista como un flujograma por fases: problema, objetivos, ruta metodológica, campo y análisis. Cada caja es un componente: tóquela para leer su texto completo y ver con qué se relaciona. Las cajas punteadas en rojo están vacías y las naranjas están escritas pero sin conexión: revíselas con su asesor, fase por fase.</p>
   <div class="mapa-app">
     <div class="mapa-barra">
       <div class="mapa-leyenda" aria-label="Leyenda">
-        <span><i class="fl-ley-ok"></i>Escrito</span><span><i class="fl-ley-falta"></i>Falta escribir</span><span><i class="fl-ley-rev"></i>Escrito, pero sin conexión</span><span><i class="fl-ley-flecha"></i>Relación que debe sostenerse</span><span class="fl-ley-tip">Toque una caja para ver el detalle</span>
+        <span><i class="fl-ley-ok"></i>Escrito</span><span><i class="fl-ley-falta"></i>Falta escribir</span><span><i class="fl-ley-rev"></i>Escrito, pero sin conexión</span><span class="fl-ley-tip">Toque una caja para ver su texto completo y sus relaciones</span>
       </div>
       <div class="actions">
         <button class="btn" type="button" id="mapaReordenar">Actualizar</button>
@@ -1219,71 +1244,85 @@ function diagnostico(g){
   $("#mapaDiag").innerHTML=`<p class="md-res"><b>${tot-vac} de ${tot}</b> componentes escritos · <b>${g.E.length}</b> relaciones</p>`+(f.length?`<details open><summary>Lo que el mapa muestra como pendiente (${f.length})</summary><ul>${f.slice(0,12).map(x=>`<li>${esc(x)}</li>`).join("")}</ul></details>`:`<p class="md-ok">Todos los componentes están escritos y conectados. Revise ahora si cada relación se sostiene en el contenido.</p>`)+`<details class="md-lista"><summary>Ver el mapa como lista</summary><ul>${lista}</ul></details>`;
 }
 const FASES=[["Problema","Fase 1"],["Objetivos","Fase 2"],["Ruta metodológica","Fase 3"],["Campo","Fase 4"],["Análisis","Fase 5"]];
-const BW=190,BH=58,GX=64,GY=16,TOP=78,LX=24;
+const PAD=18,GAPX=14,GAPY=14,HEAD=58,FLECHA=30,FS_E=15,FS_T=13.5,LH=19;
 function colDe(id){if(/^(titulo|objeto|pregunta|cat\d+)$/.test(id))return 0;if(/^(og|oe\d+)$/.test(id))return 1;if(/^(paradigma|enfoque|tipoest|metodo|diseno)$/.test(id))return 2;if(/^(poblacion|etica|tec\d+|ins\d+)$/.test(id))return 3;return 4}
-function layout(g){
+const _cv=document.createElement("canvas").getContext("2d");
+function medir(t,font){_cv.font=font;return _cv.measureText(t).width}
+function partir(t,anchoMax,max,font){const w=String(t||"").replace(/\s+/g," ").trim().split(" ").filter(Boolean);const L=[];let l="";
+  for(const p of w){const c=l?l+" "+p:p;if(!l||medir(c,font)<=anchoMax)l=c;else{L.push(l);l=p}}if(l)L.push(l);
+  const out=L.slice(0,max);if(L.length>max){let u=out[max-1]+"…";while(u.length>2&&medir(u,font)>anchoMax)u=u.slice(0,-2).replace(/[\s,.;:]+$/,"")+"…";out[max-1]=u}
+  return out.map(x=>{let y=x;while(y.length>2&&medir(y,font)>anchoMax)y=y.slice(0,-2)+"…";return y})}
+function layout(g,W){
+  W=Math.max(320,W||800);
   const orden=id=>{const m=id.match(/(\d+)$/);const k=m?+m[1]:0;const base={titulo:0,objeto:1,pregunta:2,og:0,paradigma:0,enfoque:1,tipoest:2,metodo:3,diseno:4,poblacion:0,etica:99,analisis:99}[id];if(base!==undefined)return base;if(/^cat/.test(id))return 3+k;if(/^oe/.test(id))return 1+k;if(/^tec/.test(id))return 1+k*2;if(/^ins/.test(id))return 2+k*2;if(/^an/.test(id))return k;return 50};
+  const ncol=Math.max(1,Math.min(4,Math.floor((W-2*PAD-24+GAPX)/(250+GAPX))));
+  const BW=Math.floor((W-2*PAD-24-(ncol-1)*GAPX)/ncol);
+  const fam=getComputedStyle(document.body).getPropertyValue("--f-body")||"Arial";
+  const fT=`400 ${FS_T}px ${fam}`,fE=`700 ${FS_E}px ${fam}`,aT=BW-38,aE=BW-56;
   g.cols=[[],[],[],[],[]];g.N.forEach(n=>{n.col=colDe(n.id);g.cols[n.col].push(n)});
-  g.cols.forEach((c,ci)=>{c.sort((a,b)=>orden(a.id)-orden(b.id));c.forEach((n,i)=>{n.x=LX+ci*(BW+GX);n.y=TOP+i*(BH+GY)})});
-  g.alto=TOP+Math.max(...g.cols.map(c=>c.length))*(BH+GY)+20;g.ancho=LX*2+5*BW+4*GX;
+  g.BW=BW;g.bandas=[];let y=8;
+  g.cols.forEach((c,ci)=>{c.sort((a,b)=>orden(a.id)-orden(b.id));
+    c.forEach(n=>{n.desc=!n.vacio&&/^cat\d+$/.test(n.id)&&n.deg<2;
+      n.le=partir(n.etq,aE,2,fE);
+      n.lt=n.vacio?["Falta escribir"]:n.desc?["Sin objetivo que la use"]:partir(n.texto,aT,3,fT);
+      n.w=BW;n.h=16+n.le.length*(LH+1)+6+n.lt.length*LH+12});
+    const y0=y;let yy=y+HEAD;
+    for(let i=0;i<c.length;i+=ncol){const fila=c.slice(i,i+ncol);const hf=Math.max(...fila.map(n=>n.h));
+      fila.forEach((n,j)=>{n.x=PAD+12+j*(BW+GAPX);n.y=yy;n.h=hf});yy+=hf+GAPY}
+    const alto=yy-y0+4;g.bandas.push({y:y0,h:alto});y=y0+alto+(ci<4?FLECHA:0)});
+  g.alto=y+10;g.ancho=W;
 }
-function camino(e){const a=e.a,b=e.b;
-  if(a.col===b.col){const [p,q]=a.y<b.y?[a,b]:[b,a];const x=p.x+BW/2;return `M${x} ${p.y+BH} L${x} ${q.y}`}
-  const [p,q]=a.col<b.col?[a,b]:[b,a];const x1=p.x+BW,y1=p.y+BH/2,x2=q.x,y2=q.y+BH/2;const mx=(x1+x2)/2;
-  return `M${x1} ${y1} C${mx} ${y1}, ${mx} ${y2}, ${x2-2} ${y2}`}
+function camino(a,b){const [p,q]=(a.y<b.y||(a.y===b.y&&a.x<b.x))?[a,b]:[b,a];
+  if(Math.abs(p.y-q.y)<2){const y=p.y+p.h/2;return `M${p.x+p.w} ${y} L${q.x-2} ${y}`}
+  const x1=p.x+p.w/2,y1=p.y+p.h,x2=q.x+q.w/2,y2=q.y,my=(y1+y2)/2;return `M${x1} ${y1} C${x1} ${my}, ${x2} ${my}, ${x2} ${y2-2}`}
+function marcado(W){
+  const g=G,vec=new Set();if(sel){vec.add(sel);g.E.forEach(e=>{if(e.a.id===sel)vec.add(e.b.id);if(e.b.id===sel)vec.add(e.a.id)})}
+  let h=`<defs><marker id="fl-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#2b6693"/></marker><marker id="fl-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0L10 5L0 10z" fill="#9aa7b6"/></marker></defs><rect class="m-fondo" x="0" y="0" width="${W}" height="${g.alto}"/>`;
+  g.cols.forEach((c,ci)=>{const B=g.bandas[ci];const vac=c.filter(n=>n.vacio).length,dsc=c.filter(n=>n.desc).length;
+    const cls=vac?"mal":dsc?"rev":"bien",lbl=vac?vac+(vac>1?" vacíos":" vacío"):dsc?dsc+" por revisar":"Completa",bw=vac?78:dsc?112:90;
+    h+=`<rect class="fl-carril" x="${PAD}" y="${B.y}" width="${W-2*PAD}" height="${B.h}" rx="16"/><text class="fl-fase" x="${PAD+14}" y="${B.y+24}">${FASES[ci][1]}</text><text class="fl-fase-t" x="${PAD+14}" y="${B.y+46}">${esc(FASES[ci][0])}</text><g transform="translate(${W-PAD-14},${B.y+30})"><rect class="fl-badge ${cls}" x="-${bw}" y="-14" width="${bw}" height="26" rx="13"/><text class="fl-badge-t ${cls}" x="-${bw/2}" y="4">${lbl}</text></g>`;
+    if(ci<4){const yA=B.y+B.h+4,yB=B.y+B.h+FLECHA-4;h+=`<path class="fl-paso" d="M${W/2} ${yA} L${W/2} ${yB-3}" marker-end="url(#fl-g)"/>`}});
+  if(sel)g.E.forEach(e=>{if(e.a.id!==sel&&e.b.id!==sel)return;h+=`<path class="m-arista activa${(e.a.vacio||e.b.vacio)?" falta":""}" d="${camino(e.a,e.b)}" marker-end="url(#fl-a)"/>`});
+  g.N.forEach(n=>{const on=!sel||vec.has(n.id);let ty=16+FS_E;
+    let tx=n.le.map((l,i)=>`<text class="fl-etq" x="20" y="${ty+i*(LH+1)}">${esc(l)}</text>`).join("");ty+=(n.le.length-1)*(LH+1)+6+LH;
+    tx+=n.lt.map((l,i)=>`<text class="fl-sub" x="20" y="${ty+i*LH}">${esc(l)}</text>`).join("");
+    h+=`<g class="m-nodo g-${n.grupo}${n.vacio?" vacio":""}${n.desc?" desc":""}${on?"":" tenue"}${sel===n.id?" sel":""}" data-id="${n.id}" transform="translate(${n.x},${n.y})" tabindex="0" role="button" aria-label="${esc(n.etq)}${n.vacio?" (vacío)":""}"><rect class="fl-caja" width="${n.w}" height="${n.h}" rx="12"/><rect class="fl-franja" x="0" y="0" width="7" height="${n.h}" rx="3.5"/>${tx}${n.vacio||n.desc?`<circle class="fl-alerta" cx="${n.w-18}" cy="18" r="9"/><text class="fl-alerta-t" x="${n.w-18}" y="22.5">!</text>`:""}</g>`});
+  return h;
+}
 function dibujar(){
   const box=$("#mapaLienzo");if(!box||!G)return;
   let svg=box.querySelector("svg");
   if(!svg){svg=document.createElementNS(SVGNS,"svg");svg.setAttribute("xmlns",SVGNS);box.appendChild(svg);instalarGestos(svg)}
-  const W=box.clientWidth||800,H=box.clientHeight||560;svg.setAttribute("viewBox",`0 0 ${W} ${H}`);svg.setAttribute("width",W);svg.setAttribute("height",H);
-  const vec=new Set();if(sel){vec.add(sel);G.E.forEach(e=>{if(e.a.id===sel)vec.add(e.b.id);if(e.b.id===sel)vec.add(e.a.id)})}
-  const T=`translate(${vista.x},${vista.y}) scale(${vista.k})`;
-  let h=`<defs><marker id="fl-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#7d8b99"/></marker><marker id="fl-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#c0392b"/></marker></defs><rect class="m-fondo" x="0" y="0" width="${W}" height="${H}"/><g transform="${T}">`;
-  G.N.forEach(n=>{n.desc=!n.vacio&&/^cat\d+$/.test(n.id)&&n.deg<2});G.cols.forEach((c,ci)=>{const x=LX+ci*(BW+GX);const vac=c.filter(n=>n.vacio).length,dsc=c.filter(n=>n.desc).length;const cls=vac?"mal":dsc?"rev":"bien",lbl=vac?vac+(vac>1?" vacíos":" vacío"):dsc?dsc+" por revisar":"Completa",bw=vac?64:dsc?92:70;
-    h+=`<rect class="fl-carril" x="${x-10}" y="8" width="${BW+20}" height="${G.alto-8}" rx="14"/><text class="fl-fase" x="${x}" y="32">${FASES[ci][1]}</text><text class="fl-fase-t" x="${x}" y="52">${esc(FASES[ci][0])}</text><g transform="translate(${x+BW},40)"><rect class="fl-badge ${cls}" x="-${bw}" y="-13" width="${bw}" height="22" rx="11"/><text class="fl-badge-t ${cls}" x="-${bw/2}" y="2">${lbl}</text></g>`});
-  G.E.forEach(e=>{const on=!sel||(e.a.id===sel||e.b.id===sel);const falta=e.a.vacio||e.b.vacio;const [p,q]=(e.a.col<e.b.col||(e.a.col===e.b.col&&e.a.y<e.b.y))?[e.a,e.b]:[e.b,e.a];h+=`<path class="m-arista${falta?" falta":""}${on?"":" tenue"}${sel&&on?" activa":""}" d="${camino({a:p,b:q})}" marker-end="url(#${falta?"fl-r":"fl-a"})"/>`});
-  G.N.forEach(n=>{const on=!sel||vec.has(n.id);const sub=n.vacio?"Falta escribir":n.desc?"Sin objetivo que la use":corto(n.texto,30);
-    h+=`<g class="m-nodo g-${n.grupo}${n.vacio?" vacio":""}${n.desc?" desc":""}${on?"":" tenue"}${sel===n.id?" sel":""}" data-id="${n.id}" transform="translate(${n.x},${n.y})" tabindex="0" role="button" aria-label="${esc(n.etq)}${n.vacio?" (vacío)":""}"><rect class="fl-caja" width="${BW}" height="${BH}" rx="10"/><rect class="fl-franja" width="6" height="${BH}" rx="3"/><text class="fl-etq" x="16" y="24">${esc(corto(n.etq,24))}</text><text class="fl-sub" x="16" y="43">${esc(sub)}</text>${n.vacio||n.desc?`<circle class="fl-alerta" cx="${BW-14}" cy="14" r="8"/><text class="fl-alerta-t" x="${BW-14}" y="18">!</text>`:""}</g>`});
-  h+="</g>";svg.innerHTML=h;
+  const W=box.clientWidth||800;layout(G,W);box.style.height=G.alto+"px";
+  svg.setAttribute("viewBox",`0 0 ${W} ${G.alto}`);svg.setAttribute("width",W);svg.setAttribute("height",G.alto);
+  svg.innerHTML=marcado(W);
 }
 function panel(){
   const p=$("#mapaPanel");if(!p)return;
   p.classList.toggle("mini",!sel);
-  if(!sel){p.innerHTML='<p class="mp-vacio">Toque una caja para ver su contenido y con qué se conecta. Arrastre el fondo para moverse y use la rueda o los dedos para acercar.</p>';return}
-  const n=G.N.find(x=>x.id===sel);if(!n)return;p.classList.toggle("izq",n.col>=3);
+  if(!sel){p.innerHTML='<p class="mp-vacio">Toque una caja para ver su contenido completo y sus relaciones.</p>';return}
+  const n=G.N.find(x=>x.id===sel);if(!n)return;
   const v=G.E.filter(e=>e.a===n||e.b===n).map(e=>e.a===n?e.b:e.a);
-  p.innerHTML=`<p class="mp-grupo">${esc(FASES[n.col][1]+" · "+FASES[n.col][0])}</p><h3>${esc(n.etq)}</h3>${n.vacio?'<p class="mp-falta">Este componente está vacío.</p>':`<p class="mp-texto">${esc(n.texto)}</p>`}<p class="mp-sub">Se conecta con</p><ul>${v.map(x=>`<li><button type="button" class="mp-ir" data-id="${x.id}">${esc(x.etq)}</button>${x.vacio?" <em>vacío</em>":""}</li>`).join("")||"<li>Nada todavía</li>"}</ul><a class="btn" href="#${n.ficha}">${n.vacio?"Escribirlo en la ficha":"Editar en la ficha"}</a>`;
-  p.querySelectorAll(".mp-ir").forEach(b=>b.addEventListener("click",()=>{sel=b.dataset.id;dibujar();panel()}));
+  p.innerHTML=`<button type="button" class="mp-cerrar" aria-label="Cerrar">×</button><p class="mp-grupo">${esc(FASES[n.col][1]+" · "+FASES[n.col][0])}</p><h3>${esc(n.etq)}</h3>${n.vacio?'<p class="mp-falta">Este componente está vacío.</p>':`<p class="mp-texto">${esc(n.texto)}</p>`}<p class="mp-sub">Se conecta con</p><ul>${v.map(x=>`<li><button type="button" class="mp-ir" data-id="${x.id}">${esc(x.etq)}</button>${x.vacio?" <em>vacío</em>":""}</li>`).join("")||"<li>Nada todavía</li>"}</ul><a class="btn" href="#${n.ficha}">${n.vacio?"Escribirlo en la ficha":"Editar en la ficha"}</a>`;
+  p.querySelectorAll(".mp-ir").forEach(b=>b.addEventListener("click",()=>{sel=b.dataset.id;dibujar();panel();const g=document.querySelector('#mapaLienzo .m-nodo[data-id="'+sel+'"]');if(g)g.scrollIntoView({block:"center",behavior:"smooth"})}));
+  const c=p.querySelector(".mp-cerrar");if(c)c.addEventListener("click",()=>{sel=null;dibujar();panel()});
+  const g=document.querySelector('#mapaLienzo .m-nodo[data-id="'+sel+'"]');
+  if(g&&innerWidth>760){const box=$("#mapaLienzo");p.style.right="auto";p.style.left=Math.max(10,Math.min(n.x,box.clientWidth-330))+"px";p.style.top=(n.y+n.h+10)+"px"}
 }
 function guardarPos(){}
 function instalarGestos(svg){
-  let arr=null,ptrs=new Map(),pinch=null,movio=false;
-  svg.addEventListener("pointerdown",e=>{ptrs.set(e.pointerId,e);svg.setPointerCapture(e.pointerId);movio=false;
-    if(ptrs.size===2){const [a,b]=[...ptrs.values()];pinch={d:Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY),k:vista.k};arr=null;return}
-    const g=e.target.closest(".m-nodo");arr={nodo:g?g.dataset.id:null,x0:vista.x,y0:vista.y,sx:e.clientX,sy:e.clientY}});
-  svg.addEventListener("pointermove",e=>{if(!ptrs.has(e.pointerId))return;ptrs.set(e.pointerId,e);
-    if(pinch&&ptrs.size===2){const [a,b]=[...ptrs.values()];const d=Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY);vista.k=Math.min(2.5,Math.max(.3,pinch.k*d/pinch.d));dibujar();return}
-    if(!arr)return;const dx=e.clientX-arr.sx,dy=e.clientY-arr.sy;if(Math.abs(dx)+Math.abs(dy)>4)movio=true;if(movio){vista.x=arr.x0+dx;vista.y=arr.y0+dy;dibujar()}});
-  const fin=e=>{ptrs.delete(e.pointerId);if(ptrs.size<2)pinch=null;
-    if(arr&&!movio){sel=arr.nodo?(sel===arr.nodo?null:arr.nodo):null;dibujar();panel()}arr=null};
-  svg.addEventListener("pointerup",fin);svg.addEventListener("pointercancel",fin);
-  svg.addEventListener("wheel",e=>{e.preventDefault();const r=svg.getBoundingClientRect();const mx=e.clientX-r.left,my=e.clientY-r.top;const k2=Math.min(2.5,Math.max(.3,vista.k*(e.deltaY<0?1.12:.89)));vista.x=mx-(mx-vista.x)*k2/vista.k;vista.y=my-(my-vista.y)*k2/vista.k;vista.k=k2;dibujar()},{passive:false});
+  svg.addEventListener("click",e=>{const g=e.target.closest(".m-nodo");const id=g?g.dataset.id:null;sel=id&&sel!==id?id:null;dibujar();panel()});
   svg.addEventListener("keydown",e=>{const g=e.target.closest&&e.target.closest(".m-nodo");if(g&&(e.key==="Enter"||e.key===" ")){e.preventDefault();sel=g.dataset.id;dibujar();panel()}});
 }
-function centrar(){const box=$("#mapaLienzo");if(!box||!G||!G.N.length)return;const W=box.clientWidth,H=box.clientHeight;if(innerWidth<760){vista={k:.62,x:8,y:8};dibujar();return}const k=Math.min(1.1,Math.max(.3,(W-20)/G.ancho));box.style.height=Math.max(460,Math.round(G.alto*k+24))+"px";vista={k,x:(W-G.ancho*k)/2,y:10};dibujar()}
-function abrirMapa(fresh){const box=$("#mapaLienzo");if(!box)return;G=grafo();sel=null;const W=box.clientWidth||800,H=box.clientHeight||560;if(fresh)try{localStorage.removeItem(KP)}catch(_){}layout(G,W,H,fresh);centrar();setTimeout(centrar,150);panel();diagnostico(G)}
+function centrar(){if(!G)return;sel=null;dibujar();panel()}
+function abrirMapa(fresh){const box=$("#mapaLienzo");if(!box)return;G=grafo();sel=null;if(fresh)try{localStorage.removeItem(KP)}catch(_){}dibujar();setTimeout(dibujar,150);panel();diagnostico(G)}
 function svgTexto(){
-  const box=$("#mapaLienzo");const W=G.ancho,H=G.alto+30;const s=box.querySelector("svg").cloneNode(true);
-  s.setAttribute("viewBox",`0 0 ${W} ${H}`);s.setAttribute("width",W);s.setAttribute("height",H);
-  const f=s.querySelector(".m-fondo");if(f){f.setAttribute("width",W);f.setAttribute("height",H)}
-  const g=s.querySelector("g[transform^='translate']");if(g)g.setAttribute("transform","translate(0,0) scale(1)");
-  const st=document.createElementNS(SVGNS,"style");
-  st.textContent=`.m-fondo{fill:#fff}.fl-carril{fill:#f6f8fa}.fl-fase{font:700 11px Arial,sans-serif;fill:#2b6693}.fl-fase-t{font:700 15px Arial,sans-serif;fill:#14202b}.fl-badge.mal{fill:#fbe9e7}.fl-badge.bien{fill:#e3f1e8}.fl-badge-t{font:700 11px Arial,sans-serif;text-anchor:middle}.fl-badge.rev{fill:#fdf1dc}.fl-badge-t.rev{fill:#9a5f0c}.desc .fl-caja{fill:#fffaf0;stroke:#c47f17;stroke-dasharray:5 4}.desc .fl-sub{fill:#9a5f0c;font-weight:700}.desc .fl-alerta{fill:#c47f17}.fl-badge-t.mal{fill:#b03a2e}.fl-badge-t.bien{fill:#2e7d4f}.fl-caja{fill:#fff;stroke:#cfd9e2;stroke-width:1.2}.vacio .fl-caja{fill:#fff8f7;stroke:#c0392b;stroke-dasharray:5 4}.fl-etq{font:700 13px Arial,sans-serif;fill:#14202b}.fl-sub{font:11.5px Arial,sans-serif;fill:#5d6572}.vacio .fl-sub{fill:#b03a2e;font-weight:700}.fl-alerta{fill:#c0392b}.fl-alerta-t{font:700 11px Arial,sans-serif;fill:#fff;text-anchor:middle}.m-arista{fill:none;stroke:#9aa7b6;stroke-width:1.5}.m-arista.falta{stroke:#c0392b;stroke-dasharray:5 4}.g-nucleo .fl-franja{fill:#2b6693}.g-obj .fl-franja{fill:#7a4fb0}.g-met .fl-franja{fill:#c47f17}.g-ruta .fl-franja{fill:#4a5866}.g-cat .fl-franja{fill:#2b9ac4}.g-falta .fl-franja{fill:#c0392b}`;
-  s.insertBefore(st,s.firstChild);
-  const t=document.createElementNS(SVGNS,"text");t.setAttribute("x",12);t.setAttribute("y",H-10);t.setAttribute("style","font:10px Arial;fill:#6b7785");t.textContent=LIC;s.appendChild(t);
-  s.querySelectorAll(".tenue,.sel").forEach(x=>x.classList.remove("tenue","sel"));
-  return {txt:new XMLSerializer().serializeToString(s),W,H};
+  const W=1200,prev=sel;sel=null;layout(G,W);const H=G.alto+30;
+  const css=`.m-fondo{fill:#fff}.fl-carril{fill:#f4f6f9}.fl-fase{font:600 13px 'Source Sans 3',Arial,sans-serif;fill:#2b6693}.fl-fase-t{font:700 19px 'Source Serif 4',Georgia,serif;fill:#14202b}.fl-badge.mal{fill:#fbe9e7}.fl-badge.bien{fill:#e3f1e8}.fl-badge.rev{fill:#fdf1dc}.fl-badge-t{font:700 13px 'Source Sans 3',Arial,sans-serif;text-anchor:middle}.fl-badge-t.mal{fill:#b03a2e}.fl-badge-t.bien{fill:#2e7d4f}.fl-badge-t.rev{fill:#9a5f0c}.fl-paso{stroke:#9aa7b6;stroke-width:2;fill:none}.fl-caja{fill:#fff;stroke:#d5dde6;stroke-width:1.2}.vacio .fl-caja{fill:#fff8f7;stroke:#c0392b;stroke-dasharray:6 4}.desc .fl-caja{fill:#fffaf0;stroke:#c47f17;stroke-dasharray:6 4}.fl-etq{font:700 15px 'Source Sans 3',Arial,sans-serif;fill:#14202b}.fl-sub{font:13.5px 'Source Sans 3',Arial,sans-serif;fill:#4a5562}.vacio .fl-sub{fill:#b03a2e;font-weight:700}.desc .fl-sub{fill:#9a5f0c;font-weight:700}.fl-alerta{fill:#c0392b}.desc .fl-alerta{fill:#c47f17}.fl-alerta-t{font:700 13px Arial,sans-serif;fill:#fff;text-anchor:middle}.g-nucleo .fl-franja{fill:#2b6693}.g-obj .fl-franja{fill:#7a4fb0}.g-met .fl-franja{fill:#c47f17}.g-ruta .fl-franja{fill:#4a5866}.g-cat .fl-franja{fill:#2b9ac4}.g-falta .fl-franja{fill:#c0392b}`;
+  const txt=`<svg xmlns="${SVGNS}" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}"><style>${css}</style>${marcado(W)}<text x="${PAD}" y="${H-10}" style="font:11px Arial;fill:#6b7785">${esc(LIC)}</text></svg>`;
+  sel=prev;dibujar();return {txt,W,H};
 }
+
 
 /* ===== CRONOGRAMA ===== */
 let C=null;
