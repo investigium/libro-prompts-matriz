@@ -438,6 +438,7 @@ section[id]{scroll-margin-top:110px}
 .descarga-matriz b{font-size:1.0625rem;color:#14202b}.descarga-matriz p{margin:4px 0 0;color:#3d4a5c;font-size:.95rem}
 .dm-acc{display:flex;flex-direction:column;align-items:center;gap:6px}
 @media (max-width:760px){.descarga-matriz{grid-template-columns:1fr}.dm-acc{align-items:stretch}}
+.guia{display:block;background:var(--accent-soft);border-radius:10px;padding:12px 16px;margin:18px 0 0;text-decoration:none;color:var(--ink);max-width:72ch}.guia b{color:var(--accent)}.guia span{display:block;font-size:.92rem;color:inherit;opacity:.85}
 </style>
 </head>
 <body>
@@ -518,6 +519,7 @@ section[id]{scroll-margin-top:110px}
     <div class="card"><b>2 · Carpeta mi_proyecto</b><p>Cree una carpeta con su matriz de coherencia vigente, el cuaderno del proyecto (paso 02) y las referencias que ya leyó, en PDF.</p></div>
     <div class="card"><b>3 · Ficha 0</b><p>Pegue la ficha 0 como instrucciones del proyecto o al inicio de cada conversación nueva.</p></div>
   </div>
+  <a class="guia" href="https://investigium.github.io/ruta-investigacion-ia/prompts-y-agentes.html"><b>¿Es la primera vez que trabaja con prompts? ↗</b><span>Lea la guía «Prompts, loops y agentes de IA en la investigación»: qué es un prompt, cómo se estructura y cómo redactar los suyos.</span></a>
   <div class="work"><h3>Sus datos</h3>
     <p class="empty" style="font-style:normal">Escriba en los recuadros de cada ficha. Al final, la sección «Obtener su matriz de coherencia» la evalúa y la descarga en Word.</p>
     <div class="row2">
@@ -543,7 +545,8 @@ Reglas para toda la conversación:
 5. Usa la terminología metodológica de mi disciplina, en español, y verbos de conocimiento acordes con mi enfoque (comprender, analizar, describir, interpretar, explicar, valorar).
 6. Al final de cada respuesta, escribe una lista "Para verificar" con todo lo que yo debo comprobar en las fuentes.
 
-Mi proyecto en una frase: [tema, población y lugar]</pre><p class="pega"><span aria-hidden="true">↪</span> Pegue este prompt en su IA de preferencia (ChatGPT, Gemini, Claude, Copilot u otra). Lea la respuesta con criterio y traiga aquí solo lo que decida conservar.</p></div>
+Mi proyecto en una frase: [tema, población y lugar]</pre><p class="pega"><span aria-hidden="true">↪</span> Pegue este prompt en su IA de preferencia (ChatGPT, Gemini, Claude, Copilot u otra). Lea la respuesta con criterio y traiga aquí solo lo que decida conservar.</p>
+  <a class="guia" href="https://investigium.github.io/ruta-investigacion-ia/prompts-y-agentes.html#redactar-agente"><b>Estas instrucciones son la base de un agente ↗</b><span>Vea cómo se estructuran y cómo convertirlas en un agente de investigación con controles y condiciones de parada.</span></a></div>
 </section>
 
 <section id="volcado">
@@ -1493,7 +1496,7 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 /* ---------- Asistente de ayuda (sin IA, funciona en el navegador) ---------- */
 (function(){
   const SITIO=document.documentElement.getAttribute("data-sitio")||(location.pathname.indexOf("libro")>-1?"libro":"ruta");
-  const BASE={ruta:"https://investigium.github.io/ruta-investigacion-ia/",libro:"https://investigium.github.io/libro-prompts-matriz/"};
+  const BASE={ruta:"https://investigium.github.io/ruta-investigacion-ia/",libro:"https://investigium.github.io/libro-prompts-matriz/",guia:"https://investigium.github.io/ruta-investigacion-ia/prompts-y-agentes.html"};
   const enlace=(s,h)=>s===SITIO?"#"+h:BASE[s]+"#"+h;
   const KB=[
    {id:"que-es",k:["que es","curso","gratis","gratuito","certificado","inscripcion","para que sirve","de que se trata","caja de herramientas"],t:"¿Qué es este sitio?",r:"Es una caja de herramientas para planear su tesis de maestría o doctorado con IA. No es un curso: no tiene inscripción, tutor ni certificado. Usted escoge la herramienta que necesita, trabaja a su ritmo y descarga sus documentos en Word.",l:[["ruta","inicio","Ver el recorrido"]]},
@@ -1519,6 +1522,7 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
    {id:"privacidad",k:["privacidad","datos","quien ve","seguro","servidor","se envia","habeas","1581"],t:"¿Quién ve lo que escribo?",r:"Nadie: lo que escribe se guarda en su navegador y no se envía a ningún servidor, ni siquiera al autor. Solo salen las referencias que usted verifica (a Crossref), un conteo anónimo de visitas y los mensajes del buzón. Este asistente tampoco guarda ni envía lo que usted escribe aquí.",l:[["ruta","privacidad","Aviso de privacidad"]]},
    {id:"compartido",k:["compartido","sala de computo","borrar","biblioteca","publico","eliminar mis datos"],t:"Uso un computador compartido",r:"Al terminar, descargue su respaldo y use «Borrar todo lo mío de este navegador». Así nadie más verá su proyecto.",l:[["ruta","ruta","Borrar mis datos"]]},
    {id:"etica",k:["etica","comite","consentimiento","aval","participantes","menores","riesgo"],t:"¿Qué aspectos éticos debo cuidar?",r:"Obtenga el consentimiento informado y el aval del comité de ética antes de recoger datos, proteja la identidad de los participantes y declare cómo usó la IA. El cronograma incluye el aval ético como actividad.",l:[["ruta","reglas","Uso responsable"]]},
+   {id:"prompts",k:["prompt","prompts","que es un prompt","loop","bucle","ciclo","agente","agentes","agentica","ia agentica","ingenieria de prompts","redactar un prompt","redactar un agente"],t:"¿Qué es un prompt, un loop o un agente?",r:"Un prompt es la instrucción que usted le da a la IA; un loop es el ciclo de producir, evaluar y corregir hasta cumplir un criterio; un agente es una IA que decide sus propios pasos dentro de los límites que usted fija. La guía «Prompts, loops y agentes» los explica y trae plantillas para redactarlos.",l:[["guia","prompt","Leer la guía"],["guia","redactar-agente","Cómo redactar un agente"]]},
    {id:"anonimizar",k:["anonimizar","anonimo","entrevistas","transcripciones","pegar datos","datos personales","nombres","sensibles"],t:"¿Puedo pegar mis datos de campo en una IA?",r:"Solo después de anonimizarlos: retire nombres, lugares y cualquier dato que permita identificar a alguien. En Colombia la Ley 1581 de 2012 protege los datos personales, y los datos sensibles exigen cuidado adicional. Revise también lo que autorizó el consentimiento informado.",l:[["ruta","reglas","Reglas de uso responsable"]]},
    {id:"limites",k:["inventa referencias","referencias falsas","alucina","alucinaciones","inventa","inventar","error","confiable","limitaciones","limites","sesgo","sesgos","puede la ia","verdad"],t:"¿Qué tan confiable es la IA?",r:"La IA propone, ordena y señala rupturas, pero genera textos probables, no verificados: puede inventar autores, cifras y referencias con total seguridad. Tiene fecha de corte, sesgos y responde distinto cada vez. Todo lo que afirme es una hipótesis que usted debe verificar.",l:[["ruta","reglas","Uso responsable de la IA"]]},
    {id:"autoria",k:["autoria","autor","escribir la tesis","redactar","plagio","declarar","citar la ia","integridad"],t:"¿Puede la IA escribir mi tesis?",r:"No debe: la IA no puede ser autora, y los argumentos, las decisiones y la responsabilidad son suyas. Úsela para auditar lo que usted escribió y declare su uso según las normas de su programa y de la revista.",l:[["ruta","reglas","Uso responsable"]]},
