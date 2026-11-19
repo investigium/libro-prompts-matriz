@@ -1032,7 +1032,7 @@ function resumenNiv(r){const k=[0,0,0,0];r.criterios.slice(0,8).forEach(c=>k[lv(
 function renderReport(){
   const r=evalRes,box=$("#reportBox");
   const date=new Date().toLocaleDateString("es-CO",{year:"numeric",month:"long",day:"numeric"});
-  let h=`<div class="report"><div><h3>Informe de coherencia de la matriz</h3><p class="meta">${esc(st.nombre||"Estudiante sin nombre")} · ${esc(st.titulo||"Proyecto sin título")} · ${esc(date)}</p></div>`;
+  let h=`<div class="report"><div><h3>Matriz de coherencia</h3><p class="meta">${esc(st.nombre||"Estudiante sin nombre")} · ${esc(st.titulo||"Proyecto sin título")} · ${esc(date)}</p></div>`;
   if(r){
     h+=`<p class="niveles"><b>Resultado por criterios:</b> ${esc(resumenNiv(r))}</p>`;
     if(r.sintesis)h+=`<p style="margin:0">${esc(r.sintesis)}</p>`;
@@ -1058,7 +1058,7 @@ $("#genBtn").addEventListener("click",async()=>{
   try{
     const r=await sample.json(buildPrompt(),{signal:ctl.signal,modelTier:"default",cache:false});
     if(!r||!Array.isArray(r.criterios)||r.criterios.length<8)throw{code:"invalid_json"};
-    evalRes=r;renderReport();$("#genStatus").textContent="Informe listo. Puede descargarlo en Word.";
+    evalRes=r;renderReport();$("#genStatus").textContent="Matriz lista. Puede descargarla en Word.";
     $("#reportBox").scrollIntoView({behavior:"smooth",block:"start"});
   }catch(e){
     if(e&&e.code==="cancelled")$("#genStatus").textContent="Evaluación detenida.";
@@ -1080,7 +1080,7 @@ async function makeDocx(){
   const bullets=a=>(a||[]).map(x=>new Paragraph({text:String(x),bullet:{level:0},spacing:{after:80}}));
   const date=new Date().toLocaleDateString("es-CO",{year:"numeric",month:"long",day:"numeric"});
   const ch=[
-    new Paragraph({children:[new TextRun({text:"Informe de coherencia de la matriz",bold:true,size:36})],spacing:{after:120}}),
+    new Paragraph({children:[new TextRun({text:"Matriz de coherencia",bold:true,size:36})],spacing:{after:120}}),
     P("Generado con el Libro de prompts de Elver Chaparro Cardozo",{size:18,color:"5C6662"}),
     P(`Estudiante: ${st.nombre||"[sin dato]"}`),P(`Proyecto: ${st.titulo||"[sin dato]"}`),P(`Fecha: ${date}`)
   ];
@@ -1117,10 +1117,10 @@ $("#dlBtn").addEventListener("click",async()=>{
   let blob;try{blob=await makeDocx()}catch(e){blob=null}
   if(!blob){$("#genStatus").textContent="No se pudo crear el archivo Word en este navegador.";return}
   if(downloads){
-    try{await downloads.save({filename:name,data:blob});$("#genStatus").textContent="Informe descargado."}
+    try{await downloads.save({filename:name,data:blob});$("#genStatus").textContent="Matriz descargada."}
     catch(e){$("#genStatus").textContent=e&&e.code==="declined"?"Descarga cancelada.":"No se pudo descargar el archivo."}
   }else{
-    const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);$("#genStatus").textContent="Informe descargado.";
+    const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);$("#genStatus").textContent="Matriz descargada.";
   }
 });
 
