@@ -370,19 +370,25 @@ section>h2>span.n{display:block;font-family:var(--f-body)!important;font-size:.8
 .card>b{color:#2b6693!important}
 .closing{font-family:var(--f-display)!important;font-size:1.25rem!important;font-weight:700!important;line-height:1.35}
 .momentos-t{font-family:var(--f-body)!important;font-size:1.0625rem!important;font-weight:700!important;margin:22px 0 10px;color:var(--ink,#14202b)}
-.momentos{list-style:none;margin:0 0 10px;padding:0;max-width:none!important;width:100%;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
-.momentos a{display:flex;flex-direction:column;gap:6px;height:100%;box-sizing:border-box;padding:12px 14px;border:1px solid var(--line,#dde3ea);border-radius:12px;text-decoration:none;color:var(--ink,#14202b);background:#fff;transition:border-color .15s,box-shadow .15s}
-.momentos a:hover,.momentos a:focus-visible{border-color:#2b6693;box-shadow:0 4px 14px rgba(43,102,147,.14)}
-.momentos .m-libro a{border-top:4px solid #2b6693}
-.momentos .m-ruta a{border-top:4px solid #9fb9cf}
-.m-top{display:flex;align-items:center;gap:8px}
-.m-n{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#2b6693;color:#fff;font-weight:700;font-size:.85rem}
-.m-ruta .m-n{background:#e6eef5;color:#2b6693}
-.m-lugar{font-size:.78rem;font-weight:600;color:#5d6572}
-.m-t{font-weight:700;font-size:.98rem;line-height:1.3}
-.m-d{margin-top:auto;font-size:.84rem;font-weight:600;color:#2b6693}
+.mo{max-width:none!important;width:100%;margin-bottom:10px}
+.mo-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.mo-tab{display:flex;flex-wrap:wrap;align-content:flex-start;align-items:baseline;gap:4px;text-align:left;padding:12px 14px 14px;border:0;border-radius:14px 14px 0 0;background:#f1f4f7;color:#5d6572;font:inherit;font-size:.92rem;font-weight:600;cursor:pointer;line-height:1.3}
+.mo-tab:hover{background:#e9eff5}
+.mo-bar{flex-basis:100%;height:5px;border-radius:3px;background:#d3dde6;margin-bottom:8px}
+.mo-tab.hecho .mo-bar,.mo-tab[aria-selected="true"] .mo-bar{background:#2b6693}
+.mo-tab[aria-selected="true"]{background:#e6eef5;color:#14202b}
+.mo-n{flex-basis:100%;font-weight:700;color:#2b6693}
+.mo-lugar{flex-basis:100%;font-size:.75rem;font-weight:600;color:#7a8794;margin-top:2px}
+.mo-tab:focus-visible{outline:3px solid #2b6693;outline-offset:2px}
+.mo-panel{background:#e6eef5;border-radius:0 0 18px 18px;padding:22px 26px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}
+.mo-donde{margin:0 0 4px;font-size:.84rem;font-weight:600;color:#2b6693}
+.mo-t{margin:0 0 6px;font-family:var(--f-display);font-size:1.25rem;font-weight:700;color:#14202b}
+.mo-d{margin:0;color:#3d4a5c;max-width:62ch}
+.mo-btn{background:#2b6693;color:#fff!important;font-weight:700;border-radius:999px;padding:12px 22px;white-space:nowrap;text-decoration:none}
+.mo-btn:hover{background:#1f4f78}
+.mo-panel.ruta .mo-btn{background:#fff;color:#2b6693!important;border:2px solid #2b6693}
 .momentos-nota{font-size:.95rem;color:#5d6572}
-@media (max-width:900px){.momentos{grid-template-columns:1fr}}
+@media (max-width:760px){.mo-tab{padding:10px 8px 12px;font-size:.78rem}.mo-l,.mo-lugar{display:none}.mo-n{font-size:1rem}.mo-tab{justify-content:center}.mo-panel{grid-template-columns:1fr;padding:18px}.mo-btn{text-align:center}}
 </style>
 </head>
 <body>
@@ -431,14 +437,14 @@ section>h2>span.n{display:block;font-family:var(--f-body)!important;font-size:.8
     <div class="card"><b>En qué etapa se hace</b><p>No es la ideación ni un paso final. Se construye al formular la pregunta: después de tener la idea inicial y una primera lectura exploratoria, la matriz convierte esa idea en un proyecto. Se ajusta después de la revisión de literatura y sirve de referencia hasta la escritura final.</p></div>
   </div>
   <h3 class="momentos-t">Dónde se trabaja cada momento</h3>
-  <ol class="momentos" aria-label="Momentos de la matriz en el proceso">
-    <li class="m-libro"><a href="#volcado"><span class="m-top"><span class="m-n">1</span><span class="m-lugar">En este Libro</span></span><span class="m-t">Idea inicial</span><span class="m-d">Ficha P1 →</span></a></li>
-    <li class="m-libro"><a href="#ficha1"><span class="m-top"><span class="m-n">2</span><span class="m-lugar">En este Libro</span></span><span class="m-t">Matriz, primera versión</span><span class="m-d">Fichas F1 a F7 →</span></a></li>
-    <li class="m-ruta"><a href="https://investigium.github.io/ruta-investigacion-ia/#rsl"><span class="m-top"><span class="m-n">3</span><span class="m-lugar">En la Ruta</span></span><span class="m-t">Revisión de literatura</span><span class="m-d">Ruta · paso 3 ↗</span></a></li>
-    <li class="m-libro"><a href="#mapa"><span class="m-top"><span class="m-n">4</span><span class="m-lugar">En este Libro</span></span><span class="m-t">Matriz ajustada</span><span class="m-d">Mapa del proyecto →</span></a></li>
-    <li class="m-ruta"><a href="https://investigium.github.io/ruta-investigacion-ia/#ruta"><span class="m-top"><span class="m-n">5</span><span class="m-lugar">En la Ruta</span></span><span class="m-t">Metodología, campo, análisis y escritura</span><span class="m-d">Ruta · etapas 3 a 6 ↗</span></a></li>
-  </ol>
-  <p class="momentos-nota">El Libro le acompaña en los momentos 1, 2 y 4; la Ruta, en el 3 y el 5. Toque cada tarjeta para ir a donde se trabaja.</p>
+  <div class="mo" id="momentos">
+    <div class="mo-tabs" role="tablist" aria-label="Momentos de la matriz"><button type="button" role="tab" class="mo-tab" id="mo-t0" aria-controls="mo-panel" aria-selected="true" data-i="0"><span class="mo-bar"></span><span class="mo-n">1</span> <span class="mo-l">Idea inicial</span><span class="mo-lugar">En este Libro</span></button><button type="button" role="tab" class="mo-tab" id="mo-t1" aria-controls="mo-panel" aria-selected="false" data-i="1"><span class="mo-bar"></span><span class="mo-n">2</span> <span class="mo-l">Matriz, primera versión</span><span class="mo-lugar">En este Libro</span></button><button type="button" role="tab" class="mo-tab" id="mo-t2" aria-controls="mo-panel" aria-selected="false" data-i="2"><span class="mo-bar"></span><span class="mo-n">3</span> <span class="mo-l">Revisión de literatura</span><span class="mo-lugar">En la Ruta ↗</span></button><button type="button" role="tab" class="mo-tab" id="mo-t3" aria-controls="mo-panel" aria-selected="false" data-i="3"><span class="mo-bar"></span><span class="mo-n">4</span> <span class="mo-l">Matriz ajustada</span><span class="mo-lugar">En este Libro</span></button><button type="button" role="tab" class="mo-tab" id="mo-t4" aria-controls="mo-panel" aria-selected="false" data-i="4"><span class="mo-bar"></span><span class="mo-n">5</span> <span class="mo-l">Metodología, campo, análisis y escritura</span><span class="mo-lugar">En la Ruta ↗</span></button></div>
+    <div class="mo-panel" id="mo-panel" role="tabpanel" aria-live="polite"><div><p class="mo-donde">En este Libro · momento 1 de 5</p><h4 class="mo-t">Idea inicial</h4><p class="mo-d">Ponga en palabras lo que quiere investigar: el tema, la inquietud que lo mueve y por qué le importa. La ficha P1 le ayuda a ordenarlo con la IA.</p></div><a class="mo-btn" href="#volcado">Ir a la ficha P1 →</a></div>
+  </div>
+  <p class="momentos-nota">El Libro le acompaña en los momentos 1, 2 y 4; la Ruta, en el 3 y el 5. Toque cada paso para ver qué se hace y vaya directo con el botón.</p>
+  <script>(function(){const D=[{"t": "Idea inicial", "w": "Libro", "d": "Ponga en palabras lo que quiere investigar: el tema, la inquietud que lo mueve y por qué le importa. La ficha P1 le ayuda a ordenarlo con la IA.", "b": "Ir a la ficha P1 →", "h": "#volcado"}, {"t": "Matriz, primera versión", "w": "Libro", "d": "Con las fichas F1 a F7 define objeto, pregunta, objetivos, técnicas, población y análisis. Al terminar obtiene el informe de coherencia en Word.", "b": "Ir a las fichas →", "h": "#ficha1"}, {"t": "Revisión de literatura", "w": "Ruta", "d": "En la Ruta hace una revisión sistemática paso a paso para confirmar el vacío de conocimiento y conocer los métodos que otros usaron.", "b": "Abrir en la Ruta ↗", "h": "https://investigium.github.io/ruta-investigacion-ia/#rsl"}, {"t": "Matriz ajustada", "w": "Libro", "d": "Vuelva a su matriz con lo que encontró en la literatura y revise en el mapa del proyecto qué quedó vacío o desconectado.", "b": "Ir al mapa del proyecto →", "h": "#mapa"}, {"t": "Metodología, campo, análisis y escritura", "w": "Ruta", "d": "Con la matriz ajustada siguen el diseño, el trabajo de campo, el análisis y la escritura, de la mano de su director. La Ruta describe cada etapa.", "b": "Ver las etapas en la Ruta ↗", "h": "https://investigium.github.io/ruta-investigacion-ia/#ruta"}];const box=document.getElementById("momentos");if(!box)return;const tabs=[...box.querySelectorAll(".mo-tab")];const P=box.querySelector(".mo-panel");
+  function sel(i,f){tabs.forEach((t,k)=>{t.setAttribute("aria-selected",k===i?"true":"false");t.tabIndex=k===i?0:-1;t.classList.toggle("hecho",k<i)});const x=D[i];P.querySelector(".mo-donde").textContent=(x.w==="Libro"?"En este Libro":"En la Ruta")+" · momento "+(i+1)+" de 5";P.querySelector(".mo-t").textContent=x.t;P.querySelector(".mo-d").textContent=x.d;const a=P.querySelector(".mo-btn");a.textContent=x.b;a.href=x.h;P.classList.toggle("ruta",x.w!=="Libro");if(f)tabs[i].focus()}
+  tabs.forEach((t,i)=>{t.addEventListener("click",()=>sel(i));t.addEventListener("keydown",e=>{if(e.key==="ArrowRight"){e.preventDefault();sel((i+1)%5,1)}if(e.key==="ArrowLeft"){e.preventDefault();sel((i+4)%5,1)}})});sel(0)})();</script>
 </section>
 
 <section id="kit">
