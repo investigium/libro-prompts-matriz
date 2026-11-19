@@ -86,6 +86,10 @@ h3{font-size:1rem;margin:8px 0 0;font-weight:600}
 .copy{font:inherit;font-size:.8rem;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid var(--accent);background:var(--accent);color:var(--surface);cursor:pointer}
 .copy:hover{filter:brightness(1.1)}
 .copy.done{background:var(--ok-soft);color:var(--ok);border-color:var(--ok)}
+.prompt .pega{margin:0;padding:10px 16px;border-top:1px solid var(--line);font-size:.86rem;line-height:1.5;color:var(--muted);background:var(--surface);max-width:none}
+#cuaderno>h3{font-family:var(--f-serif,var(--f-display,Georgia,serif));font-size:1.25rem;font-weight:700;color:var(--ink);margin:24px 0 8px}
+#cuaderno .how li{margin-bottom:8px}
+.prompt .pega span{color:var(--accent);font-weight:700;margin-right:4px}
 .how{font-size:.92rem;max-width:68ch;margin:0}
 .how li{margin-bottom:4px}
 .note{border:1px solid var(--warn);background:var(--warn-soft);border-radius:8px;padding:10px 14px;font-size:.92rem;max-width:72ch}
@@ -530,7 +534,7 @@ section[id]{scroll-margin-top:110px}
 <section id="ficha0">
   <h2><span class="n">Ficha 0</span>Instrucciones fijas para su IA</h2>
   <p>Fija el comportamiento del asistente. Sin estas reglas, la IA tiende a elogiar, a completar con referencias que no existen y a escribir la tesis por usted.</p>
-  <div class="prompt"><div class="bar"><strong>Ficha 0 · instrucciones del proyecto</strong><button class="copy" type="button">Copiar</button></div>
+  <div class="prompt"><div class="bar"><strong>Ficha 0 · instrucciones del proyecto</strong><button class="copy" type="button">Copiar para su IA</button></div>
 <pre>Vas a acompañarme en el diseño metodológico de mi trabajo de grado o tesis de posgrado ([programa, institución y país]). Mi enfoque es [cualitativo, cuantitativo o mixto] y organizo el proyecto en una matriz de coherencia interna: objeto de estudio, categorías o variables, pregunta, objetivo general, objetivos específicos, paradigma, enfoque, tipo de estudio, método, diseño, técnicas, instrumentos, población y método de análisis.
 
 Reglas para toda la conversación:
@@ -541,13 +545,13 @@ Reglas para toda la conversación:
 5. Usa la terminología metodológica de mi disciplina, en español, y verbos de conocimiento acordes con mi enfoque (comprender, analizar, describir, interpretar, explicar, valorar).
 6. Al final de cada respuesta, escribe una lista "Para verificar" con todo lo que yo debo comprobar en las fuentes.
 
-Mi proyecto en una frase: [tema, población y lugar]</pre></div>
+Mi proyecto en una frase: [tema, población y lugar]</pre><p class="pega"><span aria-hidden="true">↪</span> Pegue este prompt en su IA de preferencia (ChatGPT, Gemini, Claude, Copilot u otra). Lea la respuesta con criterio y traiga aquí solo lo que decida conservar.</p></div>
 </section>
 
 <section id="volcado">
   <h2><span class="n">Paso 1</span>Poner por escrito la idea inicial</h2>
   <p>Grabe o escriba sin editar lo que le inquieta de su práctica docente, como si se lo contara a un colega. Luego pida a la IA que lo ordene.</p>
-  <div class="prompt"><div class="bar"><strong>Contar la idea en voz alta</strong><button class="copy" type="button">Copiar</button></div>
+  <div class="prompt"><div class="bar"><strong>Contar la idea en voz alta</strong><button class="copy" type="button">Copiar para su IA</button></div>
 <pre>Te pego una transcripción sin editar de lo que me inquieta de mi práctica docente. No la mejores ni la resumas. Ordénala en cinco listas:
 
 A. Hechos que observé (con quién, dónde, cuándo).
@@ -559,15 +563,15 @@ E. Datos que me faltan para saber si el problema es real.
 Después, en tres líneas, dime cuál de las preguntas de la lista C podría ser una pregunta de investigación cualitativa y por qué.
 
 Transcripción:
-[pegue aquí su texto o la transcripción del audio]</pre></div>
-  <div class="prompt"><div class="bar"><strong>Contraste con mis referencias</strong><button class="copy" type="button">Copiar</button></div>
+[pegue aquí su texto o la transcripción del audio]</pre><p class="pega"><span aria-hidden="true">↪</span> Pegue este prompt en su IA de preferencia (ChatGPT, Gemini, Claude, Copilot u otra). Lea la respuesta con criterio y traiga aquí solo lo que decida conservar.</p></div>
+  <div class="prompt"><div class="bar"><strong>Contraste con mis referencias</strong><button class="copy" type="button">Copiar para su IA</button></div>
 <pre>Adjunto [número] documentos que ya leí sobre mi tema. Compara la lista B (mis hipótesis) con lo que dicen esos documentos.
 
 Para cada hipótesis indica:
 - Si algún documento la apoya, la contradice o no dice nada. Cita documento y página.
 - Qué concepto o categoría usa el autor para nombrar lo mismo.
 
-No agregues autores que no estén en los adjuntos.</pre></div>
+No agregues autores que no estén en los adjuntos.</pre><p class="pega"><span aria-hidden="true">↪</span> Pegue este prompt en su IA de preferencia (ChatGPT, Gemini, Claude, Copilot u otra). Lea la respuesta con criterio y traiga aquí solo lo que decida conservar.</p></div>
   <ul class="how">
     <li>Descarte las hipótesis que ningún documento toca: o son un aporte nuevo o le falta leer.</li>
     <li>Los conceptos que la IA encuentre en los autores son candidatos a categorías del estudio.</li>
@@ -576,8 +580,8 @@ No agregues autores que no estén en los adjuntos.</pre></div>
 
 <section id="cuaderno">
   <h2><span class="n">Paso 2</span>Un documento único para todo el proyecto</h2>
-  <p>La IA lo entrevista durante unos 20 minutos y redacta un cuaderno que usted guarda en la carpeta mi_proyecto y adjunta en cada sesión.</p>
-  <div class="prompt"><div class="bar"><strong>Entrevista para el cuaderno</strong><button class="copy" type="button">Copiar</button></div>
+  <p>Su IA lo entrevista durante unos 20 minutos y, con sus respuestas, redacta un cuaderno: una página que resume su proyecto. Usted lo guarda en la carpeta mi_proyecto y lo adjunta al comienzo de cada conversación, para que la IA no empiece de cero.</p>
+  <div class="prompt"><div class="bar"><strong>Entrevista para el cuaderno</strong><button class="copy" type="button">Copiar para su IA</button></div>
 <pre>Entrevístame para construir el cuaderno de mi proyecto de investigación. Hazme una sola pregunta a la vez y espera mi respuesta. Cubre, en este orden:
 
 1. Mi rol en la institución y mi relación con la población (¿enseño a ese grupo?).
@@ -588,19 +592,28 @@ No agregues autores que no estén en los adjuntos.</pre></div>
 6. Tiempo y acceso real que tengo a los participantes.
 7. Aspectos éticos: menores, consentimiento, temas sensibles.
 
-Cuando termines, redacta el cuaderno en no más de una página, con un subtítulo por punto, y agrega al final una sección "Tensiones" con las contradicciones que notaste entre mis respuestas.</pre></div>
+Cuando termines, redacta el cuaderno en no más de una página, con un subtítulo por punto, y agrega al final una sección "Tensiones" con las contradicciones que notaste entre mis respuestas.</pre><p class="pega"><span aria-hidden="true">↪</span> Pegue este prompt en una conversación nueva de su IA de preferencia (ChatGPT, Gemini, Claude, Copilot u otra).</p></div>
+  <h3>Cómo hacerlo, paso a paso</h3>
+  <ol class="how">
+    <li><strong>Cree la carpeta.</strong> En su computador o en su nube, cree una carpeta llamada mi_proyecto. Ahí guardará todo lo de su tesis.</li>
+    <li><strong>Haga la entrevista.</strong> Abra una conversación nueva en su IA, pegue el prompt y responda cada pregunta, escribiendo o con dictado de voz. Responda con detalle: ejemplos, lugares, fechas. La IA hará una pregunta a la vez; tómese unos 20 minutos.</li>
+    <li><strong>Revise el cuaderno.</strong> Al final, la IA entrega una página. Léala, corrija lo que no sea exacto y complete lo que falte: la versión final la decide usted.</li>
+    <li><strong>Guárdelo.</strong> Copie el texto en Word o Google Docs y guárdelo en mi_proyecto con un nombre claro, por ejemplo cuaderno_proyecto.docx.</li>
+    <li><strong>Adjúntelo en cada conversación.</strong> Cada vez que abra una conversación nueva sobre su tesis, adjunte el archivo con el botón de adjuntar (el clip) y escriba: «Este es el cuaderno de mi proyecto; tenlo en cuenta en todas tus respuestas». Si su IA tiene proyectos (Proyectos en ChatGPT o Claude, Gems en Gemini, cuadernos en NotebookLM), súbalo una sola vez como archivo del proyecto y quedará disponible en todas las conversaciones.</li>
+    <li><strong>Actualícelo.</strong> Cuando su proyecto cambie, corrija el cuaderno y guarde la nueva versión con la fecha en el nombre, por ejemplo cuaderno_2026-11-19.docx.</li>
+  </ol>
 </section>
 
 <section id="reflejo">
-  <div class="prompt"><div class="bar"><strong>Prompt genérico</strong><button class="copy" type="button">Copiar</button></div>
-<pre>Propón una pregunta de investigación cualitativa sobre la convivencia escolar en un colegio rural de Boyacá.</pre></div>
+  <div class="prompt"><div class="bar"><strong>Prompt genérico</strong><button class="copy" type="button">Copiar para su IA</button></div>
+<pre>Propón una pregunta de investigación cualitativa sobre la convivencia escolar en un colegio rural de Boyacá.</pre><p class="pega"><span aria-hidden="true">↪</span> Pruébelo en su IA de preferencia sin adjuntar nada. Luego repítalo adjuntando su cuaderno y compare las dos respuestas.</p></div>
   <p class="note">Lo que suele pasar: casi todas las respuestas proponen la misma pregunta sobre «percepciones de los estudiantes» o «estrategias para mejorar la convivencia». Sin contexto, la IA devuelve el promedio de lo que ya existe. Su cuaderno y su inquietud son lo que hace distinta su pregunta.</p>
 </section>
 
 <section id="ficha1">
   <h2><span class="n">Ficha 1</span>Definir el objeto de estudio y la pregunta</h2>
   <p>El objeto y la pregunta deben nombrar el mismo fenómeno, con el mismo alcance, población y lugar. Para preguntas cualitativas sirve el esquema SPIDER: muestra (S), fenómeno de interés (PI), diseño (D), evaluación o experiencia (E) y tipo de investigación (R).</p>
-  <div class="prompt"><div class="bar"><strong>Formular con SPIDER</strong><button class="copy" type="button">Copiar</button></div>
+  <div class="prompt"><div class="bar"><strong>Formular con SPIDER</strong><button class="copy" type="button">Copiar para su IA</button></div>
 <pre>Con mi cuaderno del proyecto (adjunto), propón tres versiones de la pregunta de investigación, cada una desglosada con SPIDER:
 - S (muestra): quiénes, cuántos aproximadamente, dónde.
 - PI (fenómeno de interés).
@@ -612,7 +625,7 @@ Las tres versiones deben diferir en el fenómeno o en el diseño, no solo en la 
 
 Para cada versión, redacta además el objeto de estudio en una frase que nombre el mismo fenómeno, población y lugar que la pregunta.
 
-Inquietud de partida: [su pregunta de la lista C]</pre></div>
+Inquietud de partida: [su pregunta de la lista C]</pre><p class="pega"><span aria-hidden="true">↪</span> Pegue este prompt en su IA de preferencia (ChatGPT, Gemini, Claude, Copilot u otra). Lea la respuesta con criterio y traiga aquí solo lo que decida conservar.</p></div>
   <div class="ex">
     <div class="card"><h3>Pregunta débil</h3><p>¿Cómo mejorar la convivencia escolar con juegos?</p></div>
     <div class="card"><h3>Pregunta cualitativa</h3><p>¿Cómo viven los estudiantes de sexto de una institución de Sogamoso los conflictos entre pares durante una estrategia gamificada de convivencia?</p></div>
@@ -628,7 +641,7 @@ Inquietud de partida: [su pregunta de la lista C]</pre></div>
 <section id="ficha2">
   <h2><span class="n">Ficha 2</span>Redactar el objetivo general y los específicos</h2>
   <p>El objetivo general responde la pregunta con un verbo de conocimiento. Los específicos, sumados, alcanzan el general sin desbordarlo. La falla más común: la pregunta dice «¿cómo…?» y el objetivo dice «implementar».</p>
-  <div class="prompt"><div class="bar"><strong>Revisar objetivos</strong><button class="copy" type="button">Copiar</button></div>
+  <div class="prompt"><div class="bar"><strong>Revisar objetivos</strong><button class="copy" type="button">Copiar para su IA</button></div>
 <pre>Esta es mi pregunta y mis objetivos:
 
 Pregunta: [pregunta]
@@ -644,7 +657,7 @@ Antes de dar cualquier juicio, razona paso a paso:
 3. ¿Cada específico es un paso necesario para el general? ¿Alguno lo desborda (diseña o evalúa algo que el general no incluye)?
 4. ¿La secuencia tiene orden lógico?
 
-Al final, califica la relación pregunta-objetivo general y la relación general-específicos con uno de estos niveles: ausente, débil, parcial o coherente, y propón una sola reescritura del objetivo que esté peor.</pre></div>
+Al final, califica la relación pregunta-objetivo general y la relación general-específicos con uno de estos niveles: ausente, débil, parcial o coherente, y propón una sola reescritura del objetivo que esté peor.</pre><p class="pega"><span aria-hidden="true">↪</span> Pegue este prompt en su IA de preferencia (ChatGPT, Gemini, Claude, Copilot u otra). Lea la respuesta con criterio y traiga aquí solo lo que decida conservar.</p></div>
   <div class="work"><h3>Sus objetivos</h3>
     <div class="field"><label for="f-og">Objetivo general</label><textarea id="f-og" data-k="og" rows="2"></textarea></div>
     <div class="field"><label>Objetivos específicos</label><div class="oe-list" id="oeList"></div></div>
@@ -655,7 +668,7 @@ Al final, califica la relación pregunta-objetivo general y la relación general
 <section id="ficha3">
   <h2><span class="n">Ficha 3</span>Elegir técnicas e instrumentos para cada objetivo</h2>
   <p>Cada objetivo necesita al menos una técnica y un instrumento propios. Una secuencia didáctica, una estrategia o un formato de planeación son productos del estudio, no instrumentos de captura.</p>
-  <div class="prompt"><div class="bar"><strong>Alinear objetivos y técnicas</strong><button class="copy" type="button">Copiar</button></div>
+  <div class="prompt"><div class="bar"><strong>Alinear objetivos y técnicas</strong><button class="copy" type="button">Copiar para su IA</button></div>
 <pre>Arma una tabla con una fila por objetivo específico y estas columnas: objetivo | tipo de dato que necesita | técnica | instrumento | quién responde.
 
 Mis objetivos: [lista]
@@ -664,7 +677,7 @@ Las técnicas e instrumentos que ya tengo: [lista]
 Reglas:
 - Asigna mis técnicas a los objetivos. Si un objetivo queda sin técnica, márcalo como VACÍO; no lo completes tú.
 - Marca como PRODUCTO, no INSTRUMENTO, todo lo que yo diseño para intervenir (secuencias, estrategias, talleres).
-- Señala si alguna técnica no puede producir el dato que el objetivo necesita (por ejemplo, observar hoy experiencias que ocurrieron hace años).</pre></div>
+- Señala si alguna técnica no puede producir el dato que el objetivo necesita (por ejemplo, observar hoy experiencias que ocurrieron hace años).</pre><p class="pega"><span aria-hidden="true">↪</span> Pegue este prompt en su IA de preferencia (ChatGPT, Gemini, Claude, Copilot u otra). Lea la respuesta con criterio y traiga aquí solo lo que decida conservar.</p></div>
   <div class="work"><h3>Técnicas e instrumentos de cada objetivo</h3>
     <div id="oeTec" style="display:grid;gap:10px"></div>
   </div>
@@ -673,7 +686,7 @@ Reglas:
 <section id="ficha4">
   <h2><span class="n">Ficha 4</span>Definir la población y cómo seleccionarla</h2>
   <p>La matriz pregunta cuatro cosas: quiénes, dónde, cuántos y por qué ellos y no otros. El criterio de selección debe ser coherente con el enfoque.</p>
-  <div class="prompt"><div class="bar"><strong>Completar la población</strong><button class="copy" type="button">Copiar</button></div>
+  <div class="prompt"><div class="bar"><strong>Completar la población</strong><button class="copy" type="button">Copiar para su IA</button></div>
 <pre>Revisa la descripción de mi población:
 
 [pegue su texto]
@@ -683,7 +696,7 @@ Responde con una tabla de cuatro filas (quiénes, dónde, cuántos, por qué ell
 Luego:
 1. Nombra el tipo de muestreo que estoy usando aunque no lo diga (intencional, por conveniencia, teórico, censal, bola de nieve) y si es coherente con mi enfoque.
 2. Revisa que el nivel educativo y el lugar coincidan con los de mi pregunta y mis objetivos (por ejemplo, básica secundaria frente a media).
-3. Lista los requisitos éticos que se desprenden: consentimiento, asentimiento de menores, relación de poder si soy su docente.</pre></div>
+3. Lista los requisitos éticos que se desprenden: consentimiento, asentimiento de menores, relación de poder si soy su docente.</pre><p class="pega"><span aria-hidden="true">↪</span> Pegue este prompt en su IA de preferencia (ChatGPT, Gemini, Claude, Copilot u otra). Lea la respuesta con criterio y traiga aquí solo lo que decida conservar.</p></div>
   <div class="work"><h3>Su población</h3>
     <div class="field"><label for="f-poblacion">Población: quiénes, dónde, cuántos, por qué ellos y tipo de muestreo</label><textarea id="f-poblacion" data-k="poblacion" rows="4"></textarea></div>
     <div class="field"><label for="f-etica">Consideraciones éticas</label><textarea id="f-etica" data-k="etica" rows="3"></textarea><span class="hint">Consentimiento, asentimiento de menores, relación con los participantes, uso de imagen.</span></div>
@@ -710,7 +723,7 @@ Luego:
     <div class="card"><b>Packer · La ciencia de la investigación cualitativa</b><p>Cada método supone una idea de qué es lo humano y de cómo se conoce. Antes de codificar, pregúntese si su análisis respeta la manera en que los participantes construyen sentido o si la reduce a categorías abstractas.</p></div>
     <div class="card"><b>Bonilla-Castro y Rodríguez · Más allá del dilema de los métodos</b><p>El problema define la estrategia, no la preferencia por lo cuantitativo o lo cualitativo. El investigador es el principal instrumento: explora, diseña, recoge, organiza, analiza, interpreta y conceptualiza de forma inductiva.</p></div>
   </div>
-  <div class="prompt"><div class="bar"><strong>Ubicar la ruta metodológica</strong><button class="copy" type="button">Copiar</button></div>
+  <div class="prompt"><div class="bar"><strong>Ubicar la ruta metodológica</strong><button class="copy" type="button">Copiar para su IA</button></div>
 <pre>Esta es mi matriz completa: [pegue la matriz o adjúntela]
 
 Ubica mi proyecto en estos siete niveles, de lo general a lo concreto:
@@ -729,7 +742,7 @@ Para cada nivel:
 
 Después escribe la ruta más coherente en una línea (paradigma → enfoque → tipo de estudio → método → diseño → técnicas → análisis) y explica en pasos cómo se aplicaría el método de análisis a mis datos.
 
-No mezcles más de dos métodos. Si sugieres autores de referencia, márcalos [POR VERIFICAR].</pre></div>
+No mezcles más de dos métodos. Si sugieres autores de referencia, márcalos [POR VERIFICAR].</pre><p class="pega"><span aria-hidden="true">↪</span> Pegue este prompt en su IA de preferencia (ChatGPT, Gemini, Claude, Copilot u otra). Lea la respuesta con criterio y traiga aquí solo lo que decida conservar.</p></div>
   <div class="work"><h3>Su ruta metodológica</h3>
     <div class="row2"><div class="field"><label for="f-paradigma">Paradigma</label><input type="text" id="f-paradigma" data-k="paradigma"></div>
     <div class="field"><label for="f-enfoque">Enfoque</label><input type="text" id="f-enfoque" data-k="enfoque"></div></div>
@@ -744,7 +757,7 @@ No mezcles más de dos métodos. Si sugieres autores de referencia, márcalos [P
 <section id="ficha6">
   <h2><span class="n">Ficha 6</span>Someter la matriz a un jurado crítico</h2>
   <p>Un jurado que solo objeta. Úselo cuando la matriz esté completa, con la rúbrica de ocho criterios de este libro.</p>
-  <div class="prompt"><div class="bar"><strong>Jurado con la rúbrica de coherencia</strong><button class="copy" type="button">Copiar</button></div>
+  <div class="prompt"><div class="bar"><strong>Jurado con la rúbrica de coherencia</strong><button class="copy" type="button">Copiar para su IA</button></div>
 <pre>Actúa como jurado exigente de trabajos de grado. Solo presentas objeciones; no elogias ni resumes.
 
 Evalúa mi matriz con estos ocho criterios. Para cada uno asigna un nivel: ausente (el elemento no existe), débil (existe con rupturas que impiden la coherencia), parcial (coherente en lo central, con ajustes pendientes) o coherente (articulado y justificado). No uses puntajes numéricos.
@@ -759,14 +772,14 @@ Evalúa mi matriz con estos ocho criterios. Para cada uno asigna un nivel: ausen
 
 Para cada criterio: primero la evidencia (cita textual de mi matriz), después la objeción, después el nivel. Termina con las tres objeciones que un jurado real haría primero.
 
-Matriz: [pegue o adjunte]</pre></div>
+Matriz: [pegue o adjunte]</pre><p class="pega"><span aria-hidden="true">↪</span> Pegue este prompt en su IA de preferencia (ChatGPT, Gemini, Claude, Copilot u otra). Lea la respuesta con criterio y traiga aquí solo lo que decida conservar.</p></div>
   <p class="note">Compare el nivel que asignó la IA con la retroalimentación de su director o jurado. Donde no coincidan, vuelva a la evidencia citada: la IA puede citar una frase que su matriz no contiene.</p>
 </section>
 
 <section id="ficha7">
   <h2><span class="n">Ficha 7</span>Entregar la matriz en un formato fijo</h2>
   <p>Control de formato: la IA ordena lo que usted ya decidió en la estructura del formato oficial, sin agregar contenido.</p>
-  <div class="prompt"><div class="bar"><strong>Consolidar la matriz</strong><button class="copy" type="button">Copiar</button></div>
+  <div class="prompt"><div class="bar"><strong>Consolidar la matriz</strong><button class="copy" type="button">Copiar para su IA</button></div>
 <pre>Ordena mis decisiones en la matriz de coherencia interna con exactamente estos campos y en este orden. No agregues contenido que yo no haya escrito; si un campo falta, escribe [PENDIENTE].
 
 1. Objeto de estudio:
@@ -779,7 +792,7 @@ Matriz: [pegue o adjunte]</pre></div>
 8. Consideraciones éticas:
 9. Referencias metodológicas citadas:
 
-Mis decisiones: [pegue el material de las fichas 1 a 6]</pre></div>
+Mis decisiones: [pegue el material de las fichas 1 a 6]</pre><p class="pega"><span aria-hidden="true">↪</span> Pegue este prompt en su IA de preferencia (ChatGPT, Gemini, Claude, Copilot u otra). Lea la respuesta con criterio y traiga aquí solo lo que decida conservar.</p></div>
 <div class="descarga-matriz"><div><b>Su matriz en Word</b><p>Descargue la matriz con todo lo que escribió en las fichas, lista para enviarla a su asesor. Si además quiere la evaluación de la IA, genérela en «Obtener su matriz de coherencia» y se incluye en el mismo documento.</p></div><div class="dm-acc"><button class="btn primary" type="button" data-descargar-matriz>Descargar mi matriz (Word)</button><span class="status" data-dm-estado role="status"></span></div></div>
 </section>
 
@@ -854,12 +867,12 @@ Mis decisiones: [pegue el material de las fichas 1 a 6]</pre></div>
 
 <section id="patrones">
   <h2><span class="n">Recursos</span>Cómo mejorar un prompt</h2>
-  <div class="prompt"><div class="bar"><strong>Entrevista invertida</strong><button class="copy" type="button">Copiar</button></div>
-<pre>Quiero [lo que necesita, por ejemplo: definir los criterios de selección de mis participantes]. Antes de responder, hazme las preguntas que necesites, una a la vez, hasta tener contexto suficiente. Avísame cuando estés listo para responder.</pre></div>
-  <div class="prompt"><div class="bar"><strong>Metaprompt</strong><button class="copy" type="button">Copiar</button></div>
-<pre>Este es el prompt que pienso usar: [pegue su prompt]. Antes de ejecutarlo, dime qué ambigüedades tiene, qué contexto le falta y reescríbelo para que la respuesta sea verificable. No lo ejecutes todavía.</pre></div>
-  <div class="prompt"><div class="bar"><strong>Alternativas de diseño</strong><button class="copy" type="button">Copiar</button></div>
-<pre>Para mi pregunta [pregunta], propón tres diseños metodológicos que difieran de verdad (modelo, técnicas y tipo de dato), no tres versiones del mismo. Para cada uno: qué gano, qué pierdo y qué me exige en tiempo y acceso a la población.</pre></div>
+  <div class="prompt"><div class="bar"><strong>Entrevista invertida</strong><button class="copy" type="button">Copiar para su IA</button></div>
+<pre>Quiero [lo que necesita, por ejemplo: definir los criterios de selección de mis participantes]. Antes de responder, hazme las preguntas que necesites, una a la vez, hasta tener contexto suficiente. Avísame cuando estés listo para responder.</pre><p class="pega"><span aria-hidden="true">↪</span> Pegue este prompt en su IA de preferencia (ChatGPT, Gemini, Claude, Copilot u otra). Lea la respuesta con criterio y traiga aquí solo lo que decida conservar.</p></div>
+  <div class="prompt"><div class="bar"><strong>Metaprompt</strong><button class="copy" type="button">Copiar para su IA</button></div>
+<pre>Este es el prompt que pienso usar: [pegue su prompt]. Antes de ejecutarlo, dime qué ambigüedades tiene, qué contexto le falta y reescríbelo para que la respuesta sea verificable. No lo ejecutes todavía.</pre><p class="pega"><span aria-hidden="true">↪</span> Pegue este prompt en su IA de preferencia (ChatGPT, Gemini, Claude, Copilot u otra). Lea la respuesta con criterio y traiga aquí solo lo que decida conservar.</p></div>
+  <div class="prompt"><div class="bar"><strong>Alternativas de diseño</strong><button class="copy" type="button">Copiar para su IA</button></div>
+<pre>Para mi pregunta [pregunta], propón tres diseños metodológicos que difieran de verdad (modelo, técnicas y tipo de dato), no tres versiones del mismo. Para cada uno: qué gano, qué pierdo y qué me exige en tiempo y acceso a la población.</pre><p class="pega"><span aria-hidden="true">↪</span> Pegue este prompt en su IA de preferencia (ChatGPT, Gemini, Claude, Copilot u otra). Lea la respuesta con criterio y traiga aquí solo lo que decida conservar.</p></div>
 </section>
 
 <section id="errores">
@@ -910,7 +923,7 @@ document.querySelectorAll(".prompt").forEach(function(box){
   var btn=box.querySelector(".copy"),pre=box.querySelector("pre");
   btn.addEventListener("click",function(){
     var text=pre.textContent;
-    var ok=function(){btn.textContent="Copiado";btn.classList.add("done");setTimeout(function(){btn.textContent="Copiar";btn.classList.remove("done")},1800)};
+    var ok=function(){btn.textContent="Copiado: péguelo en su IA";btn.classList.add("done");setTimeout(function(){btn.textContent="Copiar para su IA";btn.classList.remove("done")},2600)};
     var fallback=function(){var r=document.createRange();r.selectNodeContents(pre);var s=getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand("copy");ok()}catch(e){btn.textContent="Seleccionado: use Ctrl+C"}};
     try{navigator.clipboard.writeText(text).then(ok,fallback)}catch(e){fallback()}
   });
