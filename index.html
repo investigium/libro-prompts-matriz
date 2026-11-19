@@ -1258,7 +1258,7 @@ function layout(g,W){
   const ncol=Math.max(1,Math.min(4,Math.floor((W-2*PAD-24+GAPX)/(250+GAPX))));
   const BW=Math.floor((W-2*PAD-24-(ncol-1)*GAPX)/ncol);
   const fam=getComputedStyle(document.body).getPropertyValue("--f-body")||"Arial";
-  const fT=`400 ${FS_T}px ${fam}`,fE=`700 ${FS_E}px ${fam}`,aT=BW-38,aE=BW-56;
+  const fT=`400 ${FS_T}px ${fam}`,fE=`700 ${FS_E}px ${fam}`,aT=BW-50,aE=BW-68;
   g.cols=[[],[],[],[],[]];g.N.forEach(n=>{n.col=colDe(n.id);g.cols[n.col].push(n)});
   g.BW=BW;g.bandas=[];let y=8;
   g.cols.forEach((c,ci)=>{c.sort((a,b)=>orden(a.id)-orden(b.id));
@@ -1284,9 +1284,9 @@ function marcado(W){
     if(ci<4){const yA=B.y+B.h+4,yB=B.y+B.h+FLECHA-4;h+=`<path class="fl-paso" d="M${W/2} ${yA} L${W/2} ${yB-3}" marker-end="url(#fl-g)"/>`}});
   if(sel)g.E.forEach(e=>{if(e.a.id!==sel&&e.b.id!==sel)return;h+=`<path class="m-arista activa${(e.a.vacio||e.b.vacio)?" falta":""}" d="${camino(e.a,e.b)}" marker-end="url(#fl-a)"/>`});
   g.N.forEach(n=>{const on=!sel||vec.has(n.id);let ty=16+FS_E;
-    let tx=n.le.map((l,i)=>`<text class="fl-etq" x="20" y="${ty+i*(LH+1)}">${esc(l)}</text>`).join("");ty+=(n.le.length-1)*(LH+1)+6+LH;
-    tx+=n.lt.map((l,i)=>`<text class="fl-sub" x="20" y="${ty+i*LH}">${esc(l)}</text>`).join("");
-    h+=`<g class="m-nodo g-${n.grupo}${n.vacio?" vacio":""}${n.desc?" desc":""}${on?"":" tenue"}${sel===n.id?" sel":""}" data-id="${n.id}" transform="translate(${n.x},${n.y})" tabindex="0" role="button" aria-label="${esc(n.etq)}${n.vacio?" (vacío)":""}"><rect class="fl-caja" width="${n.w}" height="${n.h}" rx="12"/><rect class="fl-franja" x="0" y="0" width="7" height="${n.h}" rx="3.5"/>${tx}${n.vacio||n.desc?`<circle class="fl-alerta" cx="${n.w-18}" cy="18" r="9"/><text class="fl-alerta-t" x="${n.w-18}" y="22.5">!</text>`:""}</g>`});
+    let tx=n.le.map((l,i)=>`<text class="fl-etq" x="34" y="${ty+i*(LH+1)}">${esc(l)}</text>`).join("");ty+=(n.le.length-1)*(LH+1)+6+LH;
+    tx+=n.lt.map((l,i)=>`<text class="fl-sub" x="34" y="${ty+i*LH}">${esc(l)}</text>`).join("");
+    h+=`<g class="m-nodo g-${n.grupo}${n.vacio?" vacio":""}${n.desc?" desc":""}${on?"":" tenue"}${sel===n.id?" sel":""}" data-id="${n.id}" transform="translate(${n.x},${n.y})" tabindex="0" role="button" aria-label="${esc(n.etq)}${n.vacio?" (vacío)":""}"><rect class="fl-caja" width="${n.w}" height="${n.h}" rx="12"/><circle class="fl-franja" cx="21" cy="${16+FS_E-5}" r="5"/>${tx}${n.vacio||n.desc?`<circle class="fl-alerta" cx="${n.w-18}" cy="18" r="9"/><text class="fl-alerta-t" x="${n.w-18}" y="22.5">!</text>`:""}</g>`});
   return h;
 }
 function dibujar(){
@@ -1319,7 +1319,11 @@ function abrirMapa(fresh){const box=$("#mapaLienzo");if(!box)return;G=grafo();se
 function svgTexto(){
   const W=1200,prev=sel;sel=null;layout(G,W);const H=G.alto+30;
   const css=`.m-fondo{fill:#fff}.fl-carril{fill:#f4f6f9}.fl-fase{font:600 13px 'Source Sans 3',Arial,sans-serif;fill:#2b6693}.fl-fase-t{font:700 19px 'Source Serif 4',Georgia,serif;fill:#14202b}.fl-badge.mal{fill:#fbe9e7}.fl-badge.bien{fill:#e3f1e8}.fl-badge.rev{fill:#fdf1dc}.fl-badge-t{font:700 13px 'Source Sans 3',Arial,sans-serif;text-anchor:middle}.fl-badge-t.mal{fill:#b03a2e}.fl-badge-t.bien{fill:#2e7d4f}.fl-badge-t.rev{fill:#9a5f0c}.fl-paso{stroke:#9aa7b6;stroke-width:2;fill:none}.fl-caja{fill:#fff;stroke:#d5dde6;stroke-width:1.2}.vacio .fl-caja{fill:#fff8f7;stroke:#c0392b;stroke-dasharray:6 4}.desc .fl-caja{fill:#fffaf0;stroke:#c47f17;stroke-dasharray:6 4}.fl-etq{font:700 15px 'Source Sans 3',Arial,sans-serif;fill:#14202b}.fl-sub{font:13.5px 'Source Sans 3',Arial,sans-serif;fill:#4a5562}.vacio .fl-sub{fill:#b03a2e;font-weight:700}.desc .fl-sub{fill:#9a5f0c;font-weight:700}.fl-alerta{fill:#c0392b}.desc .fl-alerta{fill:#c47f17}.fl-alerta-t{font:700 13px Arial,sans-serif;fill:#fff;text-anchor:middle}.g-nucleo .fl-franja{fill:#2b6693}.g-obj .fl-franja{fill:#7a4fb0}.g-met .fl-franja{fill:#c47f17}.g-ruta .fl-franja{fill:#4a5866}.g-cat .fl-franja{fill:#2b9ac4}.g-falta .fl-franja{fill:#c0392b}`;
-  const txt=`<svg xmlns="${SVGNS}" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}"><style>${css}</style>${marcado(W)}<text x="${PAD}" y="${H-10}" style="font:11px Arial;fill:#6b7785">${esc(LIC)}</text></svg>`;
+  const txt=`<svg xmlns="${SVGNS}" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}"><style>${css}/* sin rayas ni marcos de acento */
+.ejemplo,.note{border:0!important}
+.gg{border-left:0!important}
+.mapa-leyenda i,.mapa-leyenda .fl-ley-ok,.mapa-leyenda .fl-ley-falta,.mapa-leyenda .fl-ley-rev{box-shadow:none!important}
+</style>${marcado(W)}<text x="${PAD}" y="${H-10}" style="font:11px Arial;fill:#6b7785">${esc(LIC)}</text></svg>`;
   sel=prev;dibujar();return {txt,W,H};
 }
 
