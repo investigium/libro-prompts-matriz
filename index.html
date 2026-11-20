@@ -577,6 +577,7 @@ html body nav.top>.wrap,html body nav.top>.nav-in,html body nav.top .pv-sub{max-
 @media (min-width:1100px){html body .wrap,html body nav.top>.wrap,html body nav.top>.nav-in,html body nav.top .pv-sub{padding-left:32px;padding-right:32px}}
 html body .portada .sub,html body .reflexion{max-width:74ch}
 </style>
+<style>.pv-faltan{border:1px solid #E0A93B;background:#FBF1DC;border-radius:12px;padding:14px 16px;margin:12px 0;color:#14202B}.pv-faltan p{margin:0 0 8px}.pv-faltan ul{margin:0 0 12px;padding-left:20px;columns:2}.pv-faltan .pv-fa-acc{display:flex;gap:8px;flex-wrap:wrap}@media(max-width:640px){.pv-faltan ul{columns:1}}</style>
 </head>
 <body>
 <nav class="top" aria-label="Secciones"><div class="nav-in">
@@ -1791,6 +1792,21 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
   var tmr;function luego(){clearTimeout(tmr);tmr=setTimeout(pintar,60)}
   document.addEventListener('input',luego);document.addEventListener('click',function(e){if(e.target.closest('[data-del],#oeAdd,button'))luego()});addEventListener('storage',luego);
   pintar();
+})();
+</script>
+<script>(function(){
+  var KEY='libro-prompts-matriz-v1',ok=false;
+  var F=[['objeto','Objeto de estudio','ficha1','2.1'],['categorias','Categorías','ficha1','2.1'],['pregunta','Pregunta de investigación','ficha1','2.1'],['og','Objetivo general','ficha2','2.2'],['oes','Objetivos específicos','ficha2','2.2'],['tec','Técnicas e instrumentos','ficha3','2.3'],['poblacion','Población','ficha4','2.4'],['etica','Consideraciones éticas','ficha4','2.4'],['paradigma','Paradigma','ficha5','2.5'],['enfoque','Enfoque','ficha5','2.5'],['tipoest','Tipo de estudio','ficha5','2.5'],['metodo','Método o metodología','ficha5','2.5'],['diseno','Diseño','ficha5','2.5'],['analisis','Método de análisis','ficha5','2.5']];
+  function faltan(){var s={};try{s=JSON.parse(localStorage.getItem(KEY))||{}}catch(_){}var o=s.oes||[];
+    return F.filter(function(f){if(f[0]==='oes')return !o.some(function(x){return (x.t||'').trim()});if(f[0]==='tec')return !o.some(function(x){return (x.tec||'').trim()&&(x.ins||'').trim()});return !(s[f[0]]||'').trim()})}
+  function caja(){var c=document.getElementById('pvFaltan');if(!c){c=document.createElement('div');c.id='pvFaltan';c.className='pv-faltan';c.setAttribute('role','alert');var a=document.querySelector('#informe .actions');(a||document.getElementById('dlBtn')).insertAdjacentElement('afterend',c)}return c}
+  document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('#dlBtn');if(!b)return;if(ok){ok=false;return}
+    var m=faltan();if(!m.length){var c0=document.getElementById('pvFaltan');if(c0)c0.remove();return}
+    e.stopImmediatePropagation();e.preventDefault();
+    var c=caja();c.innerHTML='<p><b>Faltan '+m.length+' '+(m.length===1?'campo':'campos')+' de su matriz.</b> En el Word saldrán como [pendiente]. Puede completarlos ahora o descargar así:</p><ul>'+m.map(function(f){return '<li><a href="#'+f[2]+'">'+f[3]+' · '+f[1]+'</a></li>'}).join('')+'</ul><div class="pv-fa-acc"><a class="btn primary" href="#'+m[0][2]+'">Completar lo que falta</a><button type="button" class="btn" id="pvFaltanSi">Descargar de todos modos</button></div>';
+    c.querySelector('#pvFaltanSi').addEventListener('click',function(){ok=true;c.remove();document.getElementById('dlBtn').click()});
+    c.scrollIntoView({block:'nearest'});
+  },true);
 })();
 </script>
 </body>
