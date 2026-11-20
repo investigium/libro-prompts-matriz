@@ -382,7 +382,7 @@ section>h2>span.n{display:block;font-family:var(--f-body)!important;font-size:.8
 .mo-tab[aria-selected="true"]{background:#e6eef5;color:#14202b;border-top-color:#2b6693}
 .mo-n{font-size:.84rem;font-weight:700;color:#2b6693}
 .mo-l{font-size:1.05rem;font-weight:700}
-.mo-lugar{font-size:.8rem;font-weight:600;color:#7a8794}
+.mo-lugar{font-size:.8rem;font-weight:600;color:#56637A}
 .mo-tab:focus-visible{outline:3px solid #2b6693;outline-offset:2px}
 .mo-panel{background:#e6eef5;border-radius:0 0 18px 18px;padding:22px 26px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center}
 .mo-donde{margin:0 0 4px;font-size:.84rem;font-weight:600;color:#2b6693}
@@ -464,8 +464,7 @@ section[id]{scroll-margin-top:110px}
 .mp-cerrar{float:right;font:inherit;font-size:1.4rem;line-height:1;background:none;border:0;color:var(--muted);cursor:pointer;padding:0 0 0 8px}
 .mapa-panel .mp-texto{font-size:.95rem;line-height:1.5}
 @media (max-width:760px){.mapa-panel{position:fixed!important;left:10px!important;right:10px!important;bottom:10px;top:auto!important;width:auto!important;max-height:55vh!important;z-index:60}}
-</style>
-<style>/* ===== Capa de diseño «Partes a la vista» (común a Ruta, Paso 0 y Matriz) ===== */
+/* ===== Capa de diseño «Partes a la vista» (común a Ruta, Paso 0 y Matriz) ===== */
 :root{--p0:#1F4E79;--p1:#2B6693;--p2:#7A4FB0;--p3:#9A6210;--p4:#1B7499;--p5:#A23B5D;--p6:#4A5866;--p7:#1D7A52;--pv-ink:#14202B;--pv-text:#3D4A5C;--pv-muted:#56637A;--pv-line:#DDE3EA;--pv-panel:#F4F6F9;--pv-brand:#1F4E79;--pv-brand-soft:#EAF1F8;--pv-ok:#1D7A52;--pv-ok-soft:#E6F3EC}
 html body nav.top{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.97);backdrop-filter:blur(6px);border-bottom:1px solid var(--pv-line);box-shadow:none}
 html body nav.top>.wrap,html body nav.top>.nav-in{max-width:1200px;margin:0 auto;padding:8px 24px 0;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
@@ -542,8 +541,7 @@ html body nav.top nav.indice a b{color:var(--pv-muted);font-weight:700;backgroun
 html body nav.top nav.indice a.activo{background:var(--pv-ink);border-color:var(--pv-ink);color:#fff}
 html body nav.top nav.indice a.activo b{color:#C9D4E0}
 @media (max-width:760px){html body nav.top .pv-sub{padding:0 14px 8px}}
-</style>
-<style>/* ===== Fase 2: fichas de la Matriz con prompt vivo ===== */
+/* ===== Fase 2: fichas de la Matriz con prompt vivo ===== */
 nav.toc .n{display:inline-block;min-width:2.6em;font-family:var(--f-body)!important;font-weight:700;color:var(--pv-muted)}
 nav.toc a[aria-current] .n{color:var(--p2)}
 nav.toc li.pv-tgrp{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--pv-muted);margin:12px 8px 2px}
@@ -569,19 +567,18 @@ section>h2>span.n{color:var(--p2)!important}
 .prompt .pega .pv-ai{display:inline-block;font-size:.78rem;font-weight:600;color:var(--pv-ink);background:#fff;border:1px solid var(--pv-line);border-radius:999px;padding:0 8px;margin:0 2px}
 .copy.done{background:var(--pv-ok)!important;color:#fff!important;border-color:var(--pv-ok)!important}
 @media (max-width:900px){.pv-ficha{grid-template-columns:1fr;padding:12px}.pv-ficha>.pv-der{position:static}}
-@media (max-width:760px){.pv-ciclo{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}.pv-ciclo li{flex:none;font-size:.85rem}}
+@media (max-width:760px){.pv-ciclo{gap:6px}.pv-ciclo li{padding:4px 10px 4px 5px}.pv-ciclo li{flex:none;font-size:.85rem}}
 @media (max-width:760px){html body nav.top .idioma svg{display:none}html body nav.top .idioma{padding:2px!important;gap:0!important}html body nav.top .idioma button{padding:3px 7px!important;font-size:.72rem!important;min-height:0!important}html body nav.top .brand{max-width:calc(100vw - 205px)}html body nav.top .brand>span{min-width:0;overflow:hidden}html body nav.top .brand b{overflow:hidden;text-overflow:ellipsis}html body nav.top>.wrap,html body nav.top>.nav-in{flex-wrap:wrap;row-gap:4px}html body nav.top .pv-save{padding:4px 6px}}
-</style>
-<style>html body .wrap{max-width:1360px}
+html body .wrap{max-width:1360px}
 html body nav.top>.wrap,html body nav.top>.nav-in,html body nav.top .pv-sub{max-width:1360px}
 @media (min-width:1100px){html body .wrap,html body nav.top>.wrap,html body nav.top>.nav-in,html body nav.top .pv-sub{padding-left:32px;padding-right:32px}}
 html body .portada .sub,html body .reflexion{max-width:74ch}
+.pv-faltan{border:1px solid #E0A93B;background:#FBF1DC;border-radius:12px;padding:14px 16px;margin:12px 0;color:#14202B}.pv-faltan p{margin:0 0 8px}.pv-faltan ul{margin:0 0 12px;padding-left:20px;columns:2}.pv-faltan .pv-fa-acc{display:flex;gap:8px;flex-wrap:wrap}@media(max-width:640px){.pv-faltan ul{columns:1}}
 </style>
-<style>.pv-faltan{border:1px solid #E0A93B;background:#FBF1DC;border-radius:12px;padding:14px 16px;margin:12px 0;color:#14202B}.pv-faltan p{margin:0 0 8px}.pv-faltan ul{margin:0 0 12px;padding-left:20px;columns:2}.pv-faltan .pv-fa-acc{display:flex;gap:8px;flex-wrap:wrap}@media(max-width:640px){.pv-faltan ul{columns:1}}</style>
 </head>
 <body>
 <nav class="top" aria-label="Secciones"><div class="nav-in">
-  <a class="brand" href="https://investigium.github.io/ruta-investigacion-ia/" aria-label="Ruta de investigación con IA, inicio"><svg viewBox="88 30 92 92" aria-hidden="true"><path d="M151 93L174 116" stroke="#2b6693" stroke-width="10.5" stroke-linecap="round"/><circle cx="128" cy="70" r="34.5" fill="#2b6693"/><circle cx="128" cy="70" r="26" fill="none" stroke="#fff" stroke-width="2.9"/><path fill="#fff" d="M125 85.5L113 55h7.5l8 22.5 8-22.5H144l-12.5 30.5z"/></svg><span><b>Ruta de investigación con IA</b><small>Investigium Lab · Elver Chaparro Cardozo</small></span></a><span class="pv-save"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="2" fill="currentColor"/><path d="M5 7V5a3 3 0 016 0v2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><span>Guardado en este navegador</span></span>
+  <a class="brand" href="https://investigium.github.io/ruta-investigacion-ia/"><svg viewBox="88 30 92 92" aria-hidden="true"><path d="M151 93L174 116" stroke="#2b6693" stroke-width="10.5" stroke-linecap="round"/><circle cx="128" cy="70" r="34.5" fill="#2b6693"/><circle cx="128" cy="70" r="26" fill="none" stroke="#fff" stroke-width="2.9"/><path fill="#fff" d="M125 85.5L113 55h7.5l8 22.5 8-22.5H144l-12.5 30.5z"/></svg><span><b>Ruta de investigación con IA</b><small>Investigium Lab · Elver Chaparro Cardozo</small></span></a><span class="pv-save"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="2" fill="currentColor"/><path d="M5 7V5a3 3 0 016 0v2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><span>Guardado en este navegador</span></span>
   <div class="idioma notranslate" role="group" aria-label="Idioma / Language / Idioma"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><button type="button" data-lang="es" lang="es" title="Español">ES</button><button type="button" data-lang="en" lang="en" title="English">EN</button><button type="button" data-lang="pt" lang="pt" title="Português">PT</button></div><div id="gt" hidden></div><p class="idioma-nota" hidden>Traducción automática de Google. La matriz en Word se genera en español.</p>
   <ul>
     <li><a href="https://investigium.github.io/ruta-investigacion-ia/">Inicio</a></li>
@@ -847,7 +844,7 @@ Luego:
 <section id="ficha5">
   <h2><span class="n">Paso 2.5</span>Ubicar el proyecto en su ruta metodológica</h2>
   <p>Ubique su proyecto en siete niveles, de lo general a lo concreto. Cada nivel debe ser coherente con el anterior y con su pregunta. La columna de análisis no puede quedar vacía: nombre un procedimiento y diga cómo se aplica.</p>
-  <div class="scroll"><table>
+  <div class="scroll" tabindex="0" role="region" aria-label="Niveles de la ruta metodológica"><table>
     <thead><tr><th>Nivel</th><th>Qué decide</th><th>Opciones frecuentes</th><th>Referentes</th></tr></thead>
     <tbody>
       <tr><td><b>1. Paradigma</b></td><td>Desde qué supuestos sobre la realidad y el conocimiento investiga.</td><td>Positivista y pospositivista; interpretativo (hermenéutico o constructivista: Guba y Lincoln agrupan ambos en el constructivismo); sociocrítico o crítico; pragmático (frecuente en diseños mixtos).</td><td>Guba y Lincoln, en Denzin y Lincoln; Carr y Kemmis (1988), para el sociocrítico; Bisquerra (2019); Chafe (2024)</td></tr>
@@ -1402,7 +1399,7 @@ function marcado(W){
   g.N.forEach(n=>{const on=!sel||vec.has(n.id);let ty=16+FS_E;
     let tx=n.le.map((l,i)=>`<text class="fl-etq" x="34" y="${ty+i*(LH+1)}">${esc(l)}</text>`).join("");ty+=(n.le.length-1)*(LH+1)+6+LH;
     tx+=n.lt.map((l,i)=>`<text class="fl-sub" x="34" y="${ty+i*LH}">${esc(l)}</text>`).join("");
-    h+=`<g class="m-nodo g-${n.grupo}${n.vacio?" vacio":""}${n.desc?" desc":""}${on?"":" tenue"}${sel===n.id?" sel":""}" data-id="${n.id}" transform="translate(${n.x},${n.y})" tabindex="0" role="button" aria-label="${esc(n.etq)}${n.vacio?" (vacío)":""}"><rect class="fl-caja" width="${n.w}" height="${n.h}" rx="12"/><circle class="fl-franja" cx="21" cy="${16+FS_E-5}" r="5"/>${tx}${n.vacio||n.desc?`<circle class="fl-alerta" cx="${n.w-18}" cy="18" r="9"/><text class="fl-alerta-t" x="${n.w-18}" y="22.5">!</text>`:""}</g>`});
+    h+=`<g class="m-nodo g-${n.grupo}${n.vacio?" vacio":""}${n.desc?" desc":""}${on?"":" tenue"}${sel===n.id?" sel":""}" data-id="${n.id}" transform="translate(${n.x},${n.y})" tabindex="0" role="button"><rect class="fl-caja" width="${n.w}" height="${n.h}" rx="12"/><circle class="fl-franja" cx="21" cy="${16+FS_E-5}" r="5"/>${tx}${n.vacio||n.desc?`<circle class="fl-alerta" cx="${n.w-18}" cy="18" r="9"/><text class="fl-alerta-t" x="${n.w-18}" y="22.5">!</text>`:""}</g>`});
   return h;
 }
 function dibujar(){
@@ -1726,7 +1723,11 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 })();
 </script>
 <script>document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-descargar-matriz]");if(!b)return;const d=document.getElementById("dlBtn");if(!d)return;d.click();const st=b.parentElement.querySelector("[data-dm-estado]");if(st){st.textContent="Preparando el documento…";setTimeout(()=>{const g=document.getElementById("genStatus");st.textContent=g&&/No se pudo|cancelada/.test(g.textContent)?g.textContent:"Matriz descargada en Word."},2500)}});</script>
-<script>(function(){
+<script>
+/* ===== Capa de diseño «Partes a la vista» ===== */
+/* -- Numeración 2.x, ciclo y prompt vivo -- */
+try{
+(function(){
   var KEY='libro-prompts-matriz-v1';
   var COD={'que-es':'2','kit':'2.0','ficha0':'2.0 a','volcado':'2.0 b','cuaderno':'2.0 c','ficha1':'2.1','ficha2':'2.2','ficha3':'2.3','ficha4':'2.4','ficha5':'2.5','ficha6':'2.6','ficha7':'2.7','informe':'2.8','mapa':'4','cronograma':'5'};
   var esc=function(x){return String(x==null?'':x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
@@ -1793,8 +1794,10 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
   document.addEventListener('input',luego);document.addEventListener('click',function(e){if(e.target.closest('[data-del],#oeAdd,button'))luego()});addEventListener('storage',luego);
   pintar();
 })();
-</script>
-<script>(function(){
+}catch(e){console.error("Capa de diseño: Numeración 2.x, ciclo y prompt vivo",e)}
+/* -- Aviso de campos vacíos -- */
+try{
+(function(){
   var KEY='libro-prompts-matriz-v1',ok=false;
   var F=[['objeto','Objeto de estudio','ficha1','2.1'],['categorias','Categorías','ficha1','2.1'],['pregunta','Pregunta de investigación','ficha1','2.1'],['og','Objetivo general','ficha2','2.2'],['oes','Objetivos específicos','ficha2','2.2'],['tec','Técnicas e instrumentos','ficha3','2.3'],['poblacion','Población','ficha4','2.4'],['etica','Consideraciones éticas','ficha4','2.4'],['paradigma','Paradigma','ficha5','2.5'],['enfoque','Enfoque','ficha5','2.5'],['tipoest','Tipo de estudio','ficha5','2.5'],['metodo','Método o metodología','ficha5','2.5'],['diseno','Diseño','ficha5','2.5'],['analisis','Método de análisis','ficha5','2.5']];
   function faltan(){var s={};try{s=JSON.parse(localStorage.getItem(KEY))||{}}catch(_){}var o=s.oes||[];
@@ -1808,6 +1811,7 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
     c.scrollIntoView({block:'nearest'});
   },true);
 })();
+}catch(e){console.error("Capa de diseño: Aviso de campos vacíos",e)}
 </script>
 </body>
 </html>
