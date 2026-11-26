@@ -931,7 +931,7 @@ Matriz: [pegue o adjunte]</pre><p class="pega"><span aria-hidden="true">↪</spa
 9. Referencias metodológicas citadas:
 
 Mis decisiones: [pegue el material de las fichas 1 a 6]</pre><p class="pega"><span aria-hidden="true">↪</span> Pegue este prompt en su IA de preferencia (ChatGPT, Gemini, Claude, Copilot u otra). Lea la respuesta con criterio y traiga aquí solo lo que decida conservar.</p></div>
-<div class="descarga-matriz"><div><b>Su matriz en Word</b><p>Descargue la matriz con todo lo que escribió en las fichas, lista para enviarla a su asesor. Si además quiere la evaluación de la IA, genérela en «Obtener su matriz de coherencia» y se incluye en el mismo documento.</p></div><div class="dm-acc"><button class="btn primary" type="button" data-descargar-matriz>Descargar mi matriz (Word)</button><span class="status" data-dm-estado role="status"></span></div></div>
+<div class="descarga-matriz"><div><b>Su matriz en Word</b><p>Descargue la matriz con todo lo que escribió en las fichas, lista para enviarla a su asesor. Si aún no ha escrito nada, primero llene las fichas o abra el ejemplo resuelto: sin datos no hay documento que descargar. Si además quiere la evaluación de la IA, genérela en «Obtener su matriz de coherencia» y se incluye en el mismo documento.</p></div><div class="dm-acc"><button class="btn primary" type="button" data-descargar-matriz>Descargar mi matriz (Word)</button><span class="status" data-dm-estado role="status"></span></div></div>
 </section>
 
 <section id="informe">
@@ -1252,6 +1252,8 @@ async function makeDocx(){
 }
 $("#dlBtn").addEventListener("click",async()=>{
   const name="Matriz de coherencia - "+((st.nombre||"estudiante").replace(/[\\/:*?"<>|]/g,"").trim()||"estudiante")+".docx";
+  const hayAlgo=FIELDS.some(([k])=>k!=="nombre"&&filled(k))||!!(st.evalext||"").trim();
+  if(!hayAlgo){$("#genStatus").innerHTML='Verifique: aún no hay nada escrito en las fichas, por eso no se descarga el Word. Escriba su matriz en las <a href="#ficha1">fichas 1 a 6</a> o abra el <a href="#kit">ejemplo resuelto</a> y vuelva a intentarlo.';return}
   $("#genStatus").textContent="Preparando el documento…";
   let blob;try{blob=await makeDocx()}catch(e){blob=null}
   if(!blob){$("#genStatus").textContent="No se pudo crear el archivo Word en este navegador.";return}
@@ -1722,7 +1724,9 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
   window.__botBuscar=buscar;
 })();
 </script>
-<script>document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-descargar-matriz]");if(!b)return;const d=document.getElementById("dlBtn");if(!d)return;d.click();const st=b.parentElement.querySelector("[data-dm-estado]");if(st){st.textContent="Preparando el documento…";setTimeout(()=>{const g=document.getElementById("genStatus");st.textContent=g&&/No se pudo|cancelada/.test(g.textContent)?g.textContent:"Matriz descargada en Word."},2500)}});</script>
+<script>document.addEventListener("click",e=>{const b=e.target.closest&&e.target.closest("[data-descargar-matriz]");if(!b)return;const d=document.getElementById("dlBtn");if(!d)return;const st=b.parentElement.querySelector("[data-dm-estado]");window.__dmOrigen=b;d.click();window.__dmOrigen=null;if(!st)return;
+const av=document.getElementById("pvFaltan");if(av){st.textContent=/Verifique/.test(av.textContent)?"Verifique: no hay nada escrito. Vea el aviso de abajo.":"No se descargó: faltan campos. Vea el aviso de abajo.";return}
+const g=document.getElementById("genStatus");st.textContent="Preparando el documento…";setTimeout(()=>{st.textContent=g&&/No se pudo|cancelada|Verifique/.test(g.textContent)?g.textContent:"Matriz descargada en Word."},2500)});</script>
 <script>
 /* ===== Capa de diseño «Partes a la vista» ===== */
 /* -- Numeración 2.x, ciclo y prompt vivo -- */
@@ -1802,11 +1806,13 @@ try{
   var F=[['objeto','Objeto de estudio','ficha1','2.1'],['categorias','Categorías','ficha1','2.1'],['pregunta','Pregunta de investigación','ficha1','2.1'],['og','Objetivo general','ficha2','2.2'],['oes','Objetivos específicos','ficha2','2.2'],['tec','Técnicas e instrumentos','ficha3','2.3'],['poblacion','Población','ficha4','2.4'],['etica','Consideraciones éticas','ficha4','2.4'],['paradigma','Paradigma','ficha5','2.5'],['enfoque','Enfoque','ficha5','2.5'],['tipoest','Tipo de estudio','ficha5','2.5'],['metodo','Método o metodología','ficha5','2.5'],['diseno','Diseño','ficha5','2.5'],['analisis','Método de análisis','ficha5','2.5']];
   function faltan(){var s={};try{s=JSON.parse(localStorage.getItem(KEY))||{}}catch(_){}var o=s.oes||[];
     return F.filter(function(f){if(f[0]==='oes')return !o.some(function(x){return (x.t||'').trim()});if(f[0]==='tec')return !o.some(function(x){return (x.tec||'').trim()&&(x.ins||'').trim()});return !(s[f[0]]||'').trim()})}
-  function caja(){var c=document.getElementById('pvFaltan');if(!c){c=document.createElement('div');c.id='pvFaltan';c.className='pv-faltan';c.setAttribute('role','alert');var a=document.querySelector('#informe .actions');(a||document.getElementById('dlBtn')).insertAdjacentElement('afterend',c)}return c}
+  function caja(){var c=document.getElementById('pvFaltan');if(!c){c=document.createElement('div');c.id='pvFaltan';c.className='pv-faltan';c.setAttribute('role','alert');}var o=window.__dmOrigen&&window.__dmOrigen.closest('.descarga-matriz');var a=o||document.querySelector('#informe .actions')||document.getElementById('dlBtn');if(c.previousElementSibling!==a)a.insertAdjacentElement('afterend',c);return c}
   document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('#dlBtn');if(!b)return;if(ok){ok=false;return}
     var m=faltan();if(!m.length){var c0=document.getElementById('pvFaltan');if(c0)c0.remove();return}
     e.stopImmediatePropagation();e.preventDefault();
-    var c=caja();c.innerHTML='<p><b>Faltan '+m.length+' '+(m.length===1?'campo':'campos')+' de su matriz.</b> En el Word saldrán como [pendiente]. Puede completarlos ahora o descargar así:</p><ul>'+m.map(function(f){return '<li><a href="#'+f[2]+'">'+f[3]+' · '+f[1]+'</a></li>'}).join('')+'</ul><div class="pv-fa-acc"><a class="btn primary" href="#'+m[0][2]+'">Completar lo que falta</a><button type="button" class="btn" id="pvFaltanSi">Descargar de todos modos</button></div>';
+    var c=caja();
+    if(m.length===F.length){c.innerHTML='<p><b>Verifique: aún no hay nada escrito en su matriz.</b> El Word se arma con lo que usted escribe en las fichas; si no ha escrito nada ni ha abierto el ejemplo resuelto, no hay documento que descargar.</p><div class="pv-fa-acc"><a class="btn primary" href="#ficha1">Empezar en la ficha 2.1</a><a class="btn" href="#kit">Abrir el ejemplo resuelto</a></div>';c.scrollIntoView({block:'nearest'});return}
+    c.innerHTML='<p><b>Faltan '+m.length+' '+(m.length===1?'campo':'campos')+' de su matriz.</b> En el Word saldrán como [pendiente]. Puede completarlos ahora o descargar así:</p><ul>'+m.map(function(f){return '<li><a href="#'+f[2]+'">'+f[3]+' · '+f[1]+'</a></li>'}).join('')+'</ul><div class="pv-fa-acc"><a class="btn primary" href="#'+m[0][2]+'">Completar lo que falta</a><button type="button" class="btn" id="pvFaltanSi">Descargar de todos modos</button></div>';
     c.querySelector('#pvFaltanSi').addEventListener('click',function(){ok=true;c.remove();document.getElementById('dlBtn').click()});
     c.scrollIntoView({block:'nearest'});
   },true);
